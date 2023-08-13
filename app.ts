@@ -1,12 +1,28 @@
 import express from 'express';
-const path = require('path');
+import path from 'path';
+const ejsMate = require('ejs-mate');
+import dbconection from './database';
+import { Request, Response } from 'express';
+import { seedData } from './seed/seed';
+import { postRouter } from './routes/posts';
+import methodOverride from 'method-override';
+
 const app = express();
 
+dbconection();
+
+app.engine('ejs', ejsMate);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use('/public', express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use(methodOverride('_method'));
 
-app.get('/', (req, res) => {
-  res.render('index', { hola: 'hola' });
+app.use('/posts', postRouter);
+
+app.get('/', (req: Request, res: Response) => {
+  res.render('index');
 });
 
 app.listen(3000, () => {

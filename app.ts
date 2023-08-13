@@ -10,6 +10,7 @@ import methodOverride from 'method-override';
 const app = express();
 
 dbconection();
+// seedData();
 
 app.engine('ejs', ejsMate);
 app.use(express.urlencoded({ extended: true }));
@@ -22,9 +23,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/posts', postRouter);
 
 app.get('/', (req: Request, res: Response) => {
-  res.render('index');
+    res.render('index');
 });
 
 app.listen(3000, () => {
-  console.log('Application started on port 3000!');
+    console.log('Application started on port 3000!');
 });

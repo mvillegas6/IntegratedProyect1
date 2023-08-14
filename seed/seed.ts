@@ -1,4 +1,3 @@
-import mongoose from 'mongoose';
 import dbconection from '../database';
 import { Post } from '../models/post';
 import { jsonPosts } from './post';

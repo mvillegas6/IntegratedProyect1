@@ -6,10 +6,11 @@ const show = async (req: Request, res: Response, next: NextFunction) => {
   try {
     if (req.query.q) {
       const keyword = `${req.query.q}`;
-      const posts = await Post.find({
-        title: { $regex: '.*' + keyword + '.*' },
-      });
-      console.log(posts);
+      const posts = (
+        await Post.find({
+          title: { $regex: '.*' + keyword + '.*' },
+        })
+      ).reverse();
       res.render('Posts/show', { posts, keyword });
     } else {
       const posts = (await Post.find({})).reverse();
@@ -50,7 +51,6 @@ const createPost = async (
   next: NextFunction
 ) => {
   try {
-    console.log(req.body);
     req.body.votes = 0;
     const post = new Post(req.body);
     post.save();

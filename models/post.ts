@@ -10,4 +10,5 @@ const post = new Schema({
   image: String,
 });
 
+
 export const Post = mongoose.model('Post', post);

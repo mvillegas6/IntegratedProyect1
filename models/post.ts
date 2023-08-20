@@ -7,7 +7,7 @@ const post = new Schema({
   body: String,
   votes: Number,
   tags: String,
-  image: String,
+  image: Object,
 });
 
 

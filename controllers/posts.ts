@@ -45,15 +45,18 @@ const createPost = async (
   req: Request<
     never,
     never,
-    { title: string; author: string; body: string; votes: number; tags: string; image: string }
+    { title: string; author: string; body: string; votes: number; tags: string; image: string; file: File }
   >,
   res: Response,
   next: NextFunction
 ) => {
   try {
+    const files = req.files as { [fieldname: string]: Express.Multer.File[] };
     req.body.votes = 0;
     const post = new Post(req.body);
-    post.save();
+    post.image = files
+    await post.save();
+    console.log(post);
     res.redirect('Posts');
   } catch (err) {
     next(err);

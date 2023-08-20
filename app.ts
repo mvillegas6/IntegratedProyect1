@@ -5,7 +5,16 @@ import dbconection from './database';
 import { Request, Response } from 'express';
 import { seedData } from './seed/seed';
 import { postRouter } from './routes/posts';
+import { userRouter } from './routes/users';
 import methodOverride from 'method-override';
+import session from 'express-session';
+import cookieParser from 'cookie-parser';
+import flash from 'connect-flash';
+import passport from 'passport';
+import {Strategy as localStrategy} from 'passport-local';
+import {User} from './models/user';
+
+
 
 const app = express();
 
@@ -19,8 +28,33 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
+app.use(flash());
+app.use(session({
+  name: 'YSC__',
+  secret: 'Dirty deeds done dirty cheap',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { maxAge: Date.now() + 1000 * 60 * 60 * 24 * 7, httpOnly: true }
+}));
+app.use(session());
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use((req, res, next) => {
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  next();
+});
+
 
 app.use('/posts', postRouter);
+app.use('', userRouter);
+
 
 app.get('/', (req: Request, res: Response) => {
   res.render('index');

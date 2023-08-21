@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { NextFunction } from 'express';
 import path from 'path';
 const ejsMate = require('ejs-mate');
 import dbconection from './database';
@@ -28,8 +28,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cookieParser());
-app.use(flash());
+app.use(cookieParser('alo'));
 app.use(session({
   name: 'YSC__',
   secret: 'Dirty deeds done dirty cheap',
@@ -38,6 +37,7 @@ app.use(session({
   cookie: { maxAge: Date.now() + 1000 * 60 * 60 * 24 * 7, httpOnly: true }
 }));
 app.use(session());
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -45,9 +45,10 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use((req, res, next) => {
+app.use((req:Request, res: Response, next: NextFunction) => {
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
+  res.locals.currentUser = req.user;
   next();
 });
 

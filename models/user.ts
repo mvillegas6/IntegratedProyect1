@@ -9,9 +9,11 @@ const userSchema = new Schema({
     },
     contact:{
         type: String,
+        required: false,
     },
     office:{
         type:String,
+        required: false,
     }
 });
 

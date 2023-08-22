@@ -78,10 +78,7 @@ const deletePost = async (
         const post = await Post.deleteOne({
             _id: req.params.id,
         });
-        const posts = (await Post.find({})).reverse();
-        req.url = '/';
-        res.redirect(req.url); //TODO: Return to the /posts url
-        // res.render('Posts/show', { posts, keyword: '' });
+        res.redirect('/posts'); //TODO: Return to the /posts url
     } catch (error) {
         next(error);
     }
@@ -118,8 +115,7 @@ const updatePost = async (
 ) => {
     try {
         const newPost = await Post.updateOne({ _id: req.params.id }, req.body);
-        req.url = '/';
-        res.redirect(req.url); //TODO: Return to the /posts url
+        res.redirect(`/posts/${req.params.id}`);
     } catch (err) {
         next(err);
     }

@@ -8,5 +8,5 @@ export const postRouter = Router.get('/', postController.show)
     .get('/update/:id', postController.showUpdate)
     .get('/:id', postController.showMainPostPage)
     .post('/', postController.createPost)
-    .delete('/delete/:id', postController.deletePost)
+    .delete('/:id', postController.deletePost)
     .put('/:id', postController.updatePost);

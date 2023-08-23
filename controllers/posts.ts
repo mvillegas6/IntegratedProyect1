@@ -43,32 +43,6 @@ const showNew = async (req: Request, res: Response, next: NextFunction) => {
     }
 };
 
-const createPost = async (
-    req: Request<
-        never,
-        never,
-        {
-            title: string;
-            author: string;
-            body: string;
-            votes: number;
-            tags: string;
-            image: string;
-        }
-    >,
-    res: Response,
-    next: NextFunction
-) => {
-    try {
-        req.body.votes = 0;
-        const post = new Post(req.body);
-        post.save();
-        res.redirect('Posts');
-    } catch (err) {
-        next(err);
-    }
-};
-
 const deletePost = async (
     req: Request<{ id: string }>,
     res: Response,
@@ -119,6 +93,27 @@ const updatePost = async (
     } catch (err) {
         next(err);
     }
+  
+const createPost = async (
+  req: Request<
+    never,
+    never,
+    { title: string; author: string; body: string; votes: number; tags: string; image: string; file: File }
+  >,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const files = req.files as { [fieldname: string]: Express.Multer.File[] };
+    req.body.votes = 0;
+    const post = new Post(req.body);
+    post.image = files
+    await post.save();
+    console.log(post);
+    res.redirect('Posts');
+  } catch (err) {
+    next(err);
+  }
 };
 
 export const postController = {

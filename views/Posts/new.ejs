@@ -3,7 +3,7 @@
   <div class="row mt-5">
     <div class="col-6 offset-3">
       <div class="card">
-        <form action="/posts" method="post" class="card-body">
+        <form action="/posts" method="post" class="card-body" enctype="multipart/form-data">
           <fieldset>
             <legend class="text-center title">Upload a new post</legend>
             <div class="mb-3">
@@ -18,17 +18,25 @@
 
             <div class="mb-3">
               <label for="description" class="form-label">Enter the description</label>
-              <textarea name="body" id="" cols="5" rows="4" class="form-control" placeholder="Description"></textarea>
+              <textarea
+                name="body"
+                id=""
+                cols="5"
+                rows="4"
+                class="form-control"
+                placeholder="Description"
+              ></textarea>
             </div>
             <div class="mb-3">
               <label for="Title" class="form-label">Enter the tags</label>
               <input type="text" id="tags" class="form-control" placeholder="Tags" name="tags" />
             </div>
-            <div class="mb-3">
-              <label for="Title" class="form-label">Enter the image URL</label>
-              <input type="text" id="img" class="form-control" placeholder="URL" name="image" />
-            </div>
 
+            <div class="mb-3">
+              <label for="formFileMultiple" class="form-label">Select the files</label>
+              <input class="form-control" type="file" name="image" id="formFileMultiple" multiple />
+            </div>
+            
             <button type="submit" class="btn btn-primary">Submit</button>
           </fieldset>
         </form>

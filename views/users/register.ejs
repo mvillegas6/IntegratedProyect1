@@ -1,0 +1,44 @@
+<% layout('layout/boilerplate') %>
+<link rel="stylesheet" href="/styles/login.css">
+<div class="wrapper">
+    <div class="card mb-3">
+        <div class="row g-0" style="width: 100%; max-width: 800px;">
+            <div class="col-md-5">
+                <img src="https://images.unsplash.com/photo-1600195077077-7c815f540a3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2578&q=80"
+                    class="img-fluid rounded-start" alt="..." crossorigin="anonymous">
+            </div>
+            <div class="col-md-7">
+                <div class="card-body mt-4">
+                    <h1 class="text-center">Register</h1>
+                    <p class="card-text fs-6 fw-light text-center mb-4">Join the ultimate study community</p>
+                    <form action="/register" novalidate class="validated-form" method="post">
+                        <div class="mb-3">
+                            <label for="Email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="Email" aria-describedby="emailHelp"
+                                name="email" required>
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+                            </div>
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a valid Email
+                        </div>
+                        <div class="mb-5">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                            <div id="emailHelp" class="form-text">Don't use your usual password... please?</div>
+                        </div>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a valid password
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 mt-3">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

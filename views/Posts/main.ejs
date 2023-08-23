@@ -1,0 +1,50 @@
+<% layout('layout/boilerplate') %>
+<link rel="stylesheet" href="/styles/posts.css" />
+
+<div>
+    <body>
+        <div class="card" style="width: 85rem">
+            <div class="card-body">
+                <h1 class="card-title text-center title-1"><%=post.title %></h1>
+                <div class="card text-bg-secondary p-3">
+                    <p class="card-text text-center"><%= post.body %></p>
+                    <% if (post.image) {%>
+                    <div
+                        class="d-flex justify-content-center align-items-center"
+                    >
+                        <img
+                            src="<%= post.image %>"
+                            class="w-50 h-50 rounded"
+                            alt="..."
+                        />
+                    </div>
+                    <% } %>
+                </div>
+                <h5>Votes: <%= post.votes %></h5>
+                <h5>Tags: <%= post.tags %></h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">
+                    <%= post.author %>
+                </h6>
+                <form
+                    action="/posts/<%= post._id %>?_method=DELETE"
+                    method="POST"
+                >
+                    <button
+                        style="background-color: #eb3a3a; color: white"
+                        class="btn"
+                    >
+                        DELETE
+                    </button>
+                </form>
+                <form action="/posts/update/<%= post._id %>" method="GET">
+                    <button
+                        style="background-color: #5ac8fa; color: white"
+                        class="btn"
+                    >
+                        UPDATE
+                    </button>
+                </form>
+            </div>
+        </div>
+    </body>
+</div>

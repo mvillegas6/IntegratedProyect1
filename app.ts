@@ -58,9 +58,9 @@ app.use('', userRouter);
 
 
 app.get('/', (req: Request, res: Response) => {
-  res.render('index');
+    res.render('index');
 });
 
 app.listen(3000, () => {
-  console.log('Application started on port 3000!');
+    console.log('Application started on port 3000!');
 });

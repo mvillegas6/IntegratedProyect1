@@ -1,4 +1,5 @@
 <% layout('layout/boilerplate') %>
+
 <body>
   <div class="row mt-5">
     <div class="col-6 offset-3">
@@ -27,16 +28,46 @@
                 placeholder="Description"
               ></textarea>
             </div>
+
             <div class="mb-3">
-              <label for="Title" class="form-label">Enter the tags</label>
-              <input type="text" id="tags" class="form-control" placeholder="Tags" name="tags" />
+              <label for="deegreSelector" class="form-label">Select your deegre</label>
+              <select name="degree" id="deegreSelector" class="form-control">
+                <option selected disabled>Select your deegre</option>
+                <option disabled>Escuela de Administración</option>
+                <option value="Administración de Negocios">Administración de Negocios</option>
+                <option value="Negocios Internacionales">Negocios Internacionales</option>
+                <option value="Contaduría Pública">Contaduría Pública</option>
+                <option value="Mercadeo">Mercadeo</option>
+                <option value="Ciencias Políticas">Ciencias Políticas</option>
+                <option value="Música">Música</option>
+                <option value="Comunicación Social">Comunicación Social</option>
+                <option value="Psicología">Psicología</option>
+                <option value="Literatura">Literatura</option>
+                <option value="Diseño Interactivo">Diseño Interactivo</option>
+                <option value="Finanzas">Finanzas</option>
+                <option value="Economía">Economía</option>
+                <option disabled>Escuela de derecho</option>
+                <option value="Derecho">Derecho</option>
+                <option disabled>Escuela de Ingeniería</option>
+                <option value="Ingeniería Mecánica">Ingeniería Mecánica</option>
+                <option value="Ingeniería de Procesos">Ingeniería de Procesos</option>
+                <option value="Ingeniería de Producción">Ingeniería de Producción</option>
+                <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+                <option value="Ingeniería Agronómica">Ingeniería Agronómica</option>
+                <option value="Biología">Biología</option>
+                <option value="Geología">Geología</option>
+                <option value="Ingeniería Matemática">Ingeniería Matemática</option>
+                <option value="Ingeniería Física">Ingeniería Física</option>
+                <option value="Ingeniería Civil">Ingeniería Civil</option>
+                <option value="Ingeniería de Diseño de Producto">Ingeniería de Diseño de Producto</option>
+              </select>
             </div>
 
             <div class="mb-3">
               <label for="formFileMultiple" class="form-label">Select the files</label>
               <input class="form-control" type="file" name="image" id="formFileMultiple" multiple />
             </div>
-            
+
             <button type="submit" class="btn btn-primary">Submit</button>
           </fieldset>
         </form>

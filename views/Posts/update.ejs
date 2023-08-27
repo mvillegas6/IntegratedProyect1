@@ -1,87 +1,51 @@
 <% layout('layout/boilerplate') %>
 <body>
-    <div class="row mt-5">
-        <div class="col-6 offset-3">
-            <div class="card">
-                <form
-                    action="/posts/<%= postId %>?_method=PUT"
-                    method="POST"
-                    class="card-body"
-                >
-                    <fieldset>
-                        <legend class="text-center title">
-                            Update the post
-                        </legend>
-                        <div class="mb-3">
-                            <label for="Title" class="form-label"
-                                >Enter the title
-                            </label>
-                            <input
-                                type="text"
-                                id="title"
-                                class="form-control"
-                                value="<%= post.title %>"
-                                name="title"
-                            />
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="author" class="form-label"
-                                >Enter the author</label
-                            >
-                            <input
-                                type="text"
-                                id="author"
-                                class="form-control"
-                                value="<%= post.author %>"
-                                name="author"
-                            />
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="description" class="form-label"
-                                >Enter the description</label
-                            >
-                            <textarea
-                                name="body"
-                                id=""
-                                cols="5"
-                                rows="4"
-                                class="form-control"
-                                value="<%= post.body %>"
-                            ></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="Title" class="form-label"
-                                >Enter the tags</label
-                            >
-                            <input
-                                type="text"
-                                id="tags"
-                                class="form-control"
-                                value="<%= post.tags%>"
-                                name="tags"
-                            />
-                        </div>
-                        <div class="mb-3">
-                            <label for="Title" class="form-label"
-                                >Enter the image URL</label
-                            >
-                            <input
-                                type="text"
-                                id="img"
-                                class="form-control"
-                                value="<%= post.image %>"
-                                name="image"
-                            />
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">
-                            Update
-                        </button>
-                    </fieldset>
-                </form>
+  <div class="row mt-5">
+    <div class="col-6 offset-3">
+      <div class="card">
+        <form
+          action="/posts/<%= postId %>?_method=PUT"
+          method="POST"
+          class="card-body"
+          enctype="multipart/form-data"
+        >
+          <fieldset>
+            <legend class="text-center title">Update the post</legend>
+            <div class="mb-3">
+              <label for="Title" class="form-label">Enter the title </label>
+              <input type="text" id="title" class="form-control" value="<%= post.title %>" name="title" />
             </div>
-        </div>
+
+            <div class="mb-3">
+              <label for="author" class="form-label">Enter the author</label>
+              <input type="text" id="author" class="form-control" value="<%= post.author %>" name="author" />
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Enter the description</label>
+              <textarea
+                name="body"
+                id=""
+                cols="5"
+                rows="4"
+                class="form-control"
+                value="<%= post.body %>"
+              ></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="Title" class="form-label">Enter the tags</label>
+              <input type="text" id="tags" class="form-control" value="<%= post.tags%>" name="tags" />
+            </div>
+
+            <!-- <div class="mb-3">
+              <label for="formFileMultiple" class="form-label">Select the files</label>
+              <input class="form-control" type="file" name="image" id="formFileMultiple" multiple />
+            </div> -->
+
+            <button type="submit" class="btn btn-primary">Update</button>
+          </fieldset>
+        </form>
+      </div>
     </div>
+  </div>
 </body>

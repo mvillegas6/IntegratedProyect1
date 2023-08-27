@@ -102,10 +102,10 @@ const createPost = async (
   next: NextFunction
 ) => {
   try {
-    const files = req.files;
+    const files = req.files as Express.Multer.File[];
     req.body.votes = 0;
     const post = new Post(req.body);
-    post.image = files;
+    post.image = files.map((f) => ({ path: f.path, filename: f.filename }));
     if (Faculties.ingeneers.includes(post.degree)) {
       post.faculty = 'Ingenierias';
     } else if (Faculties.administration.includes(post.degree)) {

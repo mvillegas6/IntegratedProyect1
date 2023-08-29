@@ -1,16 +1,53 @@
 <% layout('layout/boilerplate') %>
 <link rel="stylesheet" href="/styles/posts.css" />
 
-<div>
-    <body>
-        <div class="card" style="width: 85rem; background-color: #333333">
+<body>
+    <div class="row">
+        <div class="card col-6 offset-3" style="background-color: #333333">
             <div class="card-body">
                 <h1 class="card-title title-1" style="color: #c2c2c2">
                     <%=post.title %>
                 </h1>
-                <h6 class="card-subtitle mb-2" style="color: #7f7f7f">
-                    <%= post.author %>
-                </h6>
+                <div class="container">
+                    <div class="row">
+                        <div class="col align-self-start">
+                            <h6
+                                class="card-subtitle mb-2"
+                                style="color: #7f7f7f"
+                            >
+                                <%= post.author %>
+                            </h6>
+                            <h6
+                                class="card-subtitle mb-2"
+                                style="color: #7f7f7f"
+                            >
+                                <%= post.degree %>
+                            </h6>
+                        </div>
+                        <div class="col-1 align-self-center">
+                            <button class="btn">
+                                <ion-icon
+                                    name="thumbs-up"
+                                    style="color: #d1eb3a"
+                                ></ion-icon>
+                            </button>
+                        </div>
+                        <div class="col-1 align-self-center">
+                            <h5 style="color: #c2c2c2" class="text-center">
+                                <%= post.votes %>
+                            </h5>
+                        </div>
+                        <div class="col-1 align-self-center">
+                            <button class="btn">
+                                <ion-icon
+                                    name="thumbs-down"
+                                    style="color: #d1eb3a"
+                                ></ion-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <br />
                 <div>
                     <p class="card-text" style="color: #c2c2c2">
                         <%= post.body %>
@@ -25,25 +62,9 @@
                         <% } %>
                     </div>
                 </div>
-                <h5 style="color: #c2c2c2">Votes: <%= post.votes %></h5>
-                <h5 style="color: #c2c2c2">Tags: <%= post.tags %></h5>
-
                 <div class="container">
                     <div class="row">
                         <div class="col">
-                            <form
-                                action="/posts/<%= post._id %>?_method=DELETE"
-                                method="POST"
-                            >
-                                <button
-                                    style="background-color: #eb3a3a"
-                                    class="btn"
-                                >
-                                    DELETE
-                                </button>
-                            </form>
-                        </div>
-                        <div class="col text-right">
                             <form
                                 action="/posts/update/<%= post._id %>"
                                 method="GET"
@@ -56,9 +77,30 @@
                                 </button>
                             </form>
                         </div>
+                        <div class="col offset-7">
+                            <form
+                                action="/posts/<%= post._id %>?_method=DELETE"
+                                method="POST"
+                            >
+                                <button
+                                    style="background-color: #eb3a3a"
+                                    class="btn"
+                                >
+                                    DELETE
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
-</div>
+    </div>
+    <script
+        type="module"
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+        nomodule
+        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+</body>

@@ -3,32 +3,30 @@ import { Request, Response, NextFunction } from 'express';
 import { Faculties } from '../util/degrees';
 
 async function filterByQuery(req: Request, res: Response) {
+    let posts: any;
     if (req.query.q) {
         const keyword = `${req.query.q}`;
-        const posts = (
+        posts = (
             await Post.find({
                 title: { $regex: '.*' + keyword + '.*' },
-            })
+            }).populate('author')
         ).reverse();
-        res.render('Posts/show', { posts, keyword });
     } else if (req.query.faculty) {
-        const posts = (
+        posts = (
             await Post.find({
                 faculty: req.query.faculty,
-            })
+            }).populate('author')
         ).reverse();
-        res.render('Posts/show', { posts, keyword: '' });
     } else if (req.query.degree) {
-        const posts = (
+        posts = (
             await Post.find({
                 degree: req.query.degree,
-            })
+            }).populate('author')
         ).reverse();
-        res.render('Posts/show', { posts, keyword: '' });
     } else {
-        const posts = (await Post.find({})).reverse();
-        res.render('Posts/show', { posts, keyword: '' });
+        posts = (await Post.find({}).populate('author')).reverse();
     }
+    res.render('Posts/show', { posts, keyword: '' });
 }
 
 function findFaculty(post: any) {

@@ -7,7 +7,14 @@ dbconection();
 export const seedData = async () => {
   await Post.deleteMany({});
   for (let i = 0; i < jsonPosts.length; i++) {
-    const P1 = new Post(jsonPosts[i]);
+    const P1 = new Post({
+      title: "Exploring the Outdoors",
+      author: "64eeae9e768bfef6bea8c9bc",
+      body: "Slorem.", 
+      votes: 25,
+      tags: "travel, nature",
+      image: "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
+    });
     P1.image = [
       {
         fieldname: 'image',

@@ -1,7 +1,8 @@
 import { Post } from '../models/post';
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, Express} from 'express';
 import { cloudinary } from '../cloudinary/index';
 import { Helpers } from '../util/helpers';
+ 
 
 const show = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -17,7 +18,7 @@ const showMainPostPage = async (
     next: NextFunction
 ) => {
     try {
-        const post = await Post.findById(req.params.id);
+        const post = await Post.findById(req.params.id).populate('author');
         res.render('Posts/main', { post: post });
     } catch (err) {
         next(err);
@@ -68,7 +69,6 @@ const updatePost = async (
         never,
         {
             title: string;
-            author: string;
             body: string;
             votes: number;
             degree: string;
@@ -82,7 +82,6 @@ const updatePost = async (
         const files = req.files as Express.Multer.File[];
         const newPost = await Post.findById(req.params.id);
         newPost.title = req.body.title;
-        newPost.author = req.body.author;
         newPost.body = req.body.body;
         newPost.degree = req.body.degree;
         newPost.image.push(...files);
@@ -100,12 +99,12 @@ const createPost = async (
         never,
         {
             title: string;
-            author: string;
+            author: object;
             body: string;
             votes: number;
             degree: string;
             file: File;
-        }
+        }   
     >,
     res: Response,
     next: NextFunction
@@ -116,6 +115,7 @@ const createPost = async (
         const post = new Post(req.body);
         post.image = files.map((f) => ({ path: f.path, filename: f.filename }));
         Helpers.findFaculty(post);
+        post.author = req.user['_id'];
         await post.save();
         res.redirect('Posts');
     } catch (err) {

@@ -15,7 +15,7 @@
                                 class="card-subtitle mb-2"
                                 style="color: #7f7f7f"
                             >
-                                <%= post.author %>
+                                <%= post.author.name %>
                             </h6>
                             <h6
                                 class="card-subtitle mb-2"
@@ -62,36 +62,38 @@
                         <% } %>
                     </div>
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <form
-                                action="/posts/update/<%= post._id %>"
-                                method="GET"
-                            >
-                                <button
-                                    style="background-color: #5ac8fa"
-                                    class="btn"
+                <% if (currentUser && currentUser.name === post.author.name ) { %>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <form
+                                    action="/posts/update/<%= post._id %>"
+                                    method="GET"
                                 >
-                                    UPDATE
-                                </button>
-                            </form>
-                        </div>
-                        <div class="col offset-7">
-                            <form
-                                action="/posts/<%= post._id %>?_method=DELETE"
-                                method="POST"
-                            >
-                                <button
-                                    style="background-color: #eb3a3a"
-                                    class="btn"
+                                    <button
+                                        style="background-color: #5ac8fa"
+                                        class="btn"
+                                    >
+                                        UPDATE
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col offset-7">
+                                <form
+                                    action="/posts/<%= post._id %>?_method=DELETE"
+                                    method="POST"
                                 >
-                                    DELETE
-                                </button>
-                            </form>
+                                    <button
+                                        style="background-color: #eb3a3a"
+                                        class="btn"
+                                    >
+                                        DELETE
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <% } %>
             </div>
         </div>
     </div>

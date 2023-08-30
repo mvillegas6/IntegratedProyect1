@@ -45,6 +45,18 @@ $ npm i
 ```
 and it will install the necessary dependencies for the project to work correctly. If you want to know which dependencies are  being used, head to the *package.json* file.
 
+## File .env
+You need to create a .env file on the main folder, you can use the next command:
+```bash
+$ touch .env
+```
+then inside place the next information:
+```
+DB_URL = 'mongodb://username:password@127.0.0.1:27017/Tutorly'
+CLOUDINARY_CLOUD_NAME=dzemwu9yn
+CLOUDINARY_KEY=787284336515933
+CLOUDINARY_SECRET=aeuNq5czvelgMoGafaVPOPvb670
+```
 ## Final Step
 Run the command
 ```bash

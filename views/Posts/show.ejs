@@ -1,49 +1,37 @@
 <% layout('layout/boilerplate') %>
-<link rel="stylesheet" href="/styles/posts.css" />
+  <link rel="stylesheet" href="/styles/show.css" />
 
-<body>
-  <div class="row">
-    <div class="col-6 offset-3">
-      <h1 class="title-1 text-center text-white">
-        Welcome to all the posts in Tutor<span style="color: #5ac8fa">ly</span>
-      </h1>
-      <div class="mb-3">
-        <form action="" method="">
-          <div class="row">
-            <div class="col-10">
-              <input type="text" name="q" id="" class="form-control" value="<%= keyword%>" />
-            </div>
-            <div class="col-2">
-              <button style="background-color: #5ac8fa; color: white" class="btn">Search</button>
-            </div>
-          </div>
+  <main>
+    <div class="middlePart">
+      <nav class="searchBar">
+        <form class="searchComponents" action="" method="">
+          <input type="text" name="q" id="" class="form-control" value="<%= keyword%>" />
+          <button>Submit</button>
         </form>
-      </div>
+      </nav>
 
-      <div class="row row-cols-1 row-cols-md-1 g-4 ">
-        <% for(let post of posts){%>
-        <div class="col-sm-6 mb-3 mb-sm-0 ">
-          <a href="/posts/<%= post._id %>">
-            <div class="card eachCard ">
-              <div class="card-body ">
-                <% for (let img of post.image){ %>
-                  <img src="<%= img.path %>" class="mb-3 card-img-top" alt="..." />
-                  <% } %>
-                  <h5 class="card-title"><%= post.title %></h5>
-                  <p class="card-text fw-semibold"><%= post.body %></p>
-                  <p class="card-text-fw-semibold">Votes: <%= post.votes%></p>
-                  <p class="card-text-fw-semibold">Faculty: <%= post.faculty%></p>
-                  <p class="card-text-fw-semibold">Degree: <%= post.degree%></p>
-                  <p class="card-text">
-                    <small class="text-muted"> <%= post.author.name %> </small>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </a>
-        <% }%>
-      </div>
-</body>
-
-
-
+      <section class="postsContainer">
+        <% for(let post of posts){ %>
+          <div class="post">
+            <h2 id="title">
+              <%= post.title %>
+            </h2>
+            <p id="author">
+              <small>
+                <%= post.author.name %>
+              </small>
+            </p>
+            <p id="body">
+              <%= post.body %>
+            </p>
+            <p id="faculty"><%= post.faculty%>
+            </p>
+            <p id="degree"><%= post.degree%>
+            </p>
+            <p id="votes">Votes: <%= post.votes%>
+            </p>
+          </div>
+          <% } %>
+      </section>
+    </div>
+  </main>

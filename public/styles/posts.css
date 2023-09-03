@@ -1,9 +1,0 @@
-.eachCard:hover {
-  cursor: pointer;
-  transform: scale(1.02);
-  transition-duration: 0.7s;
-}
-
-.eachCard {
-  transition-duration: 0.7s;
-}

@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser('alo'));
 
 const store = new MongoDBStore({
-    url: process.env.DB_URL,
+    url: process.env.DB_URL_ATLAS,
     secret: 'Dirty deeds done dirty cheap',
     touchAfter: 24 * 60 * 60,
     collection: 'mySessions'

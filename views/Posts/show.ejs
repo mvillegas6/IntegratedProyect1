@@ -1,4 +1,5 @@
 <% layout('layout/boilerplate') %>
+<%- include('../templates/sidebar') %>
   <link rel="stylesheet" href="/styles/show.css" />
 
   <main>
@@ -12,25 +13,27 @@
 
       <section class="postsContainer">
         <% for(let post of posts){ %>
-          <div class="post">
-            <h2 id="title">
-              <%= post.title %>
-            </h2>
-            <p id="author">
-              <small>
-                <%= post.author.name %>
-              </small>
-            </p>
-            <p id="body">
-              <%= post.body %>
-            </p>
-            <p id="faculty"><%= post.faculty%>
-            </p>
-            <p id="degree"><%= post.degree%>
-            </p>
-            <p id="votes">Votes: <%= post.votes%>
-            </p>
-          </div>
+          <a href="/posts/<%=post._id%>">   
+            <div class="post">
+              <h2 id="title">
+                <%= post.title %>
+              </h2>
+              <p id="author">
+                <small>
+                  <%= post.author.name %>
+                </small>
+              </p>
+              <p id="body">
+                <%= post.body %>
+              </p>
+              <p id="faculty"><%= post.faculty%>
+              </p>
+              <p id="degree"><%= post.degree%>
+              </p>
+              <p id="votes">Votes: <%= post.votes%>
+              </p>
+            </div>
+          </a>
           <% } %>
       </section>
     </div>

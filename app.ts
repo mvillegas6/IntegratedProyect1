@@ -13,7 +13,7 @@ import flash from 'connect-flash';
 import passport from 'passport';
 import { Strategy as localStrategy } from 'passport-local';
 import { User } from './models/user';
-var MongoDBStore = require('connect-mongodb-session')(session);
+var MongoDBStore = require('connect-mongo');
 
 
 const app = express();
@@ -30,12 +30,13 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser('alo'));
 
-const store = new MongoDBStore({
-    url: process.env.DB_URL_ATLAS,
-    secret: 'Dirty deeds done dirty cheap',
+const store = MongoDBStore.create({
+    mongoUrl: process.env.DB_URL_ATLAS,
     touchAfter: 24 * 60 * 60,
-    collection: 'mySessions'
-})
+    crypto: {
+        secret: 'Dirty deeds done dirty cheap!'
+    }
+});
 
 store.on('error', function(e){
     console.log('session store error', e)

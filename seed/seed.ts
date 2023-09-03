@@ -10,10 +10,13 @@ export const seedData = async () => {
     const P1 = new Post({
       title: "Exploring the Outdoors",
       author: "64eeae9e768bfef6bea8c9bc",
-      body: "Slorem.", 
+      body: "At the core of AI lies the concept of machine learning, a subset of AI that enables computers to learn and improve from experience. Machine learning algorithms analyze vast datasets to identify patterns, make predictions, and adapt to changing circumstances.", 
       votes: 25,
       tags: "travel, nature",
-      image: "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80"
+      image: "https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&q=80",
+      faculty: 'Ciencias e ingenieria',
+      degree: 'Ingeniería de Sistemas',
+
     });
     P1.image = [
       {

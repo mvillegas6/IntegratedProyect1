@@ -13,6 +13,8 @@ import flash from 'connect-flash';
 import passport from 'passport';
 import { Strategy as localStrategy } from 'passport-local';
 import { User } from './models/user';
+var MongoDBStore = require('connect-mongodb-session')(session);
+
 
 const app = express();
 
@@ -27,8 +29,21 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser('alo'));
+
+const store = new MongoDBStore({
+    url: process.env.DB_URL,
+    secret: 'Dirty deeds done dirty cheap',
+    touchAfter: 24 * 60 * 60,
+    collection: 'mySessions'
+})
+
+store.on('error', function(e){
+    console.log('session store error', e)
+})
+
 app.use(
     session({
+        store,
         name: 'YSC__',
         secret: 'Dirty deeds done dirty cheap',
         resave: false,

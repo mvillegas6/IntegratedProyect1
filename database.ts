@@ -2,10 +2,11 @@ import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
+const dbUrl = process.env.DB_URL_ATLAS
 
 const dbconection = () => {
     mongoose
-        .connect(process.env.DB_URL!)
+        .connect(dbUrl!)
         .then(() => {
             console.log('CONNECTED');
         })

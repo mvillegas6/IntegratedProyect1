@@ -1,8 +1,8 @@
-body{
+body {
     background-color: #232323;
 }
 
-main{
+main {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,7 +10,7 @@ main{
     margin: 20px;
     overflow: hidden;
 }
-main .middlePart{
+main .middlePart {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,27 +20,29 @@ main .middlePart{
     width: 60%;
     overflow-y: scroll;
 }
-main .searchBar{
-   display: flex;
-   flex-direction: row;
-   justify-content: center;
-   margin-bottom: 30px;
-   height: 2.5em;
-   width: 98%;
+main .searchBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 30px;
+    height: 2.5em;
+    width: 98%;
 }
 
-main .postsContainer{
+main .postsContainer {
     width: 88.2%;
     height: 1200px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    text-decoration: none;
 }
 .postsContainer a {
     text-decoration: none;
+    width: 100%;
 }
-.post{
+.post {
     height: fit-content;
     width: 100%;
     border-radius: 10px;
@@ -49,72 +51,69 @@ main .postsContainer{
     padding: 10px;
     transition: transform 0.3s, background-color 0.3s;
     color: white;
-    display: flex;  
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    color: #C2C2C2;
-
+    color: #c2c2c2;
 }
 
-.post #title{
+.post #title {
     flex-basis: 80%;
 }
-.post #author{
+.post #author {
     flex-basis: 20%;
     text-align: end;
 }
-.post #body{
+.post #body {
     flex-basis: 100%;
 }
 
-.post #faculty{
+.post #faculty {
     flex-basis: 40%;
     text-align: start;
 }
-.post #degree{
+.post #degree {
     flex-basis: 40%;
     text-align: start;
 }
-.post #votes{
+.post #votes {
     flex-basis: 20%;
     text-align: center;
 }
 
-.postsContainer .post h1{
+.postsContainer .post h1 {
     margin-top: 0;
 }
 
-nav .searchComponents{
+nav .searchComponents {
     /* background-color: white; */
     display: flex;
     justify-content: center;
     width: 90%;
 }
 
-nav .searchComponents button{
-    background-color: #5AC8FA;
+nav .searchComponents button {
+    background-color: #5ac8fa;
     border-radius: 20px;
     border: none;
-    flex-grow:0.05;
+    flex-grow: 0.05;
     width: 6em;
 }
 
-nav .searchComponents input{
-    background-color:#333333;
+nav .searchComponents input {
+    background-color: #333333;
     border: none;
     flex-grow: 1;
     border-radius: 20px;
     margin-right: 20px;
     outline: none;
-    color: #C2C2C2;
-   
+    color: #c2c2c2;
 }
-nav .searchComponents input:focus{
-  background-color: #333333;
-  outline: none;
-  box-shadow: none;
-  color: #C2C2C2;
-
+nav .searchComponents input:focus {
+    background-color: #333333;
+    outline: none;
+    box-shadow: none;
+    color: #c2c2c2;
 }
 /* ::-webkit-scrollbar{
     width: 5px;
@@ -123,6 +122,6 @@ nav .searchComponents input:focus{
 ::-webkit-scrollbar-thumb{
     background: #5AC8FA;
 } */
-.postsContainer div:hover{
+.postsContainer div:hover {
     background-color: #333333;
 }

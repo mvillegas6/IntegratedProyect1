@@ -20,23 +20,6 @@ $ npm -v
 ```
 If the terminal returns a prompt like *v18.17.1* you're good to go.
 
-## Docker and Mongo container
-### Docker 
-We use Docker as a way to manage the stored information and applications between different operational systems (Linux, Mac, and Windows). You can download the application by following the steps provided on the [official page](https://www.docker.com/).
-
-### Mongo container
-Mongo is our database of usage for this project. To build your own Mongo container, first make sure your Docker desktop application is running in the background by running the following command:
-```bash
-$ docker ps
-> CONTAINER ID   IMAGE      COMMAND ...
-```
-If it looks something like that, then you can head to the project repository and run the *docker-compose up -d*
-```bash
-~/../IntegratedProyect1
-$ docker-compose up-d
-```
-This command will create and start the Mongo container on your Docker application **(make sure port 27017 is available)**.
-
 ## Dependencies
 On the project folder run the following command:
 ```bash
@@ -45,6 +28,8 @@ $ npm i
 ```
 and it will install the necessary dependencies for the project to work correctly. If you want to know which dependencies are  being used, head to the *package.json* file.
 
+If it is necessary run the command with the '*--force*' flag.
+
 ## File .env
 You need to create a .env file on the main folder, you can use the next command:
 ```bash
@@ -52,7 +37,7 @@ $ touch .env
 ```
 then inside place the next information:
 ```
-DB_URL = 'mongodb://username:password@127.0.0.1:27017/Tutorly'
+DB_URL_ATLAS='mongodb+srv://firstUser:zXMsriX2nDN9YrxF@tutorly.dwwnc51.mongodb.net/?retryWrites=true&w=majority'
 CLOUDINARY_CLOUD_NAME=dzemwu9yn
 CLOUDINARY_KEY=787284336515933
 CLOUDINARY_SECRET=aeuNq5czvelgMoGafaVPOPvb670

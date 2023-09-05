@@ -34,7 +34,6 @@ body {
   padding: 30px 0px;
   position: fixed;
   border-right: 3px solid #2b2b2b;
-
 }
 
 .wrapper .sidebar ul {
@@ -129,4 +128,8 @@ body {
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.degree:hover{
+  font-weight: bold;
 }

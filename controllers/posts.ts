@@ -71,7 +71,18 @@ const updatePost = async (
     newPost.title = req.body.title;
     newPost.body = req.body.body;
     newPost.degree = req.body.degree;
-    newPost.image.push(...files);
+    // .image.push(...files);
+    newPost.image.push(...files.map((f) => {
+      const { path, filename, mimetype, originalname } = f;
+      return {
+        path,
+        filename,
+        mimetype,
+        originalname: originalname.substring(0, originalname.indexOf('.')),
+      };
+    }));
+    newPost.image.originalname = newPost.image.originalname
+    console.log(newPost.image.originalname)
     Helpers.findFaculty(newPost);
     await newPost.save();
     res.redirect(`/posts/${req.params.id}`);
@@ -106,12 +117,10 @@ const createPost = async (
         path,
         filename,
         mimetype,
-        originalname: originalname.substring(0, originalname.lastIndexOf('.')),
+        originalname: originalname.substring(0, originalname.indexOf('.')),
       };
     });
     Helpers.findFaculty(post);
-    console.log(files);
-
     post.author = req.user['_id'];
     await post.save();
     res.redirect('Posts');

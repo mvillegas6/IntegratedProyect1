@@ -1,106 +1,69 @@
+<link rel="stylesheet" href="/styles/main.css" />
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
 <% layout('layout/boilerplate') %>
 <body>
-    <div class="row">
-        <div class="card col-6 offset-3" style="background-color: #333333">
-            <div class="card-body">
-                <h1 class="card-title title-1" style="color: #c2c2c2">
-                    <%=post.title %>
-                </h1>
-                <div class="container">
-                    <div class="row">
-                        <div class="col align-self-start">
-                            <h6
-                                class="card-subtitle mb-2"
-                                style="color: #7f7f7f"
-                            >
-                                <%= post.author.name %>
-                            </h6>
-                            <h6
-                                class="card-subtitle mb-2"
-                                style="color: #7f7f7f"
-                            >
-                                <%= post.degree %>
-                            </h6>
-                        </div>
-                        <div class="col-1 align-self-center">
-                            <button class="btn">
-                                <ion-icon
-                                    name="thumbs-up"
-                                    style="color: #d1eb3a"
-                                ></ion-icon>
-                            </button>
-                        </div>
-                        <div class="col-1 align-self-center">
-                            <h5 style="color: #c2c2c2" class="text-center">
-                                <%= post.votes %>
-                            </h5>
-                        </div>
-                        <div class="col-1 align-self-center">
-                            <button class="btn">
-                                <ion-icon
-                                    name="thumbs-down"
-                                    style="color: #d1eb3a"
-                                ></ion-icon>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <br />
-                <div>
-                    <p class="card-text" style="color: #c2c2c2">
-                        <%= post.body %>
-                    </p>
-                    <div class="card-body">
-                        <% for (let img of post.image){ %>
-                        <img
-                            src="<%= img.path %>"
-                            class="mb-3 card-img"
-                            alt="..."
-                        />
-                        <% } %>
-                    </div>
-                </div>
-                <% if (currentUser && currentUser.name === post.author.name ) { %>
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <form
-                                    action="/posts/update/<%= post._id %>"
-                                    method="GET"
-                                >
-                                    <button
-                                        style="background-color: #5ac8fa"
-                                        class="btn"
-                                    >
-                                        UPDATE
-                                    </button>
-                                </form>
-                            </div>
-                            <div class="col offset-7">
-                                <form
-                                    action="/posts/<%= post._id %>?_method=DELETE"
-                                    method="POST"
-                                >
-                                    <button
-                                        style="background-color: #eb3a3a"
-                                        class="btn"
-                                    >
-                                        DELETE
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                <% } %>
+  <div class="row">
+    <div class="card col-6 offset-3" style="background-color: #333333">
+      <div class="card-body">
+        <h1 class="card-title title-1" style="color: #c2c2c2"><%=post.title %></h1>
+        <div class="container">
+          <div class="row">
+            <div class="col align-self-start">
+              <h6 class="card-subtitle mb-2" style="color: #7f7f7f"><%= post.author.name %></h6>
+              <h6 class="card-subtitle mb-2" style="color: #7f7f7f"><%= post.degree %></h6>
             </div>
+            <div class="col-1 align-self-center">
+              <button class="btn">
+                <ion-icon name="thumbs-up" style="color: #d1eb3a"></ion-icon>
+              </button>
+            </div>
+            <div class="col-1 align-self-center">
+              <h5 style="color: #c2c2c2" class="text-center"><%= post.votes %></h5>
+            </div>
+            <div class="col-1 align-self-center">
+              <button class="btn">
+                <ion-icon name="thumbs-down" style="color: #d1eb3a"></ion-icon>
+              </button>
+            </div>
+          </div>
         </div>
+        <br />
+        <div>
+          <p class="card-text" style="color: #c2c2c2"><%= post.body %></p>
+          <div class="card-body">
+            <% for (let img of post.image){ %> <% if(img.mimetype === 'application/pdf'){ %> <% const
+            splitPath = img.path.split('/upload') %>
+            <div class="post_links">
+            <a class="btn btn-light download_btn" href="<%=`${splitPath[0]}/upload/fl_attachment:${img.originalname}${splitPath[1]}` %>">Download</a>
+              <a class="fullscreen" target="_blank" href="<%= img.path %>">⛶</a>
+            </div>
+
+            <object class="show_pdf" data="<%= img.path %>" width="100%" height="600"></object>
+            <% }else{ %> <% %>
+            <img src="<%= img.path %>" class="mb-3 card-img" alt="..." />
+            <% } %> <% } %>
+          </div>
+        </div>
+        <% if (currentUser && currentUser.name === post.author.name ) { %>
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <form action="/posts/update/<%= post._id %>" method="GET">
+                <button style="background-color: #5ac8fa" class="btn">UPDATE</button>
+              </form>
+            </div>
+            <div class="col offset-7">
+              <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                <button style="background-color: #eb3a3a" class="btn">DELETE</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
     </div>
-    <script
-        type="module"
-        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-        nomodule
-        src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-    ></script>
+  </div>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

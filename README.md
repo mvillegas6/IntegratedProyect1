@@ -48,3 +48,9 @@ Run the command
 npm run dev
 ```
 and then head to the http://localhost:3000/. If you see the Tutorly name and web page, then congratulations! You are officially running the Tutorly web service.
+
+### Contributors
+The main constributors of this project are:  
+- [Miguel Vasquez Bojanini](https://github.com/mvasquezb99) -> [mvasquezb@eafit.edu.co](mailto:mvasquezb@eafit.edu.co) 
+- [Esteban Muriel Roldan](https://github.com/Estebanmr30) -> [emurielr@eafit.edu.co](mailto:emurielr@eafit.edu.co)  
+- [Manuel Villegas Michel](https://github.com/mvillegas6) -> [mvillegas6@eafit.edu.co](mailto:mvillegas6@eafit.edu.co)  

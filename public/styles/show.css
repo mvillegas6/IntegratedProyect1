@@ -2,6 +2,13 @@ body {
     background-color: #232323;
 }
 
+hr{
+    width: 100%;
+    border: solid 2px #333333 ;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -63,22 +70,26 @@ main .postsContainer {
 .post #author {
     flex-basis: 20%;
     text-align: end;
+    color: #5ac8fa;
 }
 .post #body {
     flex-basis: 100%;
 }
 
 .post #faculty {
-    flex-basis: 40%;
+    flex-basis: 50%;
     text-align: start;
+    font-weight: bold;
 }
-.post #degree {
-    flex-basis: 40%;
+.post #attachments {
+    flex-basis: 30%;
     text-align: start;
+    font-weight: bold;
 }
 .post #votes {
-    flex-basis: 20%;
+    flex-basis: 10%;
     text-align: center;
+    font-weight: bold;
 }
 
 .postsContainer .post h1 {

@@ -71,7 +71,6 @@ const updatePost = async (
     newPost.title = req.body.title;
     newPost.body = req.body.body;
     newPost.degree = req.body.degree;
-    // .image.push(...files);
     newPost.image.push(...files.map((f) => {
       const { path, filename, mimetype, originalname } = f;
       return {
@@ -123,6 +122,7 @@ const createPost = async (
     Helpers.findFaculty(post);
     post.author = req.user['_id'];
     await post.save();
+    req.flash('success', 'Hola');
     res.redirect('Posts');
   } catch (err) {
     next(err);

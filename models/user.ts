@@ -37,6 +37,7 @@ const userSchema = new Schema({
       'Ingeniería Física',
       'Ingeniería Civil',
       'Ingeniería de Diseño de Producto',
+      'Diseño urbano y gestion habitad',
     ],
   },
   faculty: {

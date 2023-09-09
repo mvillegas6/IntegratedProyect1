@@ -14,11 +14,11 @@
       </div>
       <div class="col-md-7">
         <div class="card-body mt-4">
-          <h1 class="text-center">Register</h1>
-          <p class="card-text fs-6 fw-light text-center mb-4">Join the ultimate study community</p>
-          <form action="/register" novalidate class="validated-form" method="post">
+          <h1 class="text-center">Registro</h1>
+          <p class="card-text fs-6 fw-light text-center mb-4">Entra en la mayor comunidad de estudio de la universidad</p>
+          <form action="/register" class="validated-form needs-validation" method="post" novalidate>
             <div class="mb-3">
-              <label for="Email" class="form-label">Email address</label>
+              <label for="Email" class="form-label">Correo</label>
               <input
                 type="email"
                 class="form-control"
@@ -27,24 +27,45 @@
                 name="email"
                 required
               />
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              <div class="invalid-feedback">Ingresa Un Correo Valido!</div>
+
+            </div>
+            <div class="mb-5">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password" name="password" required />
+              <div id="emailHelp" class="form-text">No utilices una contraseña común</div>
+              <div class="invalid-feedback">Ingrese Una Contraseña Valida!</div>
+
             </div>
             <div class="mb-3">
-              <label for="deegreSelector" class="form-label">Select your deegre</label>
-              <select name="degree" id="" class="form-control">
+              <label for="deegreSelector" class="form-label">Selecciona el pregrado</label>
+              <select name="degree" id="deegreSelector" class="form-select" required>
+                <option value="" disabled>Selecciona el pregrado</option>
+                <!-- Administración -->
+                <option disabled>Escuela de Administración</option>
                 <option value="Administración de Negocios">Administración de Negocios</option>
                 <option value="Negocios Internacionales">Negocios Internacionales</option>
                 <option value="Contaduría Pública">Contaduría Pública</option>
                 <option value="Mercadeo">Mercadeo</option>
+                
+                <!-- ECONOMIA -->
+                <option disabled>Escuela de Economía y Finanzas</option> 
                 <option value="Ciencias Políticas">Ciencias Políticas</option>
+                <option value="Economía">Economía</option>
+                <option value="Finanzas">Finanzas</option>
+                
+                <!-- Artes y humanidades -->
+                <option disabled>Artes y humanidades</option> 
                 <option value="Música">Música</option>
                 <option value="Comunicación Social">Comunicación Social</option>
                 <option value="Psicología">Psicología</option>
                 <option value="Literatura">Literatura</option>
                 <option value="Diseño Interactivo">Diseño Interactivo</option>
-                <option value="Finanzas">Finanzas</option>
-                <option value="Economía">Economía</option>
+                <!-- derecho -->
+                <option disabled>Escuela de derecho</option>
                 <option value="Derecho">Derecho</option>
+                <!-- INGENIERIAS -->
+                <option disabled>Escuela de Ingeniería</option>
                 <option value="Ingeniería Mecánica">Ingeniería Mecánica</option>
                 <option value="Ingeniería de Procesos">Ingeniería de Procesos</option>
                 <option value="Ingeniería de Producción">Ingeniería de Producción</option>
@@ -56,14 +77,13 @@
                 <option value="Ingeniería Física">Ingeniería Física</option>
                 <option value="Ingeniería Civil">Ingeniería Civil</option>
                 <option value="Ingeniería de Diseño de Producto">Ingeniería de Diseño de Producto</option>
+                <option value="Diseño urbano y gestion habitad">Diseño urbano y gestion habitad</option>
               </select>
+              <div class="invalid-feedback">Selecciona Una Carrera!</div>
+
             </div>
-            <div class="mb-5">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" name="password" required />
-              <div id="emailHelp" class="form-text">Don't use your usual password... please?</div>
-            </div>
-            <button type="submit" class="btn btn-primary w-100 mt-3">Register</button>
+            
+            <button type="submit" class="btn btn-primary w-100 mt-3">Registrarse</button>
           </form>
         </div>
       </div>

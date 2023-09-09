@@ -48,6 +48,7 @@ hr{
   text-align: start;
   align-items: center;
   margin-top: 0;
+  color: #5ac8fa;
 }
 .postsContainer #votes{
   flex-basis: 20%;

@@ -6,11 +6,12 @@
     <div class="middlePart">
       <nav class="searchBar">
         <form class="searchComponents" action="" method="">
-          <input type="text" name="q" id="" class="form-control" value="<%= keyword%>" />
-          <button>Submit</button>
+          <input value="<%= keyword %>" type="text" name="q" id="" class="form-control" value="<%= keyword%>" />
+          <button>Buscar</button>
         </form>
       </nav>
 
+      
       <section class="postsContainer">
         <% for(let post of posts){ %>
           <a href="/posts/<%=post._id%>">   
@@ -20,20 +21,20 @@
               </h2>
               <p id="author">
                 <small>
-                  <%= post.author.name %>
+                  <%= `@${post.author.name}` %>
                 </small>
               </p>
               <p id="body">
                 <%= post.body %>
               </p>
-              <p id="faculty"><%= post.faculty%>
+              <p id="faculty"><%= post.faculty%> | <%= post.degree%>
               </p>
-              <p id="degree"><%= post.degree%>
-              </p>
-              <p id="votes">Votes: <%= post.votes%>
+              <p id="attachments">Publicaciones: <%= post.image.length %> </p>
+              <p id="votes">Votos: <%= post.votes%>
               </p>
             </div>
           </a>
+          <hr>
           <% } %>
       </section>
     </div>

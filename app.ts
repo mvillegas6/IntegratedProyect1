@@ -15,7 +15,6 @@ import { Strategy as localStrategy } from 'passport-local';
 import { User } from './models/user';
 var MongoDBStore = require('connect-mongo');
 
-
 const app = express();
 
 dbconection();
@@ -31,32 +30,32 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser('alo'));
 
 const store = MongoDBStore.create({
-    mongoUrl: process.env.DB_URL_ATLAS,
-    touchAfter: 24 * 60 * 60,
-    crypto: {
-        secret: 'Dirty deeds done dirty cheap!'
-    }
+  mongoUrl: process.env.DB_URL_ATLAS,
+  touchAfter: 24 * 60 * 60,
+  crypto: {
+    secret: 'Dirty deeds done dirty cheap!',
+  },
 });
 
-store.on('error', function(e){
-    console.log('session store error', e)
-})
+store.on('error', function (e) {
+  console.log('session store error', e);
+});
 
 app.use(
-    session({
-        store,
-        name: 'YSC__',
-        secret: 'Dirty deeds done dirty cheap',
-        resave: false,
-        saveUninitialized: true,
-        cookie: {
-            maxAge: Date.now() + 1000 * 60 * 60 * 24 * 7,
-            httpOnly: true,
-        },
-    })
+  session({
+    store,
+    name: 'YSC__',
+    secret: 'Dirty deeds done dirty cheap',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: Date.now() + 1000 * 60 * 60 * 24 * 7,
+      httpOnly: true,
+    },
+  })
 );
-app.use(session());
 app.use(flash());
+// app.use(session());
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -65,19 +64,19 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-    res.locals.success = req.flash('success');
-    res.locals.error = req.flash('error');
-    res.locals.currentUser = req.user;
-    next();
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  res.locals.currentUser = req.user;
+  next();
 });
 
 app.use('/posts', postRouter);
 app.use('', userRouter);
 
 app.get('/', (req: Request, res: Response) => {
-    res.render('index');
+  res.render('index');
 });
 
 app.listen(3000, () => {
-    console.log('Application started on port 3000!');
+  console.log('Application started on port 3000!');
 });

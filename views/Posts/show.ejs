@@ -1,41 +1,37 @@
-<% layout('layout/boilerplate') %>
-<%- include('../templates/sidebar') %>
-  <link rel="stylesheet" href="/styles/show.css" />
+<% layout('layout/boilerplate') %> <%- include('../templates/sidebar') %>
+<link rel="stylesheet" href="/styles/show.css" />
 
-  <main>
-    <div class="middlePart">
-      <nav class="searchBar">
-        <form class="searchComponents" action="" method="">
-          <input value="<%= keyword %>" type="text" name="q" id="" class="form-control" value="<%= keyword%>" />
-          <button>Buscar</button>
-        </form>
-      </nav>
+<main>
+  <div class="middlePart">
+    <nav class="searchBar">
+      <form class="searchComponents" action="" method="">
+        <input
+          value="<%= keyword %>"
+          type="text"
+          name="q"
+          id=""
+          class="form-control"
+          value="<%= keyword%>" />
+        <button>Buscar</button>
+      </form>
+    </nav>
 
-      
-      <section class="postsContainer">
-        <% for(let post of posts){ %>
-          <a href="/posts/<%=post._id%>">   
-            <div class="post">
-              <h2 id="title">
-                <%= post.title %>
-              </h2>
-              <p id="author">
-                <small>
-                  <%= `@${post.author.name}` %>
-                </small>
-              </p>
-              <p id="body">
-                <%= post.body %>
-              </p>
-              <p id="faculty"><%= post.faculty%> | <%= post.degree%>
-              </p>
-              <p id="attachments">Archivos: <%= post.image.length %> </p>
-              <p id="votes">Votos: <%= post.votes%>
-              </p>
-            </div>
-          </a>
-          <hr>
-          <% } %>
-      </section>
-    </div>
-  </main>
+    <section class="postsContainer">
+      <% for(let post of posts){ %>
+      <a href="/posts/<%=post._id%>">
+        <div class="post">
+          <h2 id="title"><%= post.title %></h2>
+          <p id="author">
+            <small> <%= `@${post.author.name}` %> </small>
+          </p>
+          <p id="body"><%= post.body %></p>
+          <p id="faculty"><%= post.faculty%> | <%= post.degree%></p>
+          <p id="attachments">Archivos: <%= post.image.length %></p>
+          <p id="votes">Votos: <%= post.votes.length %></p>
+        </div>
+      </a>
+      <hr />
+      <% } %>
+    </section>
+  </div>
+</main>

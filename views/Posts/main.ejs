@@ -8,17 +8,24 @@
     <main>
       <section class="mainContainer">
         <section class="postsContainer">
-          <h2 id="name">
+          <h2 id="name">    
             <%= post.title%>
           </h2>
           <h3 id="votes">
-            <button class="btn">
-              <ion-icon name="thumbs-up" style="color:white"></ion-icon>
-            </button>
-            <%= post.votes %>
-            <button class="btn">
-              <ion-icon name="thumbs-down" style="color: white"></ion-icon>
-            </button>
+            <% if (isLiked) { %>
+              <form action="/posts/dislike/<%= post.id %>?_method=PUT" method="POST">
+                <button class="btn" id="like" type="submit">
+                  <ion-icon name="thumbs-up" style="color: #5ac8fa"></ion-icon>
+                </button>
+              </form>
+            <% } else { %>
+              <form action="/posts/like/<%= post.id %>?_method=PUT" method="POST">
+                <button class="btn" id="like" type="submit">
+                  <ion-icon name="thumbs-up" style="color:white"></ion-icon>
+                </button>
+              </form>
+            <% } %>
+            <%= post.votes.length %>
           </h3>
           <p id="author">
               @<%= post.author.name %>
@@ -66,6 +73,6 @@
         </section>
       </section>
     </main>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </body>

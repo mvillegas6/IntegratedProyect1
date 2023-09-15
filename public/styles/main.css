@@ -1,21 +1,21 @@
-body{
+body {
   background-color: #232323;
 }
 
-main{
+main {
   display: flex;
   justify-content: center;
   padding: 30px;
-  color: #C2C2C2;
+  color: #c2c2c2;
 }
 
-hr{
+hr {
   width: 100%;
-  border: solid 2px #333333 ;
+  border: solid 2px #333333;
   margin: 0 auto;
   border-radius: 10px;
 }
-.mainContainer{
+.mainContainer {
   display: flex;
   width: 65%;
   height: fit-content;
@@ -27,7 +27,7 @@ hr{
   border-right: solid 4px #333333;
 }
 
-.postsContainer{
+.postsContainer {
   max-width: 99%;
   display: flex;
   flex-direction: row;
@@ -38,11 +38,11 @@ hr{
   margin-bottom: 20px;
 }
 
-.postsContainer #name{
+.postsContainer #name {
   flex-basis: 80%;
   margin-bottom: 10px;
 }
-.postsContainer #author{
+.postsContainer #author {
   flex-basis: 100%;
   display: flex;
   text-align: start;
@@ -50,23 +50,22 @@ hr{
   margin-top: 0;
   color: #5ac8fa;
 }
-.postsContainer #votes{
+.postsContainer #votes {
   flex-basis: 20%;
   display: flex;
   text-align: start;
   align-items: center;
   justify-content: end;
   margin-bottom: 10px;
-
 }
-.postsContainer #body{
+.postsContainer #body {
   flex-basis: 100%;
 }
-.postsContainer #image{
+.postsContainer #image {
   flex-basis: 100%;
   height: 200px;
 }
-.commentsContainer{
+.commentsContainer {
   margin-top: 20px;
   display: flex;
   width: 100%;
@@ -75,10 +74,9 @@ hr{
   height: fit-content;
 }
 
-.pdfSpace{
+.pdfSpace {
   flex-basis: 100%;
   margin-bottom: 10px;
-  
 }
 
 .commentsContainer div {
@@ -89,11 +87,11 @@ hr{
   margin-bottom: 10px;
   margin-top: 10px;
 }
-.postsContainer #update{
- flex-basis: 10%;
+.postsContainer #update {
+  flex-basis: 10%;
 }
-.postsContainer #delete{
- flex-basis: 90%;
+.postsContainer #delete {
+  flex-basis: 90%;
 }
 
 .fullscreen {

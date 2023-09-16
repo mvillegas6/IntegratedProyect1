@@ -53,23 +53,33 @@
           </div>
           <% if (currentUser && currentUser.name===post.author.name ) { %>
             <form action="/posts/update/<%= post._id %>" method="GET" id="update">
-              <button style="background-color: #5ac8fa" class="btn">UPDATE</button>
+              <button style="background-color: #5ac8fa" class="btn">Actualizar</button>
             </form>
             <form action="/posts/<%= post._id %>?_method=DELETE" method="POST" id="delete">
-              <button style="background-color: #eb3a3a" class="btn">DELETE</button>
+              <button style="background-color: #eb3a3a" class="btn">Borrar</button>
             </form>
             <% } %>
         </section>
         <hr>
         <section class="commentsContainer">
-          <div>
-          </div>
-          <hr>
-          <div></div>
-          <hr>
-          <div></div>
-          <hr>
-          <div></div>
+          <form action="/posts/comments/new/<%= post._id %>" method="GET" id="comment">
+            <button style="background-color: #53fa4d" class="btn">Comentar</button>
+          </form>
+
+          <% for(let comment of comments){ %>
+              <div>
+                <p id="author">
+                  <small> <%= `@${comment.author.name}` %> </small>
+                </p>
+                <p id="body"><%= comment.body %></p>
+                <% if (currentUser && currentUser.name===comment.author.name ) { %>
+                <form action="/posts/comments/<%= comment._id %>?_method=DELETE" method="POST" id="delete">
+                  <button style="background-color: #eb3a3a" class="btn">Borrar</button>
+                </form>
+                <% } %>
+              </div>
+            <hr />
+            <% } %>
         </section>
       </section>
     </main>

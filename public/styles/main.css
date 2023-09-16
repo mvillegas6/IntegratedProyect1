@@ -107,3 +107,13 @@ hr {
 .fa-solid {
   width: 25px;
 }
+
+.commentsContainer #author {
+  flex-basis: 20%;
+  text-align: end;
+  color: #5ac8fa;
+}
+
+.commentsContainer #body {
+  flex-basis: 100%;
+}

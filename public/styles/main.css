@@ -88,10 +88,10 @@ hr {
   margin-top: 10px;
 }
 .postsContainer #update {
-  flex-basis: 10%;
+  flex-basis: 11%;
 }
 .postsContainer #delete {
-  flex-basis: 90%;
+  flex-basis: 80%;
 }
 
 .fullscreen {
@@ -99,9 +99,6 @@ hr {
   color: #7f7f7f;
   font-size: 40px;
   float: right;
-}
-
-.download_btn {
 }
 
 .fa-solid {

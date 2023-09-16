@@ -61,9 +61,7 @@ function checkUserLike(req: Request, post: any) {
   let flag = false;
   for (let index = 0; index < post.votes.length; index++) {
     const element = post.votes[index];
-    console.log(element['email']);
     if (element['email'] === req.user['email']) {
-      console.log('Ya le diste like');
       flag = true;
     }
   }
@@ -74,10 +72,8 @@ function removeUserLike(req: Request, post: any) {
   let flag = false;
   for (let index = 0; index < post.votes.length; index++) {
     const element = post.votes[index];
-    console.log(element['email']);
     if (element['email'] === req.user['email']) {
       const oldLike = post.votes.splice(index, 1);
-      console.log(`El like de ${oldLike} ha sido eliminado`);
       flag = true;
     }
   }

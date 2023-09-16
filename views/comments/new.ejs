@@ -1,0 +1,36 @@
+<% layout('layout/boilerplate') %>
+
+<body>
+  <div class="row mt-5">
+    <div class="col-6 offset-3">
+      <div class="card">
+        <form
+          action="/posts/comments/new/<%= postId %>"
+          method="post"
+          class="card-body needs-validation"
+          novalidate>
+          <fieldset>
+            <legend class="text-center title">¿Que quieres comentar?</legend>
+
+            <div class="mb-3">
+              <label for="description" class="form-label"
+                >Ingresa tu comentario</label
+              >
+              <textarea
+                name="body"
+                id=""
+                cols="5"
+                rows="4"
+                class="form-control"
+                placeholder="Tienes un máximo de 250 caracteres"
+                required></textarea>
+              <div class="invalid-feedback">Ingresa tu comentario!</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Publicar</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>

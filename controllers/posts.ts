@@ -2,6 +2,7 @@ import { Post } from '../models/post';
 import { Request, Response, NextFunction } from 'express';
 import { cloudinary } from '../cloudinary/index';
 import { Helpers } from '../util/helpers';
+import { Comment } from '../models/comment';
 
 const show = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -21,7 +22,16 @@ const showMainPostPage = async (
       .populate('author')
       .populate('votes');
     const isLiked = Helpers.checkUserLike(req, post);
-    res.render('Posts/main', { post: post, isLiked: isLiked });
+    const comments = await Comment.find({
+      postRelated: post,
+    })
+      .populate('postRelated')
+      .populate('author');
+    res.render('Posts/main', {
+      post: post,
+      isLiked: isLiked,
+      comments: comments,
+    });
   } catch (err) {
     next(err);
   }

@@ -1,58 +1,40 @@
-.bodyDesign {
-    height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://images.unsplash.com/photo-1549762729-e93a4530c32b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80");
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
-}
-
-.mainColor{
-    color: #5ac8fa;
-}
-
-.wrapper{
+.poster{
+    width: 100%;
+    color: white;
     display: flex;
+    flex-direction: row;
+    height: 60vh;
+    background-position: 20% 55%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    url("https://images.unsplash.com/photo-1564910443496-5fd2d76b47fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2535&q=80");
+}
+
+
+.titleContainer {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    min-height: 95vh;
-}
-.homeLinks{
-    text-decoration: none;
-    color: white;
+    margin: 0;
+    width: 50%;
+    height: 100%;
 }
 
-.title{
-    font-size: 130px;
-    transition: color 0.3s;
+.titleContainer h1{
+    font-size: 120px;
+    width: 90%;
 }
 
-.homeButton{
-    font-family: roboto,sans-serif;
-    text-decoration: none;
-    background-color: #5ac8fa;
-    border: 2px solid #1e6091;
-    color: white;
-    font-size: 1em;
-    border-radius: 10px;
-    padding: 1em 2em;
-    transition: transform 0.3s, color 0.3s, background-color 0.3s;
-}
-
-.cover-container{
-    max-width: 60vw;
-}
-
-.homeButton:hover{
-    border: 2px solid #34a0a4;
-    color: white;
-    transform: translateY(-0.25em);
-    box-shadow: 0 0.5em 0.5em -0.4em #5ac8fa;
-    cursor: pointer;
-}
-
-.homeLinks:hover{
+.titleContainer span{
     color: #5ac8fa;
-    cursor:pointer;
+}
+
+.textContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    margin: 0;
 }

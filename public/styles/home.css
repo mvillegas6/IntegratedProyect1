@@ -1,3 +1,14 @@
+body{
+    color: white;
+    background-color: #232323;
+}
+hr {
+    width: 80%;
+    border: solid 2px #333333;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    border-radius: 10px;
+  }
 .poster{
     width: 100%;
     color: white;
@@ -5,7 +16,7 @@
     flex-direction: row;
     height: 60vh;
     background-position: 20% 55%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("https://images.unsplash.com/photo-1564910443496-5fd2d76b47fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2535&q=80");
 }
 
@@ -30,11 +41,54 @@
 }
 
 .textContainer{
+    margin-top: 50px;
+    margin-bottom: 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+}
+.textContainer h2 {
+    flex-basis: 100%;
+    height: fit-content;
+    font-size: 65px;
+    margin-bottom: 50px;
+}
+.textContainer p {
+    flex-basis: 50%;
+    font-size: 20px;
+    color: white;
+}
+.optionsContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 300px;
+    justify-content: space-evenly;
+}
+
+.goPosts, .goTutors{
+    width: 30%;
+    height: 80%;
+    background-color: #333333;
+    border-radius: 40px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    width: 50%;
-    height: 100%;
-    margin: 0;
+    flex-direction: column;
+    text-decoration: none;
+    color: white;
+}
+
+.goPosts , .goTutors p{ 
+    font-size: 23px;
+}
+
+.iconPost {
+    margin-bottom: 30px;
 }

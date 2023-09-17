@@ -1,58 +1,94 @@
-.bodyDesign {
-    height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://images.unsplash.com/photo-1549762729-e93a4530c32b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80");
-    background-size: cover;
-    background-position: center;
-    overflow: hidden;
+body{
+    color: white;
+    background-color: #232323;
+}
+hr {
+    width: 80%;
+    border: solid 2px #333333;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    border-radius: 10px;
+  }
+.poster{
+    width: 100%;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    height: 60vh;
+    background-position: 20% 55%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("https://images.unsplash.com/photo-1564910443496-5fd2d76b47fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2535&q=80");
 }
 
-.mainColor{
+
+.titleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    width: 50%;
+    height: 100%;
+}
+
+.titleContainer h1{
+    font-size: 120px;
+    width: 90%;
+}
+
+.titleContainer span{
     color: #5ac8fa;
 }
 
-.wrapper{
+.textContainer{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+}
+.textContainer h2 {
+    flex-basis: 100%;
+    height: fit-content;
+    font-size: 65px;
+    margin-bottom: 50px;
+}
+.textContainer p {
+    flex-basis: 50%;
+    font-size: 20px;
+    color: white;
+}
+.optionsContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 300px;
+    justify-content: space-evenly;
+}
+
+.goPosts, .goTutors{
+    width: 30%;
+    height: 80%;
+    background-color: #333333;
+    border-radius: 40px;
+    padding: 20px;
+    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    min-height: 95vh;
-}
-.homeLinks{
+    flex-direction: column;
     text-decoration: none;
     color: white;
 }
 
-.title{
-    font-size: 130px;
-    transition: color 0.3s;
+.goPosts , .goTutors p{ 
+    font-size: 23px;
 }
 
-.homeButton{
-    font-family: roboto,sans-serif;
-    text-decoration: none;
-    background-color: #5ac8fa;
-    border: 2px solid #1e6091;
-    color: white;
-    font-size: 1em;
-    border-radius: 10px;
-    padding: 1em 2em;
-    transition: transform 0.3s, color 0.3s, background-color 0.3s;
-}
-
-.cover-container{
-    max-width: 60vw;
-}
-
-.homeButton:hover{
-    border: 2px solid #34a0a4;
-    color: white;
-    transform: translateY(-0.25em);
-    box-shadow: 0 0.5em 0.5em -0.4em #5ac8fa;
-    cursor: pointer;
-}
-
-.homeLinks:hover{
-    color: #5ac8fa;
-    cursor:pointer;
+.iconPost {
+    margin-bottom: 30px;
 }

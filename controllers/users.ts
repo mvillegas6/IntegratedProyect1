@@ -11,6 +11,7 @@ const renderLogin = (req: Request, res: Response) => {
 };
 
 const loginUser = (req: Request, res: Response) => {
+  req.flash('success', 'Bienvenido de vuelta!');
   res.redirect('/posts');
 };
 
@@ -46,8 +47,8 @@ const postUser = async (req: Request, res: Response, next: NextFunction) => {
         res.redirect('/posts');
       }
     });
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    req.flash('error',e.message);
     res.redirect('/register');
   }
 };

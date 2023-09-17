@@ -60,6 +60,8 @@ hr {
 }
 .postsContainer #body {
   flex-basis: 100%;
+  font-size: large;
+
 }
 .postsContainer #image {
   flex-basis: 100%;
@@ -81,17 +83,21 @@ hr {
 
 .commentsContainer div {
   width: 100%;
-  height: 200px;
+  height: 20%;
   border-radius: 20px;
   background-color: #333333;
   margin-bottom: 10px;
   margin-top: 10px;
+  padding: 20px;
 }
 .postsContainer #update {
-  flex-basis: 10%;
+  flex-basis: 12%;
 }
 .postsContainer #delete {
-  flex-basis: 90%;
+  flex-basis: 9%;
+}
+.postsContainer #comment{
+  flex-basis: 66;
 }
 
 .fullscreen {
@@ -101,19 +107,22 @@ hr {
   float: right;
 }
 
-.download_btn {
-}
-
 .fa-solid {
   width: 25px;
 }
 
 .commentsContainer #author {
   flex-basis: 20%;
-  text-align: end;
+  text-align: start;
+  font-size: 30px;
   color: #5ac8fa;
 }
 
 .commentsContainer #body {
   flex-basis: 100%;
+  font-size: large;
+}
+
+#like {
+  margin-right: 4px;
 }

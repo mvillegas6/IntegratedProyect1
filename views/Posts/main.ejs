@@ -1,88 +1,93 @@
+<% layout('layout/boilerplate') %>
 <%- include('../templates/sidebar') %>
 <link rel="stylesheet" href="/styles/main.css" />
-<link rel="stylesheet" href="/styles/sidebar.css" />
-<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-<% layout('layout/boilerplate') %>
+  <link rel="stylesheet" href="/styles/sidebar.css" />
+  <script src="https://kit.fontawesome.com/d1023b5858.js" crossorigin="anonymous"></script>
 
-  <body>
-    <main>
-      <section class="mainContainer">
-        <section class="postsContainer">
-          <h2 id="name">    
-            <%= post.title%>
-          </h2>
-          <h3 id="votes">
-            <% if (isLiked) { %>
-              <form action="/posts/dislike/<%= post.id %>?_method=PUT" method="POST">
-                <button class="btn" id="like" type="submit">
-                  <ion-icon name="thumbs-up" style="color: #5ac8fa"></ion-icon>
-                </button>
-              </form>
-            <% } else { %>
-              <form action="/posts/like/<%= post.id %>?_method=PUT" method="POST">
-                <button class="btn" id="like" type="submit">
-                  <ion-icon name="thumbs-up" style="color:white"></ion-icon>
-                </button>
-              </form>
-            <% } %>
-            <%= post.votes.length %>
-          </h3>
-          <p id="author">
+    <body>
+      <main>
+        <section class="mainContainer">
+          <section class="postsContainer">
+            <h2 id="name">
+              <%= post.title%>
+            </h2>
+            <h3 id="votes">
+              <% if (isLiked) { %>
+                <form action="/posts/dislike/<%= post.id %>?_method=PUT" method="POST">
+                  <button class="btn" id="like" type="submit">
+                    <i class="fa-solid fa-heart fa-xl" style="color: #5ac8fa;"></i>
+                  </button>
+                </form>
+                <% } else { %>
+                  <form action="/posts/like/<%= post.id %>?_method=PUT" method="POST">
+                    <button class="btn" id="like" type="submit">
+                      <i class="fa-solid fa-heart fa-xl" style="color: #FFFF;"></i>                   
+                     </button>
+                  </form>
+                  <% } %>
+                    <%= post.votes.length %>
+            </h3>
+            <p id="author">
               @<%= post.author.name %>
             </p>
-          <p id="body">
-            <%= post.body %>
-          </p>
-          <div class="card-body pdfSpace">
-            <% for (let img of post.image){ %>
-              <% if(img.mimetype==='application/pdf' ){ %>
-                <% const splitPath=img.path.split('/upload') %>
-                  <div class="post_links">
-                    <a class="btn btn-light download_btn"
-                      href="<%=`${splitPath[0]}/upload/fl_attachment:${img.originalname}${splitPath[1]}` %>">Descargar</a>
-                    <a class="fullscreen" target="_blank" href="<%= img.path %>">⛶</a>
-                  </div>
+            <p id="body">
+              <%= post.body %>
+            </p>
+            <div class="card-body pdfSpace">
+              <% for (let img of post.image){ %>
+                <% if(img.mimetype==='application/pdf' ){ %>
+                  <% const splitPath=img.path.split('/upload') %>
+                    <div class="post_links">
+                      <a class="btn btn-light download_btn"
+                        href="<%=`${splitPath[0]}/upload/fl_attachment:${img.originalname}${splitPath[1]}` %>">Descargar</a>
+                      <a class="fullscreen" target="_blank" href="<%= img.path %>">⛶</a>
+                    </div>
 
-                  <object class="show_pdf" data="<%= img.path %>" width="100%" height="600"></object>
-                  <% }else{ %>
-                    <% %>
-                      <img src="<%= img.path %>" class="mb-3 card-img" alt="..." />
-                      <% } %>
+                    <object class="show_pdf" data="<%= img.path %>" width="100%" height="600"></object>
+                    <% }else{ %>
+                      <% %>
+                        <img src="<%= img.path %>" class="mb-3 card-img" alt="..." />
                         <% } %>
-          </div>
-          </div>
-          <% if (currentUser && currentUser.name===post.author.name ) { %>
-            <form action="/posts/update/<%= post._id %>" method="GET" id="update">
-              <button style="background-color: #5ac8fa" class="btn">Actualizar</button>
-            </form>
-            <form action="/posts/<%= post._id %>?_method=DELETE" method="POST" id="delete">
-              <button style="background-color: #eb3a3a" class="btn">Borrar</button>
-            </form>
-            <% } %>
-        </section>
-        <hr>
-        <section class="commentsContainer">
-          <form action="/posts/comments/new/<%= post._id %>" method="GET" id="comment">
-            <button style="background-color: #53fa4d" class="btn">Comentar</button>
-          </form>
+                          <% } %>
+            </div>
+            </div>
+            <% if (currentUser && currentUser.name===post.author.name ) { %>
+              <form action="/posts/update/<%= post._id %>" method="GET" id="update">
+                <button style="background-color: #5ac8fa" class="btn">Actualizar</button>
+              </form>
+              <form action="/posts/<%= post._id %>?_method=DELETE" method="POST" id="delete">
+                <button style="background-color: #eb3a3a" class="btn">Borrar</button>
+              </form>
+              <% } %>
+                <form action="/posts/comments/new/<%= post._id %>" method="GET" id="comment">
+                  <button style="background-color: #53fa4d" class="btn">Comentar</button>
+                </form>
+          </section>
+          <hr>
+          <section class="commentsContainer">
 
-          <% for(let comment of comments){ %>
+
+            <% for(let comment of comments){ %>
               <div>
                 <p id="author">
-                  <small> <%= `@${comment.author.name}` %> </small>
+                  <small>
+                    <%= `@${comment.author.name}` %>
+                  </small>
                 </p>
-                <p id="body"><%= comment.body %></p>
+                <p id="body">
+                  <%= comment.body %>
+                </p>
                 <% if (currentUser && currentUser.name===comment.author.name ) { %>
-                <form action="/posts/comments/<%= comment._id %>?_method=DELETE" method="POST" id="delete">
-                  <button style="background-color: #eb3a3a" class="btn">Borrar</button>
-                </form>
-                <% } %>
+                  <form action="/posts/comments/<%= comment._id %>?_method=DELETE" method="POST" id="delete">
+                    <button style="background-color: #eb3a3a" class="btn">Borrar</button>
+                  </form>
+                  <% } %>
               </div>
-            <hr />
-            <% } %>
+              <hr />
+              <% } %>
+          </section>
         </section>
-      </section>
-    </main>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  </body>
+      </main>
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </body>

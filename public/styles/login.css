@@ -23,3 +23,7 @@ body {
     border: 3px solid white;
     border-radius: 50px;
 }
+
+.errorHighlight{
+    border-color: 3px solid red;
+}

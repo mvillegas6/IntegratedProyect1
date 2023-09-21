@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
+import { Comment } from '../models/comment';
 
 const post = new Schema({
   title: String,
@@ -50,5 +51,6 @@ const post = new Schema({
   },
   image: Array,
 });
+
 
 export const Post = mongoose.model('Post', post);

@@ -1,8 +1,8 @@
 <% layout('layout/boilerplate') %>
-<%- include('../templates/sidebar') %>
-<link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/sidebar.css" />
-  <script src="https://kit.fontawesome.com/d1023b5858.js" crossorigin="anonymous"></script>
+  <%- include('../templates/sidebar') %>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/sidebar.css" />
+    <script src="https://kit.fontawesome.com/d1023b5858.js" crossorigin="anonymous"></script>
 
     <body>
       <main>
@@ -21,8 +21,8 @@
                 <% } else { %>
                   <form action="/posts/like/<%= post.id %>?_method=PUT" method="POST">
                     <button class="btn" id="like" type="submit">
-                      <i class="fa-solid fa-heart fa-xl" style="color: #FFFF;"></i>                   
-                     </button>
+                      <i class="fa-solid fa-heart fa-xl" style="color: #FFFF;"></i>
+                    </button>
                   </form>
                   <% } %>
                     <%= post.votes.length %>
@@ -59,14 +59,24 @@
                 <button style="background-color: #eb3a3a" class="btn">Borrar</button>
               </form>
               <% } %>
-                <form action="/posts/comments/new/<%= post._id %>" method="GET" id="comment">
-                  <button style="background-color: #53fa4d" class="btn">Comentar</button>
-                </form>
           </section>
           <hr>
           <section class="commentsContainer">
-
-
+            <% if(currentUser){ %>
+              <div>
+                <form action="/posts/comments/new/<%= post._id %>" method="post"
+                  class="card-body needs-validation commentForm" novalidate>
+                  <% if(comments.length===0) {%>
+                    <h2 class="text-center">Se el primero en comentar!</h2>
+                    <% } else {%>
+                      <h2 class="text-center">Da tu opinion!</h2>
+                      <% } %>
+                      <textarea name="body" id="" cols="5" rows="4" class="mt-3 commentInput"
+                      placeholder="Tienes un máximo de 250 caracteres" required></textarea>
+                      <button type="submit" class="btn btn-primary mt-3">Publicar</button>
+                  </form>
+                </div>
+            <% } %>
             <% for(let comment of comments){ %>
               <div>
                 <p id="author">
@@ -84,7 +94,7 @@
                   <% } %>
               </div>
               <hr />
-              <% } %>
+            <% } %>
           </section>
         </section>
       </main>

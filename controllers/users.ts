@@ -1,6 +1,7 @@
 import { User } from '../models/user';
 import { Request, Response, NextFunction } from 'express';
 import { Faculties } from '../util/degrees';
+import { Post } from '../models/post';
 
 const renderRegister = (req: Request, res: Response) => {
   res.render('users/register');
@@ -44,6 +45,7 @@ const postUser = async (req: Request, res: Response, next: NextFunction) => {
       if (err) {
         return next(err);
       } else {
+        
         res.redirect('/posts');
       }
     });
@@ -53,10 +55,22 @@ const postUser = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+const renderPersonalPanel = async (req: Request<{ id: string }>, res: Response, next: NextFunction) =>{
+  try {
+    const posts =  await Post.find({
+      author: req.params.id
+    })
+    console.log(posts);
+    res.render('users/personalPanel', { posts: posts });
+  } catch (err) {
+    next(err)
+  }
+}
 export const usersController = {
   renderRegister,
   postUser,
   renderLogin,
   loginUser,
   logOutUser,
+  renderPersonalPanel,
 };

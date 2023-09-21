@@ -1,11 +1,15 @@
-const dropdowns = document.querySelectorAll('.dropdown');
+const dropdowns = document.querySelectorAll('.side-dropdown');
+console.log(dropdowns);
 
 dropdowns.forEach((d) => {
   const select = d.querySelector('.select');
   const caret = d.querySelector('.caret');
   const menu = d.querySelector('.menu');
   const options = d.querySelectorAll('.menu li');
-
+  console.log(select)
+  console.log(caret)
+  console.log(menu)
+  console.log(options)
 
   select.addEventListener('click', () => {
     select.classList.toggle('select-clicked');

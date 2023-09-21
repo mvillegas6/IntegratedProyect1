@@ -3,6 +3,12 @@ import passportLocalMongoose from 'passport-local-mongoose';
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+  description: {
+    type: String,
+  },
+  profilePic: {
+    type: Object
+  },
   email: {
     type: String,
     unique: true,

@@ -13,4 +13,5 @@ const comment = new Schema({
   body: String,
 });
 
+
 export const Comment = mongoose.model('Comment', comment);

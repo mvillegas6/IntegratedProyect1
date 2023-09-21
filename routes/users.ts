@@ -11,3 +11,4 @@ export const userRouter = Router
     .get('/logout', usersController.logOutUser)
     .post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), usersController.loginUser)
     .post('/register', usersController.postUser)
+    .get('/personal/:id', usersController.renderPersonalPanel)

@@ -126,3 +126,18 @@ hr {
 #like {
   margin-right: 4px;
 }
+
+.commentForm h2{
+  color: #c2c2c2;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.commentInput{
+  background-color: #333333;
+  width: 100%;
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+}

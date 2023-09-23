@@ -68,6 +68,7 @@ hr {
     width: 100%;
     height: 300px;
     justify-content: space-evenly;
+    margin-top: 50px;
 }
 
 .goPosts, .goTutors{

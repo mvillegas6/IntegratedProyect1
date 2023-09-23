@@ -39,7 +39,6 @@ const showMainPostPage = async (
 
 const showNew = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const posts = await Post.find({});
     res.render('Posts/new');
   } catch (err) {
     next(err);
@@ -53,9 +52,14 @@ const deletePost = async (
 ) => {
   try {
     const post = await Post.findByIdAndDelete(req.params.id);
-    for (let img of post.image) {
-      await cloudinary.uploader.destroy(img.filename);
+    if (post.image) {
+      for (let img of post.image) {
+        await cloudinary.uploader.destroy(img.filename);
+      }
     }
+    const comments = await Comment.findOneAndDelete({
+      postRelated: req.params.id
+    })
     res.redirect('/posts');
   } catch (error) {
     next(error);
@@ -130,7 +134,8 @@ const likePost = async (
         post.votes.push(req.user);
       }
     } else {
-      console.log('Tienes que estar logueado');
+      req.flash('error', 'Debes ingresar para dar like');
+      res.redirect('/login');
     }
     await post.save();
     res.redirect(`/posts/${req.params.id}`);
@@ -150,7 +155,8 @@ const disLikePost = async (
     if (req.user) {
       flag = Helpers.removeUserLike(req, post);
     } else {
-      console.log('Tienes que estar logueado');
+      req.flash('error', 'Debes ingresar para dar like');
+      res.redirect('/login')
     }
     await post.save();
     res.redirect(`/posts/${req.params.id}`);
@@ -189,7 +195,6 @@ const createPost = async (
     Helpers.findFaculty(post);
     post.author = req.user['_id'];
     await post.save();
-    req.flash('success', 'Hola');
     res.redirect('Posts');
   } catch (err) {
     next(err);

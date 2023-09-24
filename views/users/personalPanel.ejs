@@ -4,10 +4,13 @@
     <main>
         <section class="visualContainer">
             <div class="image">
-                <img src="" alt="">
+                <img src="https://cdn-site-assets.veed.io/Warrior_74b85cd1e1/Warrior_74b85cd1e1.webp?width=640&quality=75" alt="">
             </div>
             <div class="socials">
-
+                <h2>Redes sociales</h1>
+                <p><i class="fa-regular fa-hashtag fa-xl"></i><a href="#">@Boja34</a></p>
+                <p><i class="fa-regular fa-hashtag fa-xl"></i><a href="#">@Bosh123</a></p>
+                <p><i class="fa-regular fa-hashtag fa-xl"></i><a href="#">@mvasquezb</a></p>
             </div>
         </section>
         <section class="infoContainer">
@@ -30,6 +33,7 @@
             <div class="userPosts">
                 <div class="postsContainer">
                     <% for(let post of posts){ %>
+                        
                         <a href="/posts/<%=post._id%>" class="post">
                                 <h4><%= post.title %></h4>
                                 <p class="body">

@@ -1,0 +1,66 @@
+<% layout('layout/boilerplate') %>
+<link rel="stylesheet" href="/styles/charts.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  lenPostIng = '<%= Engineering.faculty.length %>';
+  lenPostAdm = '<%= Administration.faculty.length %>';
+  lenPostDer = '<%= Law.faculty.length %>';
+  lenPostArHu = '<%= ArtsHumanities.faculty.length %>';
+  lenPostEco = '<%= Economy.faculty.length %>';
+
+  lenIngMec = '<%= Engineering.degrees.mecanica.length %>';
+  lenIngPro = '<%= Engineering.degrees.procesos.length %>';
+  lenIngProdu = '<%= Engineering.degrees.produccion.length %>';
+  lenIngSis = '<%= Engineering.degrees.sistemas.length %>';
+  lenIngAgro = '<%= Engineering.degrees.agronomia.length %>';
+  lenIngBio = '<%= Engineering.degrees.biologia.length %>';
+  lenIngGeo = '<%= Engineering.degrees.geologia.length %>';
+  lenIngMate = '<%= Engineering.degrees.matematica.length %>';
+  lenIngFis = '<%= Engineering.degrees.fisica.length %>';
+  lenIngCiv = '<%= Engineering.degrees.civil.length %>';
+  lenIngIDP = '<%= Engineering.degrees.IDP.length %>';
+  lenIngDiHu = '<%= Engineering.degrees.DiHu.length %>';
+
+  lenAdmNeg = '<%= Administration.degrees.adminNegocios.length %>';
+  lenAdmInt = '<%= Administration.degrees.negociosInter.length %>';
+  lenAdmCon = '<%= Administration.degrees.contaduria.length %>';
+  lenAdmMer = '<%= Administration.degrees.mercadeo.length %>';
+
+  lenLawDer = '<%= Law.degrees.derecho.length %>';
+
+  lenArHuMus = '<%= ArtsHumanities.degrees.musica.length %>';
+  lenArHuCom = '<%= ArtsHumanities.degrees.comunicacion.length %>';
+  lenArHuPsi = '<%= ArtsHumanities.degrees.psicologia.length %>';
+  lenArHuLit = '<%= ArtsHumanities.degrees.literatura.length %>';
+  lenArHuDInt = '<%= ArtsHumanities.degrees.dInteractivo.length %>';
+
+  lenEcoFin = '<%= Economy.degrees.finanzas.length %>';
+  lenEcoEco = '<%= Economy.degrees.economia.length %>';
+  lenEcoPol = '<%= Economy.degrees.politica.length %>';
+</script>
+
+<main>
+  <div class="middle">
+    <h2 class="chart-title">Escuelas</h2>
+    <div class="chart-container"><canvas id="faculty-bar"></canvas></div>
+    <hr />
+    <h2 class="chart-title">Carreras</h2>
+    <h3 class="chart-title">Ciencias Aplicadas e Ingeniería</h3>
+    <div class="chart-container"><canvas id="engineering-pie"></canvas></div>
+    <hr />
+    <h3 class="chart-title">Administración</h3>
+    <div class="chart-container"><canvas id="administration-pie"></canvas></div>
+    <hr />
+    <h3 class="chart-title">Derecho</h3>
+    <div class="chart-container"><canvas id="law-pie"></canvas></div>
+    <hr />
+    <h3 class="chart-title">Artes y Humanidades</h3>
+    <div class="chart-container"><canvas id="arts-pie"></canvas></div>
+    <hr />
+    <h3 class="chart-title">Finanzas, Economía y Gobierno</h3>
+    <div class="chart-container"><canvas id="economy-pie"></canvas></div>
+    <hr />
+  </div>
+</main>
+
+<script type="module" src="/scripts/charts.js"></script>

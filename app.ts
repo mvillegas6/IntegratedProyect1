@@ -14,6 +14,7 @@ import passport from 'passport';
 import { Strategy as localStrategy } from 'passport-local';
 import { User } from './models/user';
 import { commentRouter } from './routes/comments';
+import { analyticRouter } from './routes/analitycs';
 var MongoDBStore = require('connect-mongo');
 
 const app = express();
@@ -73,6 +74,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 app.use('/posts', postRouter);
 app.use('/posts/comments', commentRouter);
+app.use('/analytics', analyticRouter);
 app.use('', userRouter);
 
 app.get('/', (req: Request, res: Response) => {

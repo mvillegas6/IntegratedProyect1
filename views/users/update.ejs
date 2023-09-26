@@ -1,0 +1,12 @@
+<% layout('layout/personalPanel') %>
+<body>
+  <form class="info-from" action="/personal/<%=currentUser._id%>?_method=PUT" method="post">
+    <textarea name="description" id="" cols="70" rows="4" class="mt-3 commentInput" required>
+<%= currentUser.description %></textarea
+    >
+    <div class="buttons-description">
+      <button type="submit" class="btn btn-primary mt-3">Actualizar</button>
+      <a href="/personal/<%=currentUser._id%>" class="btn btn-danger mt-3">Cancelar</a>
+    </div>
+  </form>
+</body>

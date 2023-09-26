@@ -2,6 +2,7 @@ import { User } from '../models/user';
 import { Request, Response, NextFunction } from 'express';
 import { Faculties } from '../util/degrees';
 import { Post } from '../models/post';
+import { cloudinary } from '../cloudinary/index';
 
 const renderRegister = (req: Request, res: Response) => {
   res.render('users/register');
@@ -45,27 +46,62 @@ const postUser = async (req: Request, res: Response, next: NextFunction) => {
       if (err) {
         return next(err);
       } else {
-        
         res.redirect('/posts');
       }
     });
   } catch (e) {
-    req.flash('error',e.message);
+    req.flash('error', e.message);
     res.redirect('/register');
   }
 };
 
-const renderPersonalPanel = async (req: Request<{ id: string }>, res: Response, next: NextFunction) =>{
+const updateUserPanel = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
   try {
-    const posts =  await Post.find({
-      author: req.params.id
-    })
-    console.log(posts);
+    const userInfo = await User.findById(req.params.id);
+    if (req.body.description) {
+      userInfo.description = req.body.description;
+    } else {
+      const files = req.files as Express.Multer.File[];
+      const newImage = files.map((f) => {
+        const { path, filename, mimetype, originalname } = f;
+        return {
+          path,
+          filename,
+          mimetype,
+        };
+      });
+
+      await cloudinary.uploader.destroy(userInfo.profilePic[0].filename);
+      userInfo.profilePic = newImage;
+    }
+    await userInfo.save();
+    res.redirect(`/personal/${req.params.id}`);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const renderPersonalPanel = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
+  try {
+    const posts = await Post.find({
+      author: req.params.id,
+    });
     res.render('users/personalPanel', { posts: posts });
   } catch (err) {
-    next(err)
+    next(err);
   }
-}
+};
+const renderUpadtePanel = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
+  try {
+    const posts = await Post.find({
+      author: req.params.id,
+    });
+    res.render('users/update', { posts: posts });
+  } catch (err) {
+    next(err);
+  }
+};
+
 export const usersController = {
   renderRegister,
   postUser,
@@ -73,4 +109,6 @@ export const usersController = {
   loginUser,
   logOutUser,
   renderPersonalPanel,
+  updateUserPanel,
+  renderUpadtePanel,
 };

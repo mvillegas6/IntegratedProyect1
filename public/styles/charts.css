@@ -1,38 +1,92 @@
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    overflow: hidden;
-}
-
 hr{
-    width: 100%;
+    width: 81%;
     border: solid 2px #333333 ;
+    margin: 0 auto;
     margin-bottom: 30px;
     border-radius: 10px;
+}
+
+.hr-title {
+    width: 100%;
+}
+
+.titleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    margin: 0;
+    width: 50%;
+    height: 100%;
 }
 
 .chart-title {
     color: #c2c2c2;
 }
 
-.middle {
+.degrees {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    overflow: hidden;
+}
+
+.chart-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-left: 2px solid #333333;
-    border-right: 2px solid #333333;
-    width: 60%;
+    margin-bottom: 20px;
 }
 
-.chart-container {
-    width: 88.2%;
+.chart-canvas {
+    width: 500px;
+    margin: 10px;
     height: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
-    background-color: #c2c2c2;
+    background-color: #424242;
+    border-radius: 15px;
+    padding: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+
+}
+
+.top-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    overflow: hidden;
+}
+
+.faculty-container {
+    width: 900px;
+    height: auto;
+    background-color: #424242;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.title-container h1{
+    color: white;
+    font-size: 65px;
+    width: 90%;
+    margin: 20px;
+
+}
+
+.title-container span{
+    color: #5ac8fa;
+}
+
+.chart-canvas:hover {
+    transform: translateY(-0.20em);
+    box-shadow: 0 0.5em 0.5em -0.4em #333333;
 }

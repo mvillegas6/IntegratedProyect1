@@ -12,6 +12,7 @@ console.log(lenIngMate);
   new Chart(document.getElementById('faculty-bar'), {
     type: 'bar',
     options: {
+      responsive: true,
       plugins: {
         legend: {
           display: false,
@@ -20,20 +21,30 @@ console.log(lenIngMate);
       scales: {
         x: {
           title: {
-            color: 'red',
+            color: 'white',
             display: true,
             text: 'Escuelas',
           },
+          ticks: {
+            color: 'white',
+          },
+          // grid: {
+          //   color: 'grey'
+          // },
         },
         y: {
           title: {
-            color: 'red',
+            color: 'white',
             display: true,
             text: 'Publicaciones',
           },
           ticks: {
-            stepSize: 1, // No existe 0.5 post
+            stepSize: 1,
+            color: 'white',
           },
+          // grid: {
+          //   color: 'grey'
+          // },
         },
       },
     },
@@ -43,11 +54,11 @@ console.log(lenIngMate);
         {
           data: data.map((row) => row.count),
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
+            'rgb(255, 99, 132)',
+            'rgb(255, 159, 64)',
+            'rgb(255, 205, 86)',
+            'rgb(75, 192, 192)',
+            'rgb(54, 162, 235)',
           ],
           borderColor: [
             'rgb(255, 99, 132)',
@@ -65,15 +76,13 @@ console.log(lenIngMate);
 
 (async function () {
   new Chart(document.getElementById('engineering-pie'), {
-    type: 'polarArea',
+    type: 'pie',
     options: {
-      scales: {
-        r: {
-          ticks: {
-            stepSize: 1,
-          },
-          grid: {
-            color: 'red', // Color de las lineas
+      responsive: true,
+      plugins: {
+        legend: {
+          labels: {
+            color: 'white',
           },
         },
       },
@@ -95,65 +104,36 @@ console.log(lenIngMate);
       ],
       datasets: [
         {
-          labels: 'Ingeniería Mecánica',
-          data: [lenIngMec, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          data: [
+            lenIngMec,
+            lenIngPro,
+            lenIngProdu,
+            lenIngSis,
+            lenIngAgro,
+            lenIngBio,
+            lenIngGeo,
+            lenIngMate,
+            lenIngFis,
+            lenIngCiv,
+            lenIngIDP,
+            lenIngDiHu,
+          ],
           hoverOffset: 4,
-          // backgroundColor: [] //TODO poner paleta de colores
-        },
-        {
-          labels: 'Ingeniería de Procesos',
-          data: [0, lenIngPro, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Ingeniería de Producción',
-          data: [0, 0, lenIngProdu, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Ingeniería de Sistemas',
-          data: [0, 0, 0, lenIngSis, 0, 0, 0, 0, 0, 0, 0, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Ingeniería Agronómica',
-          data: [0, 0, 0, 0, lenIngAgro, 0, 0, 0, 0, 0, 0, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Biología',
-          data: [0, 0, 0, 0, 0, lenIngBio, 0, 0, 0, 0, 0, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Geología',
-          data: [0, 0, 0, 0, 0, 0, lenIngGeo, 0, 0, 0, 0, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Ingeniería Matemática',
-          data: [0, 0, 0, 0, 0, 0, 0, lenIngMate, 0, 0, 0, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Ingeniería Física',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, lenIngFis, 0, 0, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Ingeniería Civil',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, lenIngCiv, 0, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Ingeniería de Diseño de Producto',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, lenIngIDP, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Diseño urbano y gestion habitad',
-          data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, lenIngDiHu],
-          hoverOffset: 4,
+          backgroundColor: [
+            '#ffe5ec',
+            '#005F73',
+            '#0A9396',
+            '#94D2BD',
+            '#E9D8A6',
+            '#EE9B00',
+            '#CA6702',
+            '#BB3E03',
+            '#AE2012',
+            '#9B2226',
+            '#a8dadc',
+            '#cb997e',
+          ],
+          borderWidth: 0,
         },
       ],
     },
@@ -162,15 +142,13 @@ console.log(lenIngMate);
 
 (async function () {
   new Chart(document.getElementById('administration-pie'), {
-    type: 'polarArea',
+    type: 'pie',
     options: {
-      scales: {
-        r: {
-          ticks: {
-            stepSize: 1,
-          },
-          grid: {
-            color: 'red', // Color de las lineas
+      responsive: true,
+      plugins: {
+        legend: {
+          labels: {
+            color: 'white',
           },
         },
       },
@@ -184,24 +162,15 @@ console.log(lenIngMate);
       ],
       datasets: [
         {
-          labels: 'Administración de Negocios',
-          data: [lenAdmNeg, 0, 0, 0],
+          data: [lenAdmNeg, lenAdmInt, lenAdmCon, lenAdmMer],
           hoverOffset: 4,
-        },
-        {
-          labels: 'Negocios Internacionales',
-          data: [0, lenAdmInt, 0, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Contaduría Pública',
-          data: [0, 0, lenAdmCon, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Mercadeo',
-          data: [0, 0, 0, lenAdmMer],
-          hoverOffset: 4,
+          backgroundColor: [
+            '#ffe5ec',
+            '#005F73',
+            '#0A9396',
+            '#94D2BD',
+          ],
+          borderWidth: 0,
         },
       ],
     },
@@ -210,15 +179,13 @@ console.log(lenIngMate);
 
 (async function () {
   new Chart(document.getElementById('law-pie'), {
-    type: 'polarArea',
+    type: 'pie',
     options: {
-      scales: {
-        r: {
-          ticks: {
-            stepSize: 1,
-          },
-          grid: {
-            color: 'red', // Color de las lineas
+      responsive: true,
+      plugins: {
+        legend: {
+          labels: {
+            color: 'white',
           },
         },
       },
@@ -227,9 +194,23 @@ console.log(lenIngMate);
       labels: ['Derecho'],
       datasets: [
         {
-          labels: 'Derecho',
           data: [lenLawDer],
           hoverOffset: 4,
+          backgroundColor: [
+            '#a8dadc',
+            '#ffe5ec',
+            '#005F73',
+            '#0A9396',
+            '#94D2BD',
+            '#E9D8A6',
+            '#EE9B00',
+            '#CA6702',
+            '#BB3E03',
+            '#AE2012',
+            '#9B2226',
+            '#cb997e',
+          ],
+          borderWidth: 0,
         },
       ],
     },
@@ -238,15 +219,13 @@ console.log(lenIngMate);
 
 (async function () {
   new Chart(document.getElementById('arts-pie'), {
-    type: 'polarArea',
+    type: 'pie',
     options: {
-      scales: {
-        r: {
-          ticks: {
-            stepSize: 1,
-          },
-          grid: {
-            color: 'red', // Color de las lineas
+      responsive: true,
+      plugins: {
+        legend: {
+          labels: {
+            color: 'white',
           },
         },
       },
@@ -261,29 +240,22 @@ console.log(lenIngMate);
       ],
       datasets: [
         {
-          labels: 'Música',
-          data: [lenArHuMus, 0, 0, 0, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Comunicación Social',
-          data: [0, lenArHuCom, 0, 0, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Psicología',
-          data: [0, 0, lenArHuPsi, 0, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Literatura',
-          data: [0, 0, 0, lenArHuLit, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Diseño Interactivo',
-          data: [0, 0, 0, 0, lenArHuDInt],
-          hoverOffset: 4,
+          data: [lenArHuMus, lenArHuCom, lenArHuPsi, lenArHuLit, lenArHuDInt],
+          backgroundColor: [
+            '#BB3E03',
+            '#ffe5ec',
+            '#CA6702',
+            '#005F73',
+            '#0A9396',
+            '#94D2BD',
+            '#E9D8A6',
+            '#EE9B00',
+            '#AE2012',
+            '#9B2226',
+            '#a8dadc',
+            '#cb997e',
+          ],
+          borderWidth: 0,
         },
       ],
     },
@@ -292,15 +264,13 @@ console.log(lenIngMate);
 
 (async function () {
   new Chart(document.getElementById('economy-pie'), {
-    type: 'polarArea',
+    type: 'pie',
     options: {
-      scales: {
-        r: {
-          ticks: {
-            stepSize: 1,
-          },
-          grid: {
-            color: 'red', // Color de las lineas
+      responsive: true,
+      plugins: {
+        legend: {
+          labels: {
+            color: 'white',
           },
         },
       },
@@ -309,19 +279,23 @@ console.log(lenIngMate);
       labels: ['Finanzas', 'Economía', 'Ciencias Políticas'],
       datasets: [
         {
-          labels: 'Finanzas',
-          data: [lenEcoFin, 0, 0],
+          data: [lenEcoFin, lenEcoEco, lenEcoPol],
           hoverOffset: 4,
-        },
-        {
-          labels: 'Economía',
-          data: [0, lenEcoEco, 0],
-          hoverOffset: 4,
-        },
-        {
-          labels: 'Ciencias Políticas',
-          data: [0, 0, lenEcoPol],
-          hoverOffset: 4,
+          backgroundColor: [
+            '#cb997e',
+            '#005F73',
+            '#0A9396',
+            '#94D2BD',
+            '#E9D8A6',
+            '#EE9B00',
+            '#CA6702',
+            '#BB3E03',
+            '#AE2012',
+            '#9B2226',
+            '#a8dadc',
+            '#ffe5ec',
+          ],
+          borderWidth: 0,
         },
       ],
     },

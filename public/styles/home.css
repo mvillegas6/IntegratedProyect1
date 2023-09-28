@@ -17,7 +17,7 @@ hr {
     height: 60vh;
     background-position: 20% 55%;
     background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("https://images.unsplash.com/photo-1564910443496-5fd2d76b47fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2535&q=80");
+    url("https://res.cloudinary.com/dzemwu9yn/image/upload/v1695916021/photo-1564910443496-5fd2d76b47fa_srcyt5.jpg");
 }
 
 
@@ -84,10 +84,18 @@ hr {
     flex-direction: column;
     text-decoration: none;
     color: white;
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    
 }
 
 .goPosts , .goTutors p{ 
     font-size: 23px;
+}
+
+.goPosts:hover,.goTutors:hover{
+    transform: translateY(-0.20em);
+    box-shadow: 0 0.5em 0.5em -0.4em #333333;
 }
 
 .iconPost {

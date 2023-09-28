@@ -16,6 +16,15 @@ const userSchema = new Schema({
   name: {
     type: String,
   },
+  likes: {
+    type: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Post',
+      },
+    ],
+    default: [],
+  },
   degree: {
     type: String,
     enum: [

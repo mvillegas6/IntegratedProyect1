@@ -70,13 +70,22 @@ function checkUserLike(req: Request, post: any) {
   return flag;
 }
 
-function removeUserLike(req: Request, post: any) {
+function removeUserLike(req: Request, post: any, user: any) {
   let flag = false;
+  let oldPost: any;
   if (post.votes.length !== 0 && req.user['email']) {
     for (let index = 0; index < post.votes.length; index++) {
       const element = post.votes[index];
-      if (element['email'] === req.user['email']) {
+      if (element['_id'].valueOf() === req.user['_id'].valueOf()) {
         const oldLike = post.votes.splice(index, 1);
+        flag = true;
+      }
+    }
+    const userLikes = user.likes;
+    for (let index = 0; index < userLikes.length; index++) {
+      const element = userLikes[index];
+      if (element['_id'].valueOf() === post['_id'].valueOf()) {
+        const oldLike = userLikes.splice(index, 1);
         flag = true;
       }
     }

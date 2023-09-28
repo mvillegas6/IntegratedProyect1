@@ -1,4 +1,5 @@
 <script src="https://kit.fontawesome.com/d1023b5858.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="/styles/navbar.css">
 <nav class="navbar navbar-expand-lg sticky-top bg-black border-bottom border-bottom-dark" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand fw-medium" href="/">Tutor<span style="color: #5ac8fa;">ly</span> </a>
@@ -24,11 +25,13 @@
                         <a class="nav-link" href="/register">Registrarse</a>
                     <% }else{ %>
                             <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: black;">
+                                <button class="btn dropButton dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     @<%=currentUser.name%>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" style="background-color: black;">
                                   <li style="background-color: black;" ><a class="dropdown-item" href="/personal/<%=currentUser._id%>">Perfil</a></li>
+                                  <li style="background-color: black;" ><a class="dropdown-item" href="/analytics">Datos</a></li>
+                                  <li><hr class="dropdown-divider dropDivider"></li>
                                   <li style="background-color: black;" ><a class="dropdown-item" href="/logout">Salir</a></li>
                                 </ul>
                             </div>

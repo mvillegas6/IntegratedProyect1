@@ -70,8 +70,9 @@ const updateUserPanel = async (req: Request<{ id: string }>, res: Response, next
           mimetype,
         };
       });
-
-      await cloudinary.uploader.destroy(userInfo.profilePic[0].filename);
+      if(userInfo.profilePic){
+        await cloudinary.uploader.destroy(userInfo.profilePic[0].filename);
+      }
       userInfo.profilePic = newImage;
     }
     await userInfo.save();

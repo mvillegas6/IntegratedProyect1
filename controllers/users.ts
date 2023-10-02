@@ -84,10 +84,17 @@ const updateUserPanel = async (req: Request<{ id: string }>, res: Response, next
 
 const renderPersonalPanel = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
   try {
-    const posts = await Post.find({
-      author: req.params.id,
-    });
-    res.render('users/personalPanel', { posts: posts });
+    const viewOpt = req.query.view;
+    let posts;
+    if (viewOpt === 'Publicaciones guardadas'){
+      const u = await User.findById(req.params.id).populate('likes');
+      posts = u['likes'];
+    }else{
+      posts = await Post.find({
+        author: req.params.id,
+      });
+    }
+    res.render('users/personalPanel', { posts: posts, viewOpt});
   } catch (err) {
     next(err);
   }

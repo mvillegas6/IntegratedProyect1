@@ -104,7 +104,7 @@ const renderUpadtePanel = async (req: Request<{ id: string }>, res: Response, ne
     const posts = await Post.find({
       author: req.params.id,
     });
-    res.render('users/update', { posts: posts });
+    res.render('users/update', { posts: posts, viewOpt:'' });
   } catch (err) {
     next(err);
   }

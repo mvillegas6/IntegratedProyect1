@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { cloudinary } from '../cloudinary/index';
 import { Helpers } from '../util/helpers';
 import { Comment } from '../models/comment';
+import { User } from '../models/user';
 
 const show = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -127,17 +128,20 @@ const likePost = async (
 ) => {
   let flag = false;
   try {
+    const currUser = await User.findById(req.user['_id']).populate('likes');
     const post = await Post.findById(req.params.id).populate('votes');
     if (req.user) {
       flag = Helpers.checkUserLike(req, post);
       if (!flag) {
         post.votes.push(req.user);
+        currUser.likes.push(post);
       }
     } else {
       req.flash('error', 'Debes ingresar para dar like');
       res.redirect('/login');
     }
     await post.save();
+    await currUser.save();
     res.redirect(`/posts/${req.params.id}`);
   } catch (err) {
     next(err);
@@ -151,14 +155,16 @@ const disLikePost = async (
 ) => {
   let flag = false;
   try {
+    const currUser = await User.findById(req.user['_id']).populate('likes');
     const post = await Post.findById(req.params.id).populate('votes');
     if (req.user) {
-      flag = Helpers.removeUserLike(req, post);
+      flag = Helpers.removeUserLike(req, post, currUser);
     } else {
       req.flash('error', 'Debes ingresar para dar like');
       res.redirect('/login')
     }
     await post.save();
+    await currUser.save();
     res.redirect(`/posts/${req.params.id}`);
   } catch (err) {
     next(err);

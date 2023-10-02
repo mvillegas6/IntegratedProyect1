@@ -66,7 +66,24 @@
         </div>
         <%- body %>
       </div>
-      <h2 class="">Publicaciones del usuario</h2>
+      <div class="chContainer">
+        <form action="" class="chContainer" id="postForm">
+          <select name="view" id="formSel" class="viewSelect">
+            <% if (viewOpt) { %>
+              <option value="<%= viewOpt %>" selected><%= viewOpt %></option>
+              <% if (viewOpt === 'Publicaciones del usuario') { %>
+                <option value="Publicaciones guardadas"><a class="" type="submit">Publicaciones guardadas</a></option>
+              <% } %>
+              <% if (viewOpt === 'Publicaciones guardadas') { %>
+                <option value="Publicaciones del usuario"><a class="" type="submit">Publicaciones del usuario</a></option>
+              <% } %>
+              <% }else{ %>
+                <option value="Publicaciones del usuario" selected><a class="" type="submit">Publicaciones del usuario</a></option>
+                <option value="Publicaciones guardadas"><a class="" type="submit">Publicaciones guardadas</a></option>
+              <% } %>
+          </select>
+        </form>
+      </div>
       <div class="userPosts">
         <div class="postsContainer">
           <% for(let post of posts){ %>
@@ -101,4 +118,6 @@
       document.querySelector('.picture-form').submit();
     };
   </script>
+
+  <script src="/scripts/personal.js"></script>
 </body>

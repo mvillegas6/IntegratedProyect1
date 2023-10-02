@@ -141,7 +141,7 @@ hr {
 }
 
 .userInfo p {
-  /* font-size: 20px; */
+  font-size: 20px;
   flex-basis: 50%;
   margin: 0;
   margin-bottom: 20px;
@@ -156,11 +156,19 @@ hr {
   width: 100%;
   height: fit-content;
 }
-
-.infoContainer h2 {
+.chContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.chContainer h2 {
   text-align: center;
   margin-bottom: 15px;
   margin-top: 15px;
+}
+
+.chContainer form{
+  width: 100%;
 }
 
 .postsContainer{
@@ -212,6 +220,28 @@ hr {
   height: fit-content;
 }
 
+.viewSelect{
+  height: 4rem;
+  width: 40%;
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  margin-top: 20px ;
+  margin-bottom: 20px;
+  background-color: inherit;
+  border: none;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.viewSelect option{
+  background-color: #555;
+  color: #c2c2c2;
+}
+
+.viewSelect:hover{
+  background-color: #555;
+}
 .post:hover{
   transform: translateY(-0.20em);
   box-shadow: 0 0.5em 0.5em -0.4em #333333;

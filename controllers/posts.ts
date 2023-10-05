@@ -59,8 +59,8 @@ const deletePost = async (
       }
     }
     const comments = await Comment.findOneAndDelete({
-      postRelated: req.params.id
-    })
+      postRelated: req.params.id,
+    });
     res.redirect('/posts');
   } catch (error) {
     next(error);
@@ -161,7 +161,7 @@ const disLikePost = async (
       flag = Helpers.removeUserLike(req, post, currUser);
     } else {
       req.flash('error', 'Debes ingresar para dar like');
-      res.redirect('/login')
+      res.redirect('/login');
     }
     await post.save();
     await currUser.save();
@@ -200,6 +200,8 @@ const createPost = async (
     });
     Helpers.findFaculty(post);
     post.author = req.user['_id'];
+    post.createdAt = new Date();
+    console.log(post);
     await post.save();
     res.redirect('Posts');
   } catch (err) {

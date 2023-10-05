@@ -18,6 +18,7 @@ const post = new Schema({
     ],
     default: [],
   },
+  createdAt: Date,
   faculty: String,
   degree: {
     type: String,
@@ -51,6 +52,5 @@ const post = new Schema({
   },
   image: Array,
 });
-
 
 export const Post = mongoose.model('Post', post);

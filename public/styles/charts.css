@@ -1,92 +1,163 @@
-hr{
-    width: 81%;
-    border: solid 2px #333333 ;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    border-radius: 10px;
+hr {
+  width: 81%;
+  border: solid 2px #333333;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  border-radius: 10px;
 }
 
 .hr-title {
-    width: 100%;
+  width: 100%;
 }
 
 .titleContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    margin: 0;
-    width: 50%;
-    height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  margin: 0;
+  width: 50%;
+  height: 100%;
 }
 
 .chart-title {
-    color: #c2c2c2;
+  color: #c2c2c2;
 }
 
 .degrees {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  overflow: hidden;
 }
 
 .chart-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .chart-canvas {
-    width: 500px;
-    margin: 10px;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    background-color: #424242;
-    border-radius: 15px;
-    padding: 10px;
-    transition: transform 0.3s, box-shadow 0.3s;
-
+  width: 500px;
+  margin: 10px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: #424242;
+  border-radius: 15px;
+  padding: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .top-container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  overflow: hidden;
 }
 
 .faculty-container {
-    width: 900px;
-    height: auto;
-    background-color: #424242;
-    border-radius: 15px;
-    padding: 10px;
+  width: 900px;
+  height: auto;
+  background-color: #424242;
+  border-radius: 15px;
+  padding: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.title-container h1{
-    color: white;
-    font-size: 65px;
-    width: 90%;
-    margin: 20px;
-
+.title-container h1 {
+  color: white;
+  font-size: 65px;
+  width: 90%;
+  margin: 20px;
 }
 
-.title-container span{
-    color: #5ac8fa;
+.title-container span {
+  color: #5ac8fa;
+}
+
+.bottom-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.chartAccordion {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  margin: 0;
+  width: 80%;
+  height: 100%;
+  margin-bottom: 10px;
+}
+
+.accordionButtons {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  border-radius: 15px;
+}
+
+.accordionContentBox {
+  background-color: #eee;
+  flex-direction: row;
+  color: #444;
+  cursor: pointer;
+  padding: 10px;
+  width: 50%;
+  text-align: center;
+  border: none;
+  outline: none;
+  transition: 0.6s;
+  border-radius: 7px;
+  margin: 2px;
+}
+
+.panel {
+  /* padding: 0 18px; */
+  /* background-color: white; */
+  display: none;
+  overflow: hidden;
+  width: 60%;
+  margin-left: 70px;
+}
+
+.date-container {
+  height: auto;
+  background-color: #424242;
+  border-radius: 15px;
+  padding: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.active,
+.accordionContentBox:hover {
+  background-color: #ccc;
+}
+
+.faculty-container:hover {
+  transform: translateY(-0.2em);
+  box-shadow: 0 0.5em 0.5em -0.4em #333333;
 }
 
 .chart-canvas:hover {
-    transform: translateY(-0.20em);
-    box-shadow: 0 0.5em 0.5em -0.4em #333333;
+  transform: translateY(-0.2em);
+  box-shadow: 0 0.5em 0.5em -0.4em #333333;
 }

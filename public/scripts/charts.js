@@ -1,5 +1,3 @@
-console.log(lenIngMate);
-
 (async function () {
   const data = [
     { faculty: 'Ciencias Aplicadas e Ingeniería​', count: lenPostIng },
@@ -26,11 +24,8 @@ console.log(lenIngMate);
             text: 'Escuelas',
           },
           ticks: {
-            color: 'white',
+            color: 'grey',
           },
-          // grid: {
-          //   color: 'grey'
-          // },
         },
         y: {
           title: {
@@ -40,11 +35,8 @@ console.log(lenIngMate);
           },
           ticks: {
             stepSize: 1,
-            color: 'white',
+            color: 'grey',
           },
-          // grid: {
-          //   color: 'grey'
-          // },
         },
       },
     },
@@ -164,12 +156,7 @@ console.log(lenIngMate);
         {
           data: [lenAdmNeg, lenAdmInt, lenAdmCon, lenAdmMer],
           hoverOffset: 4,
-          backgroundColor: [
-            '#ffe5ec',
-            '#005F73',
-            '#0A9396',
-            '#94D2BD',
-          ],
+          backgroundColor: ['#ffe5ec', '#005F73', '#0A9396', '#94D2BD'],
           borderWidth: 0,
         },
       ],
@@ -296,6 +283,51 @@ console.log(lenIngMate);
             '#ffe5ec',
           ],
           borderWidth: 0,
+        },
+      ],
+    },
+  });
+})();
+
+const weeks = ['Julio', 'Agosto', 'Septiembre', 'Octubere', 'Noviembre'];
+
+(async function () {
+  new Chart(document.getElementById('postByDate-line'), {
+    type: 'line',
+    options: {
+      scales: {
+        x: {
+          title: {
+            color: 'white',
+            display: true,
+          },
+          ticks: {
+            color: 'white',
+          },
+        },
+        y: {
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Publicaciones',
+          },
+          ticks: {
+            stepSize: 1,
+            color: 'grey',
+          },
+        },
+      },
+    },
+    data: {
+      labels: weeks,
+      datasets: [
+        {
+          label: 'Publicaciones',
+          data: [65, 59, 80, 81, 56],
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          backgroundColor: 'rgb(75, 192, 192)',
+          tension: 0.1,
         },
       ],
     },

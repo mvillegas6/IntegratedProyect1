@@ -78,8 +78,8 @@ const getCharts = async (req: Request, res: Response) => {
       finanzas: posts.filter((post) => post.degree === 'Finanzas'),
       economia: posts.filter((post) => post.degree === 'Economía'),
       politica: posts.filter((post) => post.degree === 'Ciencias Políticas'),
-    }
-  }
+    },
+  };
 
   res.render('analytics/charts', {
     Engineering,

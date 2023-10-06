@@ -45,7 +45,7 @@
       <h1>NUESTROS <span>DATOS</span></h1>
     </div>
 
-    <hr class="hr-title"/>
+    <hr class="hr-title" />
 
     <div class="top-container">
       <h2 class="chart-title">Escuelas</h2>
@@ -83,6 +83,74 @@
       <div class="chart-canvas"><canvas id="economy-pie"></canvas></div>
     </div>
   </div>
+
+  <hr />
+
+  <div>
+    <div class="bottom-container">
+      <div class="chartAccordion">
+        <div class="accordionButtons">
+          <button class="accordionContentBox">Meses</button>
+            <div class="date-container panel">
+              <canvas id="postByDate-line"></canvas>
+          </div>
+
+        <div class="accordionButtons">
+          <button class="accordionContentBox">Julio</button>
+          <div class="date-container panel">
+            <canvas id="postByDate-line"></canvas>
+        </div>
+  
+          <button class="accordionContentBox">Agosto</button>
+          <div class="date-container panel">
+            <canvas id="postByDate-line"></canvas>
+        </div>
+  
+          <button class="accordionContentBox">Septiembre</button>
+          <div class="date-container panel">
+            <canvas id="postByDate-line"></canvas>
+        </div>
+  
+          <button class="accordionContentBox">Octubre</button>
+          <div class="date-container panel">
+            <canvas id="postByDate-line"></canvas>
+        </div>
+  
+          <button class="accordionContentBox">Noviembre</button>
+          <div class="date-container panel">
+            <canvas id="postByDate-line"></canvas>
+        </div>
+        </div>
+      </div>
+
+      <!-- <h2 class="chart-title">Por Fecha</h2> -->
+      <!-- <div class="faculty-container">
+        <canvas id="postByDate-line"></canvas>
+      </div> -->
+    </div>
+
+    
+
+    <script>
+      var acc = document.getElementsByClassName("accordionContentBox");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          /* Toggle between adding and removing the "active" class,
+          to highlight the button that controls the panel */
+          this.classList.toggle("active");
+
+          /* Toggle between hiding and showing the active panel */
+          var panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
+    </script>
 </main>
 
 <script type="module" src="/scripts/charts.js"></script>

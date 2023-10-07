@@ -41,11 +41,24 @@
 
 <main>
   <div>
-    <div class="title-container">
-      <h1>NUESTROS <span>DATOS</span></h1>
+    <div class="topPart">
+      <div class="title-container">
+        <h1>NUESTROS <span>DATOS</span></h1>
+      </div>
+
+      <div class="divPagination">
+        <ul class="pagination pagination-lg paginationConfig">
+          <li class="page-item active" aria-current="page">
+            <span class="page-link activeSpan">Escuelas</span>
+          </li>
+          <li class="page-item">
+            <a class="page-link myPageLink" href="/analytics/months">Fecha</a>
+          </li>
+        </ul>
+      </div>
     </div>
 
-    <hr class="hr-title"/>
+    <hr class="hr-title" />
 
     <div class="top-container">
       <h2 class="chart-title">Escuelas</h2>
@@ -83,6 +96,8 @@
       <div class="chart-canvas"><canvas id="economy-pie"></canvas></div>
     </div>
   </div>
+
+  <hr />
 </main>
 
 <script type="module" src="/scripts/charts.js"></script>

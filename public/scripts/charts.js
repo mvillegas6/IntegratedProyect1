@@ -1,5 +1,3 @@
-console.log(lenIngMate);
-
 (async function () {
   const data = [
     { faculty: 'Ciencias Aplicadas e Ingeniería​', count: lenPostIng },
@@ -26,13 +24,11 @@ console.log(lenIngMate);
             text: 'Escuelas',
           },
           ticks: {
-            color: 'white',
+            color: 'grey',
           },
-          // grid: {
-          //   color: 'grey'
-          // },
         },
         y: {
+          min: 0,
           title: {
             color: 'white',
             display: true,
@@ -40,11 +36,8 @@ console.log(lenIngMate);
           },
           ticks: {
             stepSize: 1,
-            color: 'white',
+            color: 'grey',
           },
-          // grid: {
-          //   color: 'grey'
-          // },
         },
       },
     },
@@ -164,12 +157,7 @@ console.log(lenIngMate);
         {
           data: [lenAdmNeg, lenAdmInt, lenAdmCon, lenAdmMer],
           hoverOffset: 4,
-          backgroundColor: [
-            '#ffe5ec',
-            '#005F73',
-            '#0A9396',
-            '#94D2BD',
-          ],
+          backgroundColor: ['#ffe5ec', '#005F73', '#0A9396', '#94D2BD'],
           borderWidth: 0,
         },
       ],
@@ -296,6 +284,405 @@ console.log(lenIngMate);
             '#ffe5ec',
           ],
           borderWidth: 0,
+        },
+      ],
+    },
+  });
+})();
+
+const monthsSecondSemester = [
+  'Julio',
+  'Agosto',
+  'Septiembre',
+  'Octubre',
+  'Noviembre',
+  'Diciembre',
+];
+const monthsFirstSemester = [
+  'Enero',
+  'Febrero',
+  'Marzo',
+  'Abril',
+  'Mayo',
+  'Junio',
+];
+
+const weeks = ['1', '2', '3', '4'];
+(async function () {
+  new Chart(document.getElementById('postByDate-line'), {
+    type: 'line',
+    options: {
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      scales: {
+        x: {
+          title: {
+            color: 'white',
+            display: true,
+          },
+          ticks: {
+            color: 'white',
+          },
+        },
+        y: {
+          min: 0,
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Publicaciones',
+          },
+          ticks: {
+            stepSize: 1,
+            color: 'grey',
+          },
+        },
+      },
+    },
+    data: {
+      labels: monthsSecondSemester,
+      datasets: [
+        {
+          label: 'Publicaciones',
+          data: [
+            lenPostsJuly,
+            lenPostsAugust,
+            lenPostsSeptember,
+            lenPostsOctober,
+            lenPostsNovember,
+            lenPostsDecember,
+          ],
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          backgroundColor: 'rgb(75, 192, 192)',
+          tension: 0.1,
+        },
+      ],
+    },
+  });
+})();
+
+(async function () {
+  new Chart(document.getElementById('july-line'), {
+    type: 'line',
+    options: {
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      scales: {
+        x: {
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Semana',
+          },
+          ticks: {
+            color: 'grey',
+          },
+        },
+        y: {
+          min: 0,
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Publicaciones',
+          },
+          ticks: {
+            stepSize: 1,
+            color: 'grey',
+          },
+        },
+      },
+    },
+    data: {
+      labels: weeks,
+      datasets: [
+        {
+          label: 'Publicaciones',
+          data: [lenWeek1July, lenWeek2July, lenWeek3July, lenWeek4July],
+          fill: false,
+          borderColor: '#adc178',
+          backgroundColor: '#adc178',
+          tension: 0.1,
+        },
+      ],
+    },
+  });
+})();
+
+(async function () {
+  new Chart(document.getElementById('august-line'), {
+    type: 'line',
+    options: {
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      scales: {
+        x: {
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Semana',
+          },
+          ticks: {
+            color: 'grey',
+          },
+        },
+        y: {
+          min: 0,
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Publicaciones',
+          },
+          ticks: {
+            stepSize: 1,
+            color: 'grey',
+          },
+        },
+      },
+    },
+    data: {
+      labels: weeks,
+      datasets: [
+        {
+          label: 'Publicaciones',
+          data: [
+            lenWeek1August,
+            lenWeek2August,
+            lenWeek3August,
+            lenWeek4August,
+          ],
+          fill: false,
+          borderColor: '#F28482',
+          backgroundColor: '#F28482',
+          tension: 0.1,
+        },
+      ],
+    },
+  });
+})();
+
+(async function () {
+  new Chart(document.getElementById('september-line'), {
+    type: 'line',
+    options: {
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      scales: {
+        x: {
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Semana',
+          },
+          ticks: {
+            color: 'grey',
+          },
+        },
+        y: {
+          min: 0,
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Publicaciones',
+          },
+          ticks: {
+            stepSize: 1,
+            color: 'grey',
+          },
+        },
+      },
+    },
+    data: {
+      labels: weeks,
+      datasets: [
+        {
+          label: 'Publicaciones',
+          data: [
+            lenWeek1September,
+            lenWeek2September,
+            lenWeek3September,
+            lenWeek4September,
+          ],
+          fill: false,
+          borderColor: '#84A59D',
+          backgroundColor: '#84A59D',
+          tension: 0.1,
+        },
+      ],
+    },
+  });
+})();
+
+(async function () {
+  new Chart(document.getElementById('october-line'), {
+    type: 'line',
+    options: {
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      scales: {
+        x: {
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Semana',
+          },
+          ticks: {
+            color: 'grey',
+          },
+        },
+        y: {
+          min: 0,
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Publicaciones',
+          },
+          ticks: {
+            stepSize: 1,
+            color: 'grey',
+          },
+        },
+      },
+    },
+    data: {
+      labels: weeks,
+      datasets: [
+        {
+          label: 'Publicaciones',
+          data: [
+            lenWeek1October,
+            lenWeek2October,
+            lenWeek3October,
+            lenWeek4October,
+          ],
+          fill: false,
+          borderColor: '#F5CAC3',
+          backgroundColor: '#F5CAC3',
+          tension: 0.1,
+        },
+      ],
+    },
+  });
+})();
+
+(async function () {
+  new Chart(document.getElementById('november-line'), {
+    type: 'line',
+    options: {
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      scales: {
+        x: {
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Semana',
+          },
+          ticks: {
+            color: 'grey',
+          },
+        },
+        y: {
+          min: 0,
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Publicaciones',
+          },
+          ticks: {
+            stepSize: 1,
+            color: 'grey',
+          },
+        },
+      },
+    },
+    data: {
+      labels: weeks,
+      datasets: [
+        {
+          label: 'Publicaciones',
+          data: [
+            lenWeek1November,
+            lenWeek2November,
+            lenWeek3November,
+            lenWeek4November,
+          ],
+          fill: false,
+          borderColor: '#F7EDE2',
+          backgroundColor: '#F7EDE2',
+          tension: 0.1,
+        },
+      ],
+    },
+  });
+})();
+
+(async function () {
+  new Chart(document.getElementById('december-line'), {
+    type: 'line',
+    options: {
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      scales: {
+        x: {
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Semana',
+          },
+          ticks: {
+            color: 'grey',
+          },
+        },
+        y: {
+          min: 0,
+          title: {
+            color: 'white',
+            display: true,
+            text: 'Publicaciones',
+          },
+          ticks: {
+            stepSize: 1,
+            color: 'grey',
+          },
+        },
+      },
+    },
+    data: {
+      labels: weeks,
+      datasets: [
+        {
+          label: 'Publicaciones',
+          data: [
+            lenWeek1December,
+            lenWeek2December,
+            lenWeek3December,
+            lenWeek4December,
+          ],
+          fill: false,
+          borderColor: '#F6BD60',
+          backgroundColor: '#F6BD60',
+          tension: 0.1,
         },
       ],
     },

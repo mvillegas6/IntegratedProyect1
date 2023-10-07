@@ -81,15 +81,284 @@ const getCharts = async (req: Request, res: Response) => {
     },
   };
 
+  const PostsJuly = posts.filter((post) => post.createdAt.getMonth() + 1 === 7);
+  const PostsAugust = posts.filter(
+    (post) => post.createdAt.getMonth() + 1 === 8
+  );
+  const PostsSeptember = posts.filter(
+    (post) => post.createdAt.getMonth() + 1 === 9
+  );
+  const PostsOctober = posts.filter(
+    (post) => post.createdAt.getMonth() + 1 === 10
+  );
+  const PostsNovember = posts.filter(
+    (post) => post.createdAt.getMonth() + 1 === 11
+  );
+  const PostsDecember = posts.filter(
+    (post) => post.createdAt.getMonth() + 1 === 12
+  );
+
+  const July = {
+    month: PostsJuly,
+    week1: PostsJuly.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 1
+    ),
+    week2: PostsJuly.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 2
+    ),
+    week3: PostsJuly.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 3
+    ),
+    week4: PostsJuly.filter(
+      (post) =>
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 4 ||
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 5
+    ),
+  };
+
+  const August = {
+    month: PostsAugust,
+    week1: PostsAugust.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 1
+    ),
+    week2: PostsAugust.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 2
+    ),
+    week3: PostsAugust.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 3
+    ),
+    week4: PostsAugust.filter(
+      (post) =>
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 4 ||
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 5
+    ),
+  };
+
+  const September = {
+    month: PostsSeptember,
+    week1: PostsSeptember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 1
+    ),
+    week2: PostsSeptember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 2
+    ),
+    week3: PostsSeptember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 3
+    ),
+    week4: PostsSeptember.filter(
+      (post) =>
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 4 ||
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 5
+    ),
+  };
+
+  const October = {
+    month: PostsOctober,
+    week1: PostsOctober.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 1
+    ),
+    week2: PostsOctober.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 2
+    ),
+    week3: PostsOctober.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 3
+    ),
+    week4: PostsOctober.filter(
+      (post) =>
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 4 ||
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 5
+    ),
+  };
+
+  const November = {
+    month: PostsNovember,
+    week1: PostsNovember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 1
+    ),
+    week2: PostsNovember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 2
+    ),
+    week3: PostsNovember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 3
+    ),
+    week4: PostsNovember.filter(
+      (post) =>
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 4 ||
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 5
+    ),
+  };
+
+  const December = {
+    month: PostsDecember,
+    week1: PostsDecember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 1
+    ),
+    week2: PostsDecember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 2
+    ),
+    week3: PostsDecember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 3
+    ),
+    week4: PostsDecember.filter(
+      (post) =>
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 4 ||
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 5
+    ),
+  };
+
   res.render('analytics/charts', {
     Engineering,
     Administration,
     Law,
     ArtsHumanities,
     Economy,
+    July,
+    August,
+    September,
+    October,
+    November,
+    December,
+  });
+};
+
+const getChartsByMonths = async (req: Request, res: Response) => {
+  const posts = await Post.find();
+
+  const PostsJuly = posts.filter((post) => post.createdAt.getMonth() + 1 === 7);
+  const PostsAugust = posts.filter(
+    (post) => post.createdAt.getMonth() + 1 === 8
+  );
+  const PostsSeptember = posts.filter(
+    (post) => post.createdAt.getMonth() + 1 === 9
+  );
+  const PostsOctober = posts.filter(
+    (post) => post.createdAt.getMonth() + 1 === 10
+  );
+  const PostsNovember = posts.filter(
+    (post) => post.createdAt.getMonth() + 1 === 11
+  );
+  const PostsDecember = posts.filter(
+    (post) => post.createdAt.getMonth() + 1 === 12
+  );
+
+  const July = {
+    month: PostsJuly,
+    week1: PostsJuly.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 1
+    ),
+    week2: PostsJuly.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 2
+    ),
+    week3: PostsJuly.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 3
+    ),
+    week4: PostsJuly.filter(
+      (post) =>
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 4 ||
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 5
+    ),
+  };
+
+  const August = {
+    month: PostsAugust,
+    week1: PostsAugust.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 1
+    ),
+    week2: PostsAugust.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 2
+    ),
+    week3: PostsAugust.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 3
+    ),
+    week4: PostsAugust.filter(
+      (post) =>
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 4 ||
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 5
+    ),
+  };
+
+  const September = {
+    month: PostsSeptember,
+    week1: PostsSeptember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 1
+    ),
+    week2: PostsSeptember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 2
+    ),
+    week3: PostsSeptember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 3
+    ),
+    week4: PostsSeptember.filter(
+      (post) =>
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 4 ||
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 5
+    ),
+  };
+
+  const October = {
+    month: PostsOctober,
+    week1: PostsOctober.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 1
+    ),
+    week2: PostsOctober.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 2
+    ),
+    week3: PostsOctober.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 3
+    ),
+    week4: PostsOctober.filter(
+      (post) =>
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 4 ||
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 5
+    ),
+  };
+
+  const November = {
+    month: PostsNovember,
+    week1: PostsNovember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 1
+    ),
+    week2: PostsNovember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 2
+    ),
+    week3: PostsNovember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 3
+    ),
+    week4: PostsNovember.filter(
+      (post) =>
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 4 ||
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 5
+    ),
+  };
+
+  const December = {
+    month: PostsDecember,
+    week1: PostsDecember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 1
+    ),
+    week2: PostsDecember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 2
+    ),
+    week3: PostsDecember.filter(
+      (post) => (0 | (post.createdAt.getDate() / 7)) + 1 === 3
+    ),
+    week4: PostsDecember.filter(
+      (post) =>
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 4 ||
+        (0 | (post.createdAt.getDate() / 7)) + 1 === 5
+    ),
+  };
+  res.render('analytics/chartsDates', {
+    July,
+    August,
+    September,
+    October,
+    November,
+    December,
   });
 };
 
 export const chartControllers = {
   getCharts,
+  getChartsByMonths,
 };

@@ -1,0 +1,108 @@
+<% layout('layout/boilerplate') %>
+<link rel="stylesheet" href="/styles/charts.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  lenPostsJuly = '<%= July.month.length %>';
+  lenWeek1July = '<%= July.week1.length%>';
+  lenWeek2July = '<%= July.week2.length%>';
+  lenWeek3July = '<%= July.week3.length%>';
+  lenWeek4July = '<%= July.week4.length%>';
+
+  lenPostsAugust = '<%= August.month.length %>';
+  lenWeek1August = '<%= August.week1.length%>';
+  lenWeek2August = '<%= August.week2.length%>';
+  lenWeek3August = '<%= August.week3.length%>';
+  lenWeek4August = '<%= August.week4.length%>';
+
+  lenPostsSeptember = '<%= September.month.length %>';
+  lenWeek1September = '<%= September.week1.length %>';
+  lenWeek2September = '<%= September.week2.length %>';
+  lenWeek3September = '<%= September.week3.length %>';
+  lenWeek4September = '<%= September.week4.length %>';
+
+  lenPostsOctober = '<%= October.month.length %>';
+  lenWeek1October = '<%= October.week1.length %>';
+  lenWeek2October = '<%= October.week2.length %>';
+  lenWeek3October = '<%= October.week3.length %>';
+  lenWeek4October = '<%= October.week4.length %>';
+
+  lenPostsNovember = '<%= November.month.length %>';
+  lenWeek1November = '<%= November.week1.length %>';
+  lenWeek2November = '<%= November.week2.length %>';
+  lenWeek3November = '<%= November.week3.length %>';
+  lenWeek4November = '<%= November.week4.length %>';
+
+  lenPostsDecember = '<%= December.month.length %>';
+  lenWeek1December = '<%= December.week1.length %>';
+  lenWeek2December = '<%= December.week2.length %>';
+  lenWeek3December = '<%= December.week3.length %>';
+  lenWeek4December = '<%= December.week4.length %>';
+</script>
+
+<main>
+  <div>
+    <div>
+      <div class="topPart">
+        <div class="title-container">
+          <h1>NUESTROS <span>DATOS</span></h1>
+        </div>
+    
+        <div class="divPagination">
+          <ul class="pagination pagination-lg paginationConfig">
+            <li class="page-item"><a class="page-link myPageLink" href="/analytics">Escuelas</a></li>
+            <li class="page-item active" aria-current="page">
+              <span class="page-link activeSpan">Fecha</span>
+            </li>
+          </ul>
+        </div>
+    </div>
+      <hr class="hr-title" />
+
+      <div class="bottom-container">
+        <h2 class="chart-title">Por Fecha</h2>
+        <div class="faculty-container">
+          <canvas id="postByDate-line"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="months">
+      <div class="chart-container">
+        <h3 class="chart-title">Julio</h3>
+        <div class="chart-canvas"><canvas id="july-line"></canvas></div>
+      </div>
+  
+      <div class="chart-container">
+        <h3 class="chart-title">Agosto</h3>
+        <div class="chart-canvas"><canvas id="august-line"></canvas></div>
+      </div>
+  
+      <div class="chart-container">
+        <h3 class="chart-title">Septiembre</h3>
+        <div class="chart-canvas"><canvas id="september-line"></canvas></div>
+      </div>
+  
+      <div class="chart-container">
+        <h3 class="chart-title">Octubre</h3>
+        <div class="chart-canvas"><canvas id="october-line"></canvas></div>
+      </div>
+  
+      <div class="chart-container">
+        <h3 class="chart-title">Noviembre</h3>
+        <div class="chart-canvas"><canvas id="november-line"></canvas></div>
+      </div>
+
+      <div class="chart-container">
+        <h3 class="chart-title">Diciembre</h3>
+        <div class="chart-canvas"><canvas id="december-line"></canvas></div>
+      </div>
+    </div>
+
+    <hr />
+
+</main>
+
+<script type="module" src="/scripts/charts.js"></script>

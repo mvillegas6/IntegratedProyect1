@@ -1,4 +1,6 @@
 import { User } from '../models/user';
+import { Educator } from '../models/educator';
+import { Admin } from '../models/admin';
 import { Request, Response, NextFunction } from 'express';
 import { Faculties } from '../util/degrees';
 import { Post } from '../models/post';
@@ -15,7 +17,7 @@ const renderLogin = (req: Request, res: Response) => {
 
 const loginUser = async (req: Request, res: Response) => {
   try {
-    const {username, password} = req.body;
+    const {username, password } = req.body;
     const user = await User.findOne({email:username});
     const validPassword = await bcrypt.compare(password,user.password);
 
@@ -36,9 +38,20 @@ const logOutUser = (req: Request, res: Response, next: NextFunction) => {
 
 const postUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { email, password, degree } = req.body;
+    const { email, password, degree, isEducator, isAdmin } = req.body;
     const hash = await bcrypt.hash(password, 12);
-    const user = new User({ email, degree, name: email.slice(0, email.indexOf('@')), password:hash });
+    let user;
+
+    if(isEducator){
+      user = new Educator({ email, degree, name: email.slice(0, email.indexOf('@')), password:hash });
+    }
+    else if (isAdmin){
+      user = new Admin({ email, degree, name: email.slice(0, email.indexOf('@')), password:hash });
+    }
+    else{
+      user = new User({ email, degree, name: email.slice(0, email.indexOf('@')), password:hash });
+    }
+
     if (Faculties.ingeneers.includes(user.degree)) {
       user.faculty = 'Ingenierias';
     } else if (Faculties.administration.includes(user.degree)) {

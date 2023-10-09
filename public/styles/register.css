@@ -94,6 +94,11 @@
     color: #ffff;
 }
 
+input[type=checkbox]{
+    width: 20px;
+    height: 20px;
+}
+
 .inputContainer select{
     border: none;
     border-radius: 2px;

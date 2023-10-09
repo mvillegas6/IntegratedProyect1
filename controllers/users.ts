@@ -50,6 +50,7 @@ const postUser = async (req: Request, res: Response, next: NextFunction) => {
       }
     });
   } catch (e) {
+    console.log(e);
     req.flash('error', e.message);
     res.redirect('/register');
   }

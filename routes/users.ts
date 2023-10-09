@@ -14,7 +14,7 @@ export const userRouter = Router.get('/register', usersController.renderRegister
   .get('/logout', usersController.logOutUser)
   .post(
     '/login',
-    passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }),
+    passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' , failureMessage:true}),
     usersController.loginUser
   )
   .post('/register', usersController.postUser)

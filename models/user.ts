@@ -58,10 +58,14 @@ const userSchema = new Schema({
   faculty: {
     type: String,
   },
+  password:{
+    type:String,
+    required:true,
+  }
 });
 
 
 
-userSchema.plugin(passportLocalMongoose);
+// userSchema.plugin(passportLocalMongoose);
 
 export const User = mongoose.model('User', userSchema);

@@ -128,12 +128,12 @@ const likePost = async (
 ) => {
   let flag = false;
   try {
-    const currUser = await User.findById(req.user['_id']).populate('likes');
+    const currUser = await User.findById(req.session['currentUser']['_id']).populate('likes');
     const post = await Post.findById(req.params.id).populate('votes');
-    if (req.user) {
+    if (req.session['currentUser']) {
       flag = Helpers.checkUserLike(req, post);
       if (!flag) {
-        post.votes.push(req.user);
+        post.votes.push(req.session['currentUser']);
         currUser.likes.push(post);
       }
     } else {
@@ -155,9 +155,9 @@ const disLikePost = async (
 ) => {
   let flag = false;
   try {
-    const currUser = await User.findById(req.user['_id']).populate('likes');
+    const currUser = await User.findById(req.session['currentUser']['_id']).populate('likes');
     const post = await Post.findById(req.params.id).populate('votes');
-    if (req.user) {
+    if (req.session['currentUser']) {
       flag = Helpers.removeUserLike(req, post, currUser);
     } else {
       req.flash('error', 'Debes ingresar para dar like');
@@ -199,7 +199,7 @@ const createPost = async (
       };
     });
     Helpers.findFaculty(post);
-    post.author = req.user['_id'];
+    post.author = req.session['currentUser']['_id'];
     post.createdAt = new Date();
     console.log(post);
     await post.save();

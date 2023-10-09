@@ -10,11 +10,6 @@ import methodOverride from 'method-override';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 import flash from 'connect-flash';
-import passport from 'passport';
-import { Strategy as localStrategy } from 'passport-local';
-import { Educator } from './models/educator';
-import { Admin } from './models/admin';
-import { User } from './models/user';
 import { commentRouter } from './routes/comments';
 import { analyticRouter } from './routes/analitycs';
 var MongoDBStore = require('connect-mongo');
@@ -59,28 +54,11 @@ app.use(
   })
 );
 app.use(flash());
-// app.use(session());
-app.use(passport.initialize());
-app.use(passport.session());
-
-
-passport.use(new localStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-// passport.use(new localStrategy(Admin.authenticate()));
-// passport.serializeUser(Admin.serializeUser());
-// passport.deserializeUser(Admin.deserializeUser());
-
-// passport.use(new localStrategy(Educator.authenticate()));
-// passport.serializeUser(Educator.serializeUser());
-// passport.deserializeUser(Educator.deserializeUser());
-
 
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.locals.success = req.flash('success');
   res.locals.error = req.flash('error');
-  res.locals.currentUser = req.user;
+  res.locals.currentUser = req.session['currentUser'];
   next();
 });
 

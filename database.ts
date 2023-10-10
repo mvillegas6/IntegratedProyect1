@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import * as dotenv from 'dotenv';
 
 dotenv.config();
-const dbUrl = process.env.DB_URL_ATLAS;
+const dbUrl = process.env.DB_URL;
 
 const dbconection = () => {
   mongoose

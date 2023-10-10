@@ -59,10 +59,10 @@ function findFaculty(post: any) {
 
 function checkUserLike(req: Request, post: any) {
   let flag = false;
-  if (post.votes.length !== 0 && req.user['email']) {
+  if (post.votes.length !== 0 && req.session['currentUser']) {
     for (let index = 0; index < post.votes.length; index++) {
       const element = post.votes[index];
-      if (element['email'] === req.user['email']) {
+      if (element['email'] === req.session['currentUser']['email']) {
         flag = true;
       }
     }
@@ -73,10 +73,10 @@ function checkUserLike(req: Request, post: any) {
 function removeUserLike(req: Request, post: any, user: any) {
   let flag = false;
   let oldPost: any;
-  if (post.votes.length !== 0 && req.user['email']) {
+  if (post.votes.length !== 0 && req.session['currentUser']) {
     for (let index = 0; index < post.votes.length; index++) {
       const element = post.votes[index];
-      if (element['_id'].valueOf() === req.user['_id'].valueOf()) {
+      if (element['_id'].valueOf() === req.session['currentUser']['_id'].valueOf()) {
         const oldLike = post.votes.splice(index, 1);
         flag = true;
       }

@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import { Comment } from '../models/comment';
-
 const showNew = (
   req: Request<{ postId: string }>,
   res: Response,
@@ -26,7 +25,7 @@ const createComment = async (
 ) => {
   try {
     const comment = new Comment(req.body);
-    comment.author = req.user['_id'];
+    comment.author = req.session['currentUser']['_id'];
     comment.postRelated = req.params.postId;
     await comment.save();
     res.redirect(`/posts/${req.params.postId}`);

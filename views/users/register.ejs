@@ -1,91 +1,82 @@
 <% layout('layout/boilerplate') %>
-<link rel="stylesheet" href="/styles/login.css" />
-<div class="wrapper">
-  <div class="card mb-3">
-    <div class="row g-0" style="width: 100%; max-width: 800px">
-      <div class="col-md-5">
-        <img
-        src="https://images.unsplash.com/photo-1600195077077-7c815f540a3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2578&q=80"
-        class="img-fluid rounded-start"
-          alt="..."
-          crossorigin="anonymous"
-          />
-        </div>
-        <div class="col-md-7">
-          <div class="card-body mt-4">
-          <h1 class="text-center">Registro</h1>
-          <p class="card-text fs-6 fw-light text-center mb-4">Entra en la mayor comunidad de estudio de la universidad</p>
-          <form action="/register" class="validated-form needs-validation" method="post" novalidate>
-            <div class="mb-3">
-              <label for="Email" class="form-label">Correo</label>
-              <input
-                type="email"
-                class="form-control"
-                id="Email"
-                aria-describedby="emailHelp"
-                name="email"
-                required
-                />
-                <div class="invalid-feedback">Ingresa Un Correo Valido!</div>
-              </div>
-              <div class="mb-3">
-              <label for="password" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="password" name="password" required />
-              <div id="emailHelp" class="form-text">No utilices una contraseña común</div>
-              <div class="invalid-feedback">Ingrese Una Contraseña Valida!</div>
-              
-            </div>
-            <div class="mb-3">
-              <label for="deegreSelector" class="form-label">Selecciona el pregrado</label>
-              <select name="degree" id="deegreSelector" class="form-select" required>
-                <option value="" disabled>Selecciona el pregrado</option>
-                <!-- Administración -->
-                <option disabled>Escuela de Administración</option>
-                <option value="Administración de Negocios">Administración de Negocios</option>
-                <option value="Negocios Internacionales">Negocios Internacionales</option>
-                <option value="Contaduría Pública">Contaduría Pública</option>
-                <option value="Mercadeo">Mercadeo</option>
-                
-                <!-- ECONOMIA -->
-                <option disabled>Escuela de Economía y Finanzas</option> 
-                <option value="Ciencias Políticas">Ciencias Políticas</option>
-                <option value="Economía">Economía</option>
-                <option value="Finanzas">Finanzas</option>
-                
-                <!-- Artes y humanidades -->
-                <option disabled>Artes y humanidades</option> 
-                <option value="Música">Música</option>
-                <option value="Comunicación Social">Comunicación Social</option>
-                <option value="Psicología">Psicología</option>
-                <option value="Literatura">Literatura</option>
-                <option value="Diseño Interactivo">Diseño Interactivo</option>
-                <!-- derecho -->
-                <option disabled>Escuela de derecho</option>
-                <option value="Derecho">Derecho</option>
-                <!-- INGENIERIAS -->
-                <option disabled>Escuela de Ingeniería</option>
-                <option value="Ingeniería Mecánica">Ingeniería Mecánica</option>
-                <option value="Ingeniería de Procesos">Ingeniería de Procesos</option>
-                <option value="Ingeniería de Producción">Ingeniería de Producción</option>
-                <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
-                <option value="Ingeniería Agronómica">Ingeniería Agronómica</option>
-                <option value="Biología">Biología</option>
-                <option value="Geología">Geología</option>
-                <option value="Ingeniería Matemática">Ingeniería Matemática</option>
-                <option value="Ingeniería Física">Ingeniería Física</option>
-                <option value="Ingeniería Civil">Ingeniería Civil</option>
-                <option value="Ingeniería de Diseño de Producto">Ingeniería de Diseño de Producto</option>
-                <option value="Diseño urbano y gestion habitad">Diseño urbano y gestion habitad</option>
-              </select>
-              <div class="invalid-feedback">Selecciona Una Carrera!</div>
+<link rel="stylesheet" href="/styles/register.css">
+<script src="https://kit.fontawesome.com/d1023b5858.js" crossorigin="anonymous"></script>
 
-            </div>
-            
-            <%- include('../templates/flash') %>
-            <button type="submit" class="btn btn-primary w-100 mt-3">Registrarse</button>
-          </form>
+<main class="sectionContainer">
+    <section class="mainSection">
+        <div class="imageContainer">
+            <img src="https://images.unsplash.com/photo-1608280392091-724833b66c2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2582&q=80" alt="" class="img-fluid rounded-start">
         </div>
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="formContainer">
+            <div class="loginForm">
+                <div class="infoContainer">             
+                    <h1 class="text-center">Registrate</h1>
+                    <p class="text-center">Bienvenido! Registrate con tu email y crea una contraseña para acceder a todo lo que tutorly puede ofrecer.</p>
+                </div>
+                <form action="/register" class="valuesContainer" method="post"> 
+                    <div class="inputContainer">
+                        <i class="fa-solid fa-envelope fa-2xl"></i>
+                        <input type="email" name="email" id="username" placeholder="Ejemplo@eafit.edu.co" required>
+                    </div>
+                    <div class="inputContainer">
+                        <i class="fa-solid fa-lock fa-2xl"></i>
+                        <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                    </div>
+                    <div class="inputContainer">
+                        <i class="fa-solid fa-school fa-xl"></i>
+                        <select name="degree" id="deegreSelector" required>
+                          <option value="" disabled>Selecciona el pregrado</option>
+                          <!-- Administración -->
+                          <option disabled>Escuela de Administración</option>
+                          <option value="Administración de Negocios">Administración de Negocios</option>
+                          <option value="Negocios Internacionales">Negocios Internacionales</option>
+                          <option value="Contaduría Pública">Contaduría Pública</option>
+                          <option value="Mercadeo">Mercadeo</option>
+                          
+                          <!-- ECONOMIA -->
+                          <option disabled>Escuela de Economía y Finanzas</option> 
+                          <option value="Ciencias Políticas">Ciencias Políticas</option>
+                          <option value="Economía">Economía</option>
+                          <option value="Finanzas">Finanzas</option>
+                          
+                          <!-- Artes y humanidades -->
+                          <option disabled>Artes y humanidades</option> 
+                          <option value="Música">Música</option>
+                          <option value="Comunicación Social">Comunicación Social</option>
+                          <option value="Psicología">Psicología</option>
+                          <option value="Literatura">Literatura</option>
+                          <option value="Diseño Interactivo">Diseño Interactivo</option>
+                          <!-- derecho -->
+                          <option disabled>Escuela de derecho</option>
+                          <option value="Derecho">Derecho</option>
+                          <!-- INGENIERIAS -->
+                          <option disabled>Escuela de Ingeniería</option>
+                          <option value="Ingeniería Mecánica">Ingeniería Mecánica</option>
+                          <option value="Ingeniería de Procesos">Ingeniería de Procesos</option>
+                          <option value="Ingeniería de Producción">Ingeniería de Producción</option>
+                          <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+                          <option value="Ingeniería Agronómica">Ingeniería Agronómica</option>
+                          <option value="Biología">Biología</option>
+                          <option value="Geología">Geología</option>
+                          <option value="Ingeniería Matemática">Ingeniería Matemática</option>
+                          <option value="Ingeniería Física">Ingeniería Física</option>
+                          <option value="Ingeniería Civil">Ingeniería Civil</option>
+                          <option value="Ingeniería de Diseño de Producto">Ingeniería de Diseño de Producto</option>
+                          <option value="Diseño urbano y gestion habitad">Diseño urbano y gestion habitad</option>
+                        </select>
+                    </div>
+                    <div class="inputContainer">
+                        <label for="isAdmin">Soy admin</label>
+                        <input type="checkbox" name="isAdmin" id="isAdmin">
+                        <label for="isEducator">Soy educador</label>
+                        <input type="checkbox" name="isEducator" id="isEducator">
+                    </div>
+                    <%- include('../templates/flash') %>
+                    <div class="buttonWrapper">
+                        <button type="submit">Registrate</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>

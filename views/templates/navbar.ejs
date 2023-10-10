@@ -30,7 +30,9 @@
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end" style="background-color: black;">
                                   <li style="background-color: black;" ><a class="dropdown-item" href="/personal/<%=currentUser._id%>">Perfil</a></li>
-                                  <li style="background-color: black;" ><a class="dropdown-item" href="/analytics">Datos</a></li>
+                                  <% if (currentUser.perms) { %>
+                                    <li style="background-color: black;" ><a class="dropdown-item" href="/analytics">Datos</a></li>
+                                  <% } %>
                                   <li><hr class="dropdown-divider dropDivider"></li>
                                   <li style="background-color: black;" ><a class="dropdown-item" href="/logout">Salir</a></li>
                                 </ul>

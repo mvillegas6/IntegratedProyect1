@@ -94,13 +94,27 @@
     color: #ffff;
 }
 
+input[type=checkbox]{
+    width: 20px;
+    height: 20px;
+}
+
+.inputContainer select{
+    border: none;
+    border-radius: 2px;
+    background-color: #666666;
+    height: 40px;
+    width: 80%;
+    outline: none;
+    border-bottom: solid 2px #5ac8fa;
+    color: #ffff;
+}
+
 .inputContainer input::placeholder{
     color: #ffff;
 }
 
 input:-webkit-autofill {
-    background-color: none;
     outline: none;
     border-bottom: solid 2px #5ac8fa;
-    color: #ffff;
 }

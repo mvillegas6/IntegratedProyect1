@@ -1,34 +1,33 @@
 <% layout('layout/boilerplate') %>
 <link rel="stylesheet" href="/styles/login.css">
-<div class="wrapper">
-    <div class="card mb-3">
-        <div class="row g-0 loginForm">
-            <div class="col-md-5">
-                <img src="https://images.unsplash.com/photo-1567168539593-59673ababaae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-                class="img-fluid rounded-start" alt="..." crossorigin="anonymous">
-            </div>
-            <div class="col-md-7 ">
-                <div class="card-body">
-                    <img src="https://www.nicepng.com/png/detail/128-1280406_user-icon-png.png" alt=""
-                    class="loginImage mb-3">
-                    <h1 class="text-center card-title">Login</h1>
-                    
-                    <p class="card-text fs-6 fw-light text-center mb-3"></p>
-                    <form action="/login" novalidate class="validated-form" method="post">
-                        <div class="mb-3">
-                            <label for="email" class="form-label card-text">Correo</label>
-                            <input type="text" class="form-control" id="username" aria-describedby="emailHelp"
-                            name="username" required autofocus>
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label card-text">Contraseña</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                        <%- include('../templates/flash') %>
-                        <button type="submit" class="btn btn-primary w-100 mt-4">Ingresar</button>
-                    </form>
+<script src="https://kit.fontawesome.com/d1023b5858.js" crossorigin="anonymous"></script>
+
+<main class="sectionContainer">
+    <section class="mainSection">
+        <div class="imageContainer">
+            <img src="https://images.unsplash.com/photo-1503924087716-07cbd5f49b21?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2564&q=80" alt="" class="img-fluid rounded-start">
+        </div>
+        <div class="formContainer">
+            <div class="loginForm">
+                <div class="infoContainer">             
+                    <h1 class="text-center">Inicia sesion</h1>
+                    <p class="text-center">Bienvenido de nuevo! ingresa con tu email y contraseña.</p>
                 </div>
+                <form action="/login" class="valuesContainer" method="post"> 
+                    <div class="inputContainer">
+                        <i class="fa-solid fa-envelope fa-2xl"></i>
+                        <input type="email" name="username" id="username" placeholder="Ejemplo@eafit.edu.co" required>
+                    </div>
+                    <div class="inputContainer">
+                        <i class="fa-solid fa-lock fa-2xl"></i>
+                        <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                    </div>
+                    <%- include('../templates/flash') %>
+                    <div class="buttonWrapper">
+                        <button type="submit">Ingresar</button>
+                    </div>
+                </form>
             </div>
-        </div>      
-    </div>
-</div>
+        </div>
+    </section>
+</main>

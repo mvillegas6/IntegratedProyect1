@@ -1,0 +1,73 @@
+<% layout('layout/boilerplate') %> <%- include('../templates/educatorSidebar')
+%>
+<link rel="stylesheet" href="/styles/showEducators.css" />
+
+<main>
+  <div class="middlePart">
+    <nav class="searchBar">
+      <form class="searchComponents" action="" method="">
+        <input
+          value="<%= keyword %>"
+          type="text"
+          name="q"
+          id=""
+          class="form-control"
+          value="<%= keyword%>" />
+        <button>Buscar</button>
+      </form>
+    </nav>
+
+    <div class="educatorsTitle">
+      <h1>Profesores y Monitores</h1>
+    </div>
+
+    <section class="educatorContainer">
+      <% for(let educator of educators){ %>
+      <a href="/educators/<%= educator._id %>">
+        <div class="educatorCard">
+          <div class="imageContainer">
+            <div class="topEducatorContainer">
+              <div class="image">
+                <% if(!educator.profilePic){%>
+                <img
+                  class="profile-pic"
+                  src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
+                  alt="" />
+                <div class="upload-icon">
+                  <label for="file">
+                    <i class="fa-solid fa-camera"></i>
+                    <input
+                      class="file-upload"
+                      type="file"
+                      id="file"
+                      name="image"
+                      accept="image/jpeg,image/jpg,image/png" />
+                  </label>
+                </div>
+                <% }else{ %>
+                <img
+                  class="user-picture"
+                  src="<%=educator.profilePic[0].path%>"
+                  alt="" />
+
+                <% } %>
+              </div>
+            </div>
+          </div>
+          <div class="nameDiv">
+            <h2 id="name"><%= educator.name %></h2>
+          </div>
+          <!-- <p id="author">
+            <small> <%= educator.degree %> </small>
+          </p> -->
+          <p id="body"><%= educator.description %></p>
+          <div class="bottomEducatorCard">
+            <p id="faculty"><%= educator.serviceInfo.office %></p>
+            <p class="educatorDegree"><%= educator.degree %></p>
+          </div>
+        </div>
+      </a>
+      <% } %>
+    </section>
+  </div>
+</main>

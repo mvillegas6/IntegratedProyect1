@@ -1,0 +1,81 @@
+<body>
+  <% layout('layout/boilerplate') %>
+  <link rel="stylesheet" href="/styles/educatorsPersonal.css" />
+  <script
+    src="https://kit.fontawesome.com/712fb57849.js"
+    crossorigin="anonymous"></script>
+  <main>
+    <section class="visualContainer">
+      <div class="image">
+        <% if(!educator.profilePic){%>
+        <img
+          class="profile-pic"
+          src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
+          alt="" />
+        <% }else{ %>
+        <img
+          class="user-picture"
+          src="<%=educator.profilePic[0].path%>"
+          alt="" />
+        <% } %>
+      </div>
+      <div class="socials">
+        <p>Redes Sociales</p>
+      </div>
+    </section>
+
+    <section class="infoContainer">
+      <div>
+        <div class="userInfo">
+          <div class="prContainer">
+            <h1>@<%= educator.name %></h1>
+            <a class="user-degree" href="#">
+              <%=educator.degree%> | <%= educator.__t %>
+            </a>
+        </div>
+  
+        <p><%= educator.description %></p>
+      </div>
+
+      <div class="userPosts">
+        <div class="educatorsPostsTitle">
+          <h1>Publicaciones</h1>
+        </div>
+        <div class="postsContainer">
+          <% for(let post of posts){ %>
+          <a href="/posts/<%=post._id%>" class="post">
+            <h4><%= post.title %></h4>
+            <p class="body"><%= post.body %></p>
+            <p class="faculty"><%= post.faculty%> | <%= post.degree%></p>
+            <p class="attachments">Archivos: <%= post.image.length %></p>
+            <small class="votes">Votos: <%= post.votes.length %></small>
+          </a>
+          <% } %>
+        </div>
+      </div>
+    </section>
+    <section class="user-groups">
+      <div>
+        <p>Grupos asociados</p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
+          labore! Iste facere corporis nostrum. Sint doloremque debitis est
+          exercitationem impedit aspernatur dolorem. Reiciendis ea quasi laborum
+          officia soluta eius veniam. In adipisci totam natus nesciunt porro?
+          Rerum incidunt tempora autem, vitae quia voluptas fugiat ratione
+          itaque suscipit temporibus consectetur ipsam iste natus, voluptates
+          pariatur necessitatibus. Dicta repudiandae molestiae libero quam.
+          Labore blanditiis beatae dolores quas. Reprehenderit possimus ipsa
+          corrupti fuga tempora quaerat velit, unde dolorum. Porro
+        </p>
+      </div>
+    </section>
+  </main>
+  <script>
+    document.querySelector('.file-upload').onchange = function () {
+      document.querySelector('.picture-form').submit();
+    };
+  </script>
+
+  <script src="/scripts/personal.js"></script>
+</body>

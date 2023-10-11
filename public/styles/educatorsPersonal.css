@@ -6,7 +6,7 @@ main {
 }
 .user-degree {
   margin-left: 70px;
-  width: 40%;
+  width: auto;
 }
 
 hr {
@@ -125,6 +125,7 @@ hr {
   flex-direction: row;
   flex-wrap: wrap;
 }
+
 .prContainer h1 {
   flex-basis: 15%;
   display: flex;
@@ -171,6 +172,18 @@ hr {
   width: 100%;
 }
 
+.educatorsPostsTitle {
+  justify-content: center;
+  display: flex;
+  height: 4rem;
+  width: 100%;
+  font-size: 30px;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: inherit;
+}
+
 .postsContainer {
   display: flex;
   width: 100%;
@@ -178,7 +191,9 @@ hr {
   flex-wrap: wrap;
   justify-content: start;
   flex-direction: row;
+  margin-top: 20px;
 }
+
 .post {
   display: flex;
   flex-direction: column;

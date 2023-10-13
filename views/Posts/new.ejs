@@ -1,15 +1,15 @@
 <% layout('layout/boilerplate') %>
-
-<body>
+<link rel="stylesheet" href="/styles/new.css">
+<!-- <body>
   <div class="row mt-5">
     <div class="col-6 offset-3">
       <div class="card">
         <form action="/posts" method="post" class="card-body needs-validation" enctype="multipart/form-data" novalidate>
           <fieldset>
-            <legend class="text-center title">Realiza una publicación</legend>
+            <legend class="text-center title text-white">Realiza una publicación</legend>
             <div class="mb-3">
               <label for="Title" class="form-label">Ingrese Un Titulo!</label>
-              <input type="text" id="title" class="form-control" placeholder="Title" name="title" required/>
+              <input type="text" id="title" class="form-control" placeholder="Titluo" name="title" required/>
               <div class="invalid-feedback">Ingrese Un Titulo!</div>
             </div>
 
@@ -21,7 +21,7 @@
                 cols="5"
                 rows="4"
                 class="form-control"
-                placeholder="Description"
+                placeholder="Descripción"
                 required
                 maxlength="600"
               ></textarea>
@@ -33,30 +33,30 @@
               <select name="degree" id="deegreSelector" class="form-select" required>
                 <option value='' disabled>Select your deegre</option>
                 <!-- Administración -->
-                <option disabled>Escuela de Administración</option>
+                <!-- <option disabled>Escuela de Administración</option>
                 <option value="Administración de Negocios">Administración de Negocios</option>
                 <option value="Negocios Internacionales">Negocios Internacionales</option>
                 <option value="Contaduría Pública">Contaduría Pública</option>
                 <option value="Mercadeo">Mercadeo</option>
                 
                 <!-- ECONOMIA -->
-                <option disabled>Escuela de Economía y Finanzas</option> 
+                <!-- <option disabled>Escuela de Economía y Finanzas</option> 
                 <option value="Ciencias Políticas">Ciencias Políticas</option>
                 <option value="Economía">Economía</option>
-                <option value="Finanzas">Finanzas</option>
+                <option value="Finanzas">Finanzas</option> -->
                 
                 <!-- Artes y humanidades -->
-                <option disabled>Artes y humanidades</option> 
+                <!-- <option disabled>Artes y humanidades</option> 
                 <option value="Música">Música</option>
                 <option value="Comunicación Social">Comunicación Social</option>
                 <option value="Psicología">Psicología</option>
                 <option value="Literatura">Literatura</option>
-                <option value="Diseño Interactivo">Diseño Interactivo</option>
+                <option value="Diseño Interactivo">Diseño Interactivo</option> -->
                 <!-- derecho -->
-                <option disabled>Escuela de derecho</option>
-                <option value="Derecho">Derecho</option>
+                <!-- <option disabled>Escuela de derecho</option>
+                <option value="Derecho">Derecho</option> -->
                 <!-- INGENIERIAS -->
-                <option disabled>Escuela de Ingeniería</option>
+                <!-- <option disabled>Escuela de Ingeniería</option>
                 <option value="Ingeniería Mecánica">Ingeniería Mecánica</option>
                 <option value="Ingeniería de Procesos">Ingeniería de Procesos</option>
                 <option value="Ingeniería de Producción">Ingeniería de Producción</option>
@@ -83,5 +83,82 @@
         </form>
       </div>
     </div>
-  </div>
-</body>
+  </div> -->
+<!-- </body> -->
+
+
+
+<main class="mainContainer">
+  <section class="formContainer">
+    <form action="/posts" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+        <h1 class="text-center title text-white">Realiza una publicación</h1>
+        <div class="inputContainer">
+          <label for="Title" class="">Ingrese Un Titulo!</label>
+          <input type="text" id="title" class="" placeholder="Titulo" name="title" required/>
+          <div class="invalid-feedback">Ingrese Un Titulo!</div>
+        </div>
+
+        <div class="inputContainer">
+          <label for="description" class="">Ingresa la descripción</label>
+          <textarea
+            name="body"
+            id=""
+            cols="5"
+            rows="4"
+            class=""
+            placeholder="Descripción"
+            required
+            maxlength="600"
+          ></textarea>
+          <div class="invalid-feedback">Ingrese Una Descripción!</div>
+        </div>
+
+        <div class="inputContainer">
+          <label for="deegreSelector" class="form-label">Elige tu carrera</label>
+          <select name="degree" id="deegreSelector" class="" required>
+            <option value='' disabled>Select your deegre</option>
+            Administración
+            <option disabled>Escuela de Administración</option>
+            <option value="Administración de Negocios">Administración de Negocios</option>
+            <option value="Negocios Internacionales">Negocios Internacionales</option>
+            <option value="Contaduría Pública">Contaduría Pública</option>
+            <option value="Mercadeo">Mercadeo</option>
+        
+            <option disabled>Escuela de Economía y Finanzas</option> 
+            <option value="Ciencias Políticas">Ciencias Políticas</option>
+            <option value="Economía">Economía</option>
+            <option value="Finanzas">Finanzas</option> 
+            
+            <option disabled>Artes y humanidades</option> 
+            <option value="Música">Música</option>
+            <option value="Comunicación Social">Comunicación Social</option>
+            <option value="Psicología">Psicología</option>
+            <option value="Literatura">Literatura</option>
+            <option value="Diseño Interactivo">Diseño Interactivo</option>
+            <option disabled>Escuela de derecho</option>
+            <option value="Derecho">Derecho</option>
+            <option disabled>Escuela de Ingeniería</option>
+            <option value="Ingeniería Mecánica">Ingeniería Mecánica</option>
+            <option value="Ingeniería de Procesos">Ingeniería de Procesos</option>
+            <option value="Ingeniería de Producción">Ingeniería de Producción</option>
+            <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+            <option value="Ingeniería Agronómica">Ingeniería Agronómica</option>
+            <option value="Biología">Biología</option>
+            <option value="Geología">Geología</option>
+            <option value="Ingeniería Matemática">Ingeniería Matemática</option>
+            <option value="Ingeniería Física">Ingeniería Física</option>
+            <option value="Ingeniería Civil">Ingeniería Civil</option>
+            <option value="Ingeniería de Diseño de Producto">Ingeniería de Diseño de Producto</option>
+            <option value="Diseño urbano y gestion habitad">Diseño urbano y gestion habitad</option>
+          </select>
+          <div class="invalid-feedback">Selecciona Una Carrera!</div>
+        </div>
+
+        <div class="inputContainer">
+          <label for="formFileMultiple" class="form-label">Añade archivos</label>
+          <input class="form-control" type="file" name="image" id="formFileMultiple" multiple/>
+        </div>
+        <button type="submit" class="button">Publicar</button>
+    </form>
+  </section>
+</main>

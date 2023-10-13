@@ -1,0 +1,59 @@
+/* 
+label {
+    color: #ffff;
+}
+.card {
+    background-color: #666666;
+} */
+
+
+.button{
+    width: 10%;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #5ac8fa;
+    border: none;
+    color: #ffff;
+}
+
+.mainContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.formContainer{
+    width: 50%;
+    max-width: 838px ;
+    height: fit-content;
+    padding: 20px;
+    background-color: #666666;
+    border-radius: 20px;
+}
+
+.inputContainer{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.inputContainer label {
+    color: #ffff;
+    margin-bottom: 5px;
+}
+
+.inputContainer textarea, input, select{
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.inputContainer input[type=text]{
+    height: 40px;
+}
+.inputContainer select{
+    height: 40px;
+}

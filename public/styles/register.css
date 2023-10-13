@@ -13,6 +13,7 @@
     background-color: #666666;
     border-radius: 15px;
     width: 50%;
+    max-width: 849px;
     height: 600px;
     display: flex;
     flex-direction: row;

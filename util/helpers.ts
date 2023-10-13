@@ -6,7 +6,9 @@ import { Faculties } from '../util/degrees';
 async function filterByQuery(req: Request, res: Response) {
   let posts: any;
   let keyword;
-  const groups = await Group.find();
+  const myGroups = await Group.find({ members: { $in: [req.session['currentUser']] } });
+  const newGroups = await Group.find({ members: { $not: { $in: [req.session['currentUser']] } } });
+
   if (req.query.q) {
     keyword = `${req.query.q}`;
     posts = (
@@ -38,7 +40,7 @@ async function filterByQuery(req: Request, res: Response) {
     keyword = '';
     posts = (await Post.find({}).populate('author').populate('votes')).reverse();
   }
-  res.render('Posts/show', { posts, keyword, m: req.flash('success'), groups });
+  res.render('Posts/show', { posts, keyword, m: req.flash('success'), myGroups, newGroups });
 }
 
 function findFaculty(post: any) {

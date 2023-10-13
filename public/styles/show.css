@@ -1,5 +1,6 @@
 body {
   background-color: #232323;
+  overflow: hidden;
 }
 
 hr {
@@ -38,12 +39,13 @@ main .searchBar {
 
 main .postsContainer {
   width: 88.2%;
-  height: 1200px;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   text-decoration: none;
+  overflow: scroll;
 }
 .postsContainer a {
   text-decoration: none;
@@ -138,15 +140,45 @@ nav .searchComponents input:focus {
 }
 
 .groupContent {
+  height: 90vh;
   width: 25%;
+  overflow: scroll;
+  position: sticky;
 }
 
 .personalGroups {
-  background-color: #333333;
   margin: 10%;
 }
 
-.discoverGroups {
+.newGroup {
+  margin: 10px;
+}
+
+.myGroups {
+  color: white;
+}
+
+.groupLink {
+  color: #ffff;
+}
+
+.groupPost {
+  text-decoration: none;
+  max-width: auto;
+}
+
+.groupPostInfo {
+  text-decoration: none;
+  color: #ffff;
+  margin: 8px;
+  padding: 10px;
+  border-radius: 10px;
   background-color: #333333;
-  margin: 10%;
+  width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.groupData {
+  width: 15em;
 }

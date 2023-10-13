@@ -78,8 +78,7 @@ const uploadPost = async (req: Request, res: Response, next: NextFunction) => {
     await post.save();
 
     const group = await Group.findById(req.params.id);
-    console.log(newPost);
-    console.log(group);
+
     group.posts.push(post);
     await group.save();
     res.redirect(`/groups/${req.params.id}`);
@@ -94,7 +93,6 @@ const addMember = async (req: Request, res: Response, next: NextFunction) => {
     const group = await Group.findById(req.params.id);
     group.members.push(user);
     await group.save();
-    console.log(group);
     res.redirect(`/groups/${req.params.id}`);
   } catch (err) {
     next(err);
@@ -106,14 +104,12 @@ const removeMember = async (req: Request, res: Response, next: NextFunction) => 
     const user = req.session['currentUser'];
     const group = await Group.findById(req.params.id).populate('members');
     for (let i = 0; i < group.members.length; i++) {
-      console.log(group.members[i]._id);
       if (group.members[i]._id == user._id) {
         group.members.splice(i, 1);
         break;
       }
     }
     await group.save();
-    console.log(group);
     res.redirect(`/groups/${req.params.id}`);
   } catch (err) {
     next(err);

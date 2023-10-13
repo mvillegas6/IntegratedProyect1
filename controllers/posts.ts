@@ -44,6 +44,16 @@ const showNew = async (req: Request, res: Response, next: NextFunction) => {
 const deletePost = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
   try {
     const post = await Post.findByIdAndDelete(req.params.id);
+    if (post.privacy === 'group') {
+      const group = await Group.findOne({ posts: { $in: post } });
+      for (let i = 0; i < group.posts.length; i++) {
+        if (String(group.posts[i]._id) === String(post._id)) {
+          group.posts.splice(i, 1);
+          await group.save();
+          break;
+        }
+      }
+    }
     if (post.image) {
       for (let img of post.image) {
         await cloudinary.uploader.destroy(img.filename);
@@ -181,7 +191,6 @@ const createPost = async (
     post.author = req.session['currentUser']['_id'];
     post.createdAt = new Date();
     post.privacy = 'public';
-    console.log(post);
     await post.save();
     res.redirect('Posts');
   } catch (err) {

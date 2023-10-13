@@ -1,0 +1,35 @@
+<%layout('layout/boilerplate')%> <%- include('../templates/sidebar') %>
+<link rel="stylesheet" href="/styles/sidebar.css" />
+<link rel="stylesheet" href="/styles/groups.css" />
+<h1 class="name"><%= group.name %></h1>
+<div class="container">
+  <div class="posts">
+    <% for(let post of posts){ %>
+    <a href="/posts/<%= post._id %>">
+      <div class="post">
+        <p><%= post.name %></p>
+        <p><%= post.author %></p>
+        <p><%= post.body %></p>
+      </div>
+    </a>
+    <% } %>
+  </div>
+  <div class="buttons">
+    <% if(currentUser){ %> <% if (currentUser._id == group.owner[0]._id){ %>
+    <form action="/groups/<%= group._id %>?_method=DELETE" method="POST">
+      <button class="btn btn-danger">Eliminar Grupo</button>
+    </form>
+    <% } %> <% if(!followed ){ %>
+    <form action="/groups/<%= group._id %>/addMember?_method=PUT" method="POST">
+      <button class="btn btn-success">Seguir grupo</button>
+    </form>
+    <% }else if(followed && !(currentUser._id == group.owner[0]._id)){ %>
+    <form action="/groups/<%= group._id %>/removeMember?_method=PUT" method="POST">
+      <button class="btn btn-danger">Dejar de seguir grupo</button>
+    </form>
+    <% } %> <% if(followed || (currentUser._id == group.owner[0]._id)){ %>
+    <a class="btn btn-primary" href="/groups/<%= group._id %>/post">Publicar</a>
+    <% } %>
+  </div>
+  <% } %>
+</div>

@@ -1,10 +1,12 @@
 import { Post } from '../models/post';
+import { Group } from '../models/groups';
 import { Request, Response } from 'express';
 import { Faculties } from '../util/degrees';
 
 async function filterByQuery(req: Request, res: Response) {
   let posts: any;
   let keyword;
+  const groups = await Group.find();
   if (req.query.q) {
     keyword = `${req.query.q}`;
     posts = (
@@ -34,11 +36,9 @@ async function filterByQuery(req: Request, res: Response) {
     ).reverse();
   } else {
     keyword = '';
-    posts = (
-      await Post.find({}).populate('author').populate('votes')
-    ).reverse();
+    posts = (await Post.find({}).populate('author').populate('votes')).reverse();
   }
-  res.render('Posts/show', { posts, keyword, m: req.flash('success') });
+  res.render('Posts/show', { posts, keyword, m: req.flash('success'), groups });
 }
 
 function findFaculty(post: any) {

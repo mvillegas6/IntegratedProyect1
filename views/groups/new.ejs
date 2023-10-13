@@ -1,0 +1,37 @@
+<%layout('layout/boilerplate')%>
+
+<main class="sectionContainer">
+    <div class="row mt-5">
+        <div class="col-6 offset-3">
+          <div class="card">
+            <form action="/groups" method="post" class="card-body needs-validation" novalidate>
+              <fieldset>
+                <legend class="text-center title">Crea un nuevo grupo</legend>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Ingrese Un Nombre!</label>
+                  <input type="text" id="name" class="form-control" placeholder="Nombre" name="name" required/>
+                  <div class="invalid-feedback">Ingrese Un Nombre!</div>
+                </div>
+    
+                <div class="mb-3">
+                  <label for="description" class="form-label">Ingresa la descripción del grupo</label>
+                  <textarea
+                    name="description"
+                    id="description"
+                    cols="5"
+                    rows="4"
+                    class="form-control"
+                    placeholder="Descripción"
+                    required
+                    maxlength="600"
+                  ></textarea>
+                  <div class="invalid-feedback">Ingrese Una Descripción!</div>
+                </div>
+    
+                <button type="submit" class="btn btn-primary">Crear</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+</main>

@@ -4,6 +4,7 @@ import { cloudinary } from '../cloudinary/index';
 import { Helpers } from '../util/helpers';
 import { Comment } from '../models/comment';
 import { User } from '../models/user';
+import { Group } from '../models/groups';
 
 const show = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -13,15 +14,9 @@ const show = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-const showMainPostPage = async (
-  req: Request<{ id: string }>,
-  res: Response,
-  next: NextFunction
-) => {
+const showMainPostPage = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
   try {
-    const post = await Post.findById(req.params.id)
-      .populate('author')
-      .populate('votes');
+    const post = await Post.findById(req.params.id).populate('author').populate('votes');
     const isLiked = Helpers.checkUserLike(req, post);
     const comments = await Comment.find({
       postRelated: post,
@@ -46,11 +41,7 @@ const showNew = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-const deletePost = async (
-  req: Request<{ id: string }>,
-  res: Response,
-  next: NextFunction
-) => {
+const deletePost = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
   try {
     const post = await Post.findByIdAndDelete(req.params.id);
     if (post.image) {
@@ -67,11 +58,7 @@ const deletePost = async (
   }
 };
 
-const showUpdate = async (
-  req: Request<{ id: string }>,
-  res: Response,
-  next: NextFunction
-) => {
+const showUpdate = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
   try {
     const post = await Post.findById(req.params.id);
     res.render('Posts/update', { post: post, postId: req.params.id });
@@ -121,11 +108,7 @@ const updatePost = async (
   }
 };
 
-const likePost = async (
-  req: Request<{ id: string }>,
-  res: Response,
-  next: NextFunction
-) => {
+const likePost = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
   let flag = false;
   try {
     const currUser = await User.findById(req.session['currentUser']['_id']).populate('likes');
@@ -148,11 +131,7 @@ const likePost = async (
   }
 };
 
-const disLikePost = async (
-  req: Request<{ id: string }>,
-  res: Response,
-  next: NextFunction
-) => {
+const disLikePost = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
   let flag = false;
   try {
     const currUser = await User.findById(req.session['currentUser']['_id']).populate('likes');
@@ -201,6 +180,7 @@ const createPost = async (
     Helpers.findFaculty(post);
     post.author = req.session['currentUser']['_id'];
     post.createdAt = new Date();
+    post.privacy = 'public';
     console.log(post);
     await post.save();
     res.redirect('Posts');

@@ -6,19 +6,13 @@
   <div class="middlePart">
     <nav class="searchBar">
       <form class="searchComponents" action="" method="">
-        <input
-          value="<%= keyword %>"
-          type="text"
-          name="q"
-          id=""
-          class="form-control"
-          value="<%= keyword%>" />
+        <input value="<%= keyword %>" type="text" name="q" id="" class="form-control" value="<%= keyword%>" />
         <button>Buscar</button>
       </form>
     </nav>
 
     <section class="postsContainer">
-      <% for(let post of posts){ %>
+      <% for(let post of posts){ %> <% if(post.privacy === 'public'){ %>
       <a href="/posts/<%=post._id%>">
         <div class="post">
           <h2 id="title"><%= post.title %></h2>
@@ -33,6 +27,20 @@
       </a>
       <hr />
       <% } %>
+      <% } %>
     </section>
+  </div>
+  <div class="groupContent">
+    <a href="groups/new">Crear un grupo</a>
+    <div class="personalGroups">
+      <% for (let group of groups){ %>
+      <a href="/groups/<%= group._id %>"><%= group.name %></a>
+      <% } %>
+      <p>Tus grupos:</p>
+    </div>
+
+    <div class="discoverGroups">
+      <p>Descubre nuevos grupos:</p>
+    </div>
   </div>
 </main>

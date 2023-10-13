@@ -51,6 +51,10 @@ const post = new Schema({
     ],
   },
   image: Array,
+  privacy: {
+    type: String,
+    enum: ['public', 'group'],
+  },
 });
 
 export const Post = mongoose.model('Post', post);

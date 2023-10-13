@@ -35,7 +35,55 @@
         </div>
   
         <p><%= educator.description %></p>
+        <% if (educator.serviceInfo.scheadule[0]) {%>
+          <div class="schedule">
+            <label for="lunes">Lunes: </label>
+            <input
+              id="lunes"
+              type="text"
+              name=""
+              value="<%= educator.serviceInfo.scheadule[0] %>"
+              readonly />
+            <label for="martes">Martes: </label>
+            <input
+              id="martes"
+              type="text"
+              name=""
+              value="<%= educator.serviceInfo.scheadule[1] %>"
+              readonly />
+            <label for="miercoles">Miercoles: </label>
+            <input
+              id="miercoles"
+              type="text"
+              name=""
+              value="<%= educator.serviceInfo.scheadule[2] %>"
+              readonly />
+            <label for="jueves">Jueves: </label>
+            <input
+              id="jueves"
+              type="text"
+              name=""
+              value="<%= educator.serviceInfo.scheadule[3] %>"
+              readonly />
+            <label for="viernes">Viernes: </label>
+            <input
+              id="viernes"
+              type="text"
+              name=""
+              value="<%= educator.serviceInfo.scheadule[4] %>"
+              readonly />
+            <label for="sabado">Sabado: </label>
+            <input
+              id="sabado"
+              type="text"
+              name=""
+              value="<%= educator.serviceInfo.scheadule[5] %>"
+              readonly />
+          </div>
+          <% } %>
+        
       </div>
+      
 
       <div class="userPosts">
         <div class="educatorsPostsTitle">

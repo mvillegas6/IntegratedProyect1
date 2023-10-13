@@ -51,7 +51,45 @@ const renderEducatorPanel = async (
   }
 };
 
+const renderUpdateInfo = async (
+  req: Request<{ id: string }>,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const posts = await Post.find({
+      author: req.params.id,
+    });
+    res.render('educators/updateInfo', { posts: posts, viewOpt: '' });
+  } catch (err) {
+    next(err);
+  }
+};
+
+const updateEducatorPanel = async (
+  req: Request<{ id: string }>,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const userInfo = await User.findById(req.params.id);
+    if (req.body.description) {
+      userInfo.description = req.body.description;
+    }
+    if (req.body.daterange) {
+      userInfo.serviceInfo.scheadule = req.body.daterange;
+    }
+    await userInfo.save();
+    req.session['currentUser'] = userInfo;
+    res.redirect(`/personal/${req.params.id}`);
+  } catch (err) {
+    next(err);
+  }
+};
+
 export const educatorController = {
   show,
   renderEducatorPanel,
+  renderUpdateInfo,
+  updateEducatorPanel,
 };

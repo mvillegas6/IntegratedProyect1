@@ -4,6 +4,19 @@
   <script
     src="https://kit.fontawesome.com/712fb57849.js"
     crossorigin="anonymous"></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <main>
     <section class="visualContainer">
       <div class="image">
@@ -127,6 +140,33 @@
     document.querySelector('.file-upload').onchange = function () {
       document.querySelector('.picture-form').submit();
     };
+  </script>
+  <script>
+    $(function () {
+      $('input[name="daterange"]')
+        .daterangepicker(
+          {
+            opens: 'left',
+            timePicker: true,
+            timePicker24Hour: true,
+            timePickerIncrement: 15,
+            locale: {
+              format: 'HH:mm',
+            },
+          },
+          function (start, end, label) {
+            console.log(
+              'A new time selection was made: ' +
+                start.format('HH:mm') +
+                ' to ' +
+                end.format('HH:mm')
+            );
+          }
+        )
+        .on('show.daterangepicker', function (ev, picker) {
+          picker.container.find('.calendar-table').hide();
+        });
+    });
   </script>
 
   <script src="/scripts/personal.js"></script>

@@ -25,7 +25,7 @@ main .middlePart {
   border-right: 2px solid #333333;
   width: 60%;
   overflow-y: scroll;
-  margin-left: 400px;
+  margin-left: 23%;
 }
 main .searchBar {
   display: flex;
@@ -138,7 +138,7 @@ nav .searchComponents input:focus {
 }
 
 .groupContent {
-  width: 30%;
+  width: 25%;
 }
 
 .personalGroups {

@@ -79,6 +79,9 @@ const updateEducatorPanel = async (
     if (req.body.daterange) {
       userInfo.serviceInfo.scheadule = req.body.daterange;
     }
+    if (req.body.office) {
+      userInfo.serviceInfo.office = req.body.office;
+    }
     await userInfo.save();
     req.session['currentUser'] = userInfo;
     res.redirect(`/personal/${req.params.id}`);

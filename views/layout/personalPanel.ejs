@@ -75,9 +75,14 @@
       <div class="userInfo">
         <div class="prContainer">
           <h1>@<%= currentUser.name %></h1>
+          <% if (currentUser.__t && currentUser.__t === 'Educator') {%>
           <a class="user-degree" href="#">
-            <%=currentUser.degree%> | <%= currentUser.__t %></a
-          >
+            <%=currentUser.degree%> | Educador | <%=
+            currentUser.serviceInfo.office %>
+          </a>
+          <% } else {%>
+          <a class="user-degree" href="#"> <%=currentUser.degree%></a>
+          <% } %>
         </div>
         <%- body %>
       </div>

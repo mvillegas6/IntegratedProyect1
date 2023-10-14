@@ -28,6 +28,9 @@ const groupSchema = new Schema({
       },
     ],
   },
+  profilePic: {
+    type: Object,
+  },
 });
 
 export const Group = mongoose.model('Group', groupSchema);

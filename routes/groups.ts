@@ -13,4 +13,5 @@ export const groupRouter = Router.get('/new', groupController.createGroup)
   .post('/:id/post', upload.array('image'), groupController.uploadPost)
   .put('/:id/addMember', groupController.addMember)
   .put('/:id/removeMember', groupController.removeMember)
-  .delete('/:id', groupController.deleteGroup);
+  .delete('/:id', groupController.deleteGroup)
+  .put('/:id/img', upload.array('image'), groupController.changeImg);

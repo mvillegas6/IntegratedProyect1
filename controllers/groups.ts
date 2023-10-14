@@ -138,6 +138,29 @@ const deleteGroup = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
+const changeImg = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const group = await Group.findById(req.params.id);
+    const files = req.files as Express.Multer.File[];
+    const newImage = files.map((f) => {
+      const { path, filename, mimetype, originalname } = f;
+      return {
+        path,
+        filename,
+        mimetype,
+      };
+    });
+    if (group.profilePic) {
+      await cloudinary.uploader.destroy(group.profilePic[0].filename);
+    }
+    group.profilePic = newImage;
+    await group.save();
+    res.redirect(`/groups/${req.params.id}`);
+  } catch (err) {
+    next(err);
+  }
+};
+
 export const groupController = {
   createGroup,
   newGroup,
@@ -147,4 +170,5 @@ export const groupController = {
   addMember,
   removeMember,
   deleteGroup,
+  changeImg,
 };

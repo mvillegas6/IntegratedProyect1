@@ -12,9 +12,7 @@
       <a href="/posts/<%=post._id%>">
         <div class="post">
           <h2 id="title"><%= post.title %></h2>
-          <p id="author">
-            <small> <%= `@${post.author.name}` %> </small>
-          </p>
+
           <p id="body"><%= post.body %></p>
           <p id="faculty"><%= post.faculty%> | <%= post.degree%></p>
           <p id="attachments">Archivos: <%= post.image.length %></p>
@@ -31,6 +29,56 @@
   <div class="rightPart">
     <div class="rightContent">
       <div class="groupHeader">
+        <div class="image">
+          <% if(!group.profilePic){%>
+          <form
+            class="picture-form"
+            action="/groups/<%=group._id%>/img?_method=PUT"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <img
+              class="profile-pic"
+              src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
+              alt=""
+            />
+            <div class="upload-icon">
+              <label for="file">
+                <i class="fa-solid fa-camera"></i>
+                <input
+                  class="file-upload"
+                  type="file"
+                  id="file"
+                  name="image"
+                  accept="image/jpeg,image/jpg,image/png"
+                />
+              </label>
+            </div>
+          </form>
+          <% }else{ %>
+          <img class="user-picture" src="<%=group.profilePic[0].path%>" alt="" />
+          <form
+            class="picture-form"
+            action="/groups/<%=group._id%>/img?_method=PUT"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <div class="upload-icon">
+              <label for="file">
+                <i class="fa-solid fa-camera"></i>
+                <input
+                  class="file-upload"
+                  type="file"
+                  id="file"
+                  name="image"
+                  accept="image/jpeg,image/jpg,image/png"
+                />
+              </label>
+            </div>
+          </form>
+          <% } %>
+        </div>
+
         <h1 class="name"><%= group.name %></h1>
         <p class="groupDescription"><%= group.description %></p>
       </div>
@@ -55,3 +103,11 @@
     <% } %>
   </div>
 </main>
+
+<script>
+  document.querySelector('.file-upload').onchange = function () {
+    document.querySelector('.picture-form').submit();
+  };
+</script>
+
+<script src="/scripts/personal.js"></script>

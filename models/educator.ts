@@ -4,19 +4,18 @@ import { User } from './user';
 
 const Schema = mongoose.Schema;
 const educatorSchema = new Schema({
-    serviceInfo: {
-        scheadule: {
-            type: String,
-            required: false,
-            default: '',
-        },
-        office: {
-            type: String,
-            required: false,
-            default: '',
-        }
+  serviceInfo: {
+    scheadule: {
+      type: [],
+      required: false,
+      default: [],
     },
+    office: {
+      type: String,
+      required: false,
+      default: '',
+    },
+  },
 });
 
-
-export const Educator =  User.discriminator('Educator', educatorSchema);
+export const Educator = User.discriminator('Educator', educatorSchema);

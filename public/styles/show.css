@@ -17,6 +17,7 @@ main {
   margin: 20px;
   overflow: hidden;
 }
+
 main .middlePart {
   display: flex;
   flex-direction: column;
@@ -28,6 +29,7 @@ main .middlePart {
   overflow-y: scroll;
   margin-left: 23%;
 }
+
 main .searchBar {
   display: flex;
   flex-direction: row;
@@ -47,6 +49,7 @@ main .postsContainer {
   text-decoration: none;
   overflow: scroll;
 }
+
 .postsContainer a {
   text-decoration: none;
   width: 100%;
@@ -181,4 +184,15 @@ nav .searchComponents input:focus {
 
 .groupData {
   width: 15em;
+}
+
+.postName {
+  font-weight: bold;
+  font-size: large;
+}
+
+.groupPostInfo:hover {
+  transform: translateY(-0.1em);
+  box-shadow: 0 0.5em 0.5em -0.4em #333333;
+  background-color: #383737;
 }

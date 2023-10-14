@@ -36,7 +36,7 @@
       <% if(myGroups.length !== 0){ %> <% for (let group of myGroups){ %>
       <a class="groupPost" href="/groups/<%= group._id %>">
         <div class="groupPostInfo">
-          <p class="groupData"><%= group.name %></p>
+          <p class="postName"><%= group.name %></p>
           <p class="groupData"><%= group.description %></p>
           <p class="groupData">Miembros: <%= group.members.length %></p>
           <p class="groupData">Publicaciones: <%= group.posts.length %></p>
@@ -52,7 +52,7 @@
       <% if(newGroups.length !== 0){ %> <% for (let group of newGroups){ %>
       <a class="groupPost" href="/groups/<%= group._id %>">
         <div class="groupPostInfo">
-          <p class="groupData"><%= group.name %></p>
+          <p class="postName"><%= group.name %></p>
           <p class="groupData"><%= group.description %></p>
           <p class="groupData">Miembros: <%= group.members.length %></p>
           <p class="groupData">Publicaciones: <%= group.posts.length %></p>

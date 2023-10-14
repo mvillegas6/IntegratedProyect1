@@ -1,35 +1,57 @@
 <%layout('layout/boilerplate')%> <%- include('../templates/sidebar') %>
 <link rel="stylesheet" href="/styles/sidebar.css" />
 <link rel="stylesheet" href="/styles/groups.css" />
-<h1 class="name"><%= group.name %></h1>
-<div class="container">
-  <div class="posts">
-    <% for(let post of posts){ %>
-    <a href="/posts/<%= post._id %>">
-      <div class="post">
-        <p><%= post.name %></p>
-        <p><%= post.author %></p>
-        <p><%= post.body %></p>
+
+<main>
+  <div class="middlePart">
+    <div class="postsContainer">
+      <h1 class="postTitle">Publicaciones</h1>
+      <% if(posts.length === 0){ %>
+      <p class="postTitle">Sin Publicaciones Disponibless</p>
+      <% } %> <% for(let post of posts){ %>
+      <a href="/posts/<%=post._id%>">
+        <div class="post">
+          <h2 id="title"><%= post.title %></h2>
+          <p id="author">
+            <small> <%= `@${post.author.name}` %> </small>
+          </p>
+          <p id="body"><%= post.body %></p>
+          <p id="faculty"><%= post.faculty%> | <%= post.degree%></p>
+          <p id="attachments">Archivos: <%= post.image.length %></p>
+          <p id="votes">Votos: <%= post.votes.length %></p>
+        </div>
+      </a>
+      <hr />
+
+      <% } %>
+    </div>
+    |
+  </div>
+
+  <div class="rightPart">
+    <div class="rightContent">
+      <div class="groupHeader">
+        <h1 class="name"><%= group.name %></h1>
+        <p class="groupDescription"><%= group.description %></p>
       </div>
-    </a>
+      <div class="buttons">
+        <% if(currentUser){ %> <% if (currentUser._id == group.owner[0]._id){ %>
+        <form action="/groups/<%= group._id %>?_method=DELETE" method="POST">
+          <button class="btn btn-danger">Eliminar Grupo</button>
+        </form>
+        <% } %> <% if(!followed ){ %>
+        <form action="/groups/<%= group._id %>/addMember?_method=PUT" method="POST">
+          <button class="btn btn-success">Seguir grupo</button>
+        </form>
+        <% }else if(followed && !(currentUser._id == group.owner[0]._id)){ %>
+        <form action="/groups/<%= group._id %>/removeMember?_method=PUT" method="POST">
+          <button class="btn btn-danger">No seguir grupo</button>
+        </form>
+        <% } %> <% if(followed || (currentUser._id == group.owner[0]._id)){ %>
+        <a class="btn btn-primary" href="/groups/<%= group._id %>/post">Publicar</a>
+        <% } %>
+      </div>
+    </div>
     <% } %>
   </div>
-  <div class="buttons">
-    <% if(currentUser){ %> <% if (currentUser._id == group.owner[0]._id){ %>
-    <form action="/groups/<%= group._id %>?_method=DELETE" method="POST">
-      <button class="btn btn-danger">Eliminar Grupo</button>
-    </form>
-    <% } %> <% if(!followed ){ %>
-    <form action="/groups/<%= group._id %>/addMember?_method=PUT" method="POST">
-      <button class="btn btn-success">Seguir grupo</button>
-    </form>
-    <% }else if(followed && !(currentUser._id == group.owner[0]._id)){ %>
-    <form action="/groups/<%= group._id %>/removeMember?_method=PUT" method="POST">
-      <button class="btn btn-danger">Dejar de seguir grupo</button>
-    </form>
-    <% } %> <% if(followed || (currentUser._id == group.owner[0]._id)){ %>
-    <a class="btn btn-primary" href="/groups/<%= group._id %>/post">Publicar</a>
-    <% } %>
-  </div>
-  <% } %>
-</div>
+</main>

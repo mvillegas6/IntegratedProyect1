@@ -1,7 +1,22 @@
 <body>
   <% layout('layout/boilerplate') %>
   <link rel="stylesheet" href="/styles/users/personal.css" />
-  <script src="https://kit.fontawesome.com/712fb57849.js" crossorigin="anonymous"></script>
+  <script
+    src="https://kit.fontawesome.com/712fb57849.js"
+    crossorigin="anonymous"></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script
+    type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <main>
     <section class="visualContainer">
       <div class="image">
@@ -10,13 +25,11 @@
           class="picture-form"
           action="/personal/<%=currentUser._id%>?_method=PUT"
           method="post"
-          enctype="multipart/form-data"
-        >
+          enctype="multipart/form-data">
           <img
             class="profile-pic"
             src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
-            alt=""
-          />
+            alt="" />
           <div class="upload-icon">
             <label for="file">
               <i class="fa-solid fa-camera"></i>
@@ -25,19 +38,20 @@
                 type="file"
                 id="file"
                 name="image"
-                accept="image/jpeg,image/jpg,image/png"
-              />
+                accept="image/jpeg,image/jpg,image/png" />
             </label>
           </div>
         </form>
         <% }else{ %>
-        <img class="user-picture" src="<%=currentUser.profilePic[0].path%>" alt="" />
+        <img
+          class="user-picture"
+          src="<%=currentUser.profilePic[0].path%>"
+          alt="" />
         <form
           class="picture-form"
           action="/personal/<%=currentUser._id%>?_method=PUT"
           method="post"
-          enctype="multipart/form-data"
-        >
+          enctype="multipart/form-data">
           <div class="upload-icon">
             <label for="file">
               <i class="fa-solid fa-camera"></i>
@@ -46,8 +60,7 @@
                 type="file"
                 id="file"
                 name="image"
-                accept="image/jpeg,image/jpg,image/png"
-              />
+                accept="image/jpeg,image/jpg,image/png" />
             </label>
           </div>
         </form>
@@ -62,7 +75,14 @@
       <div class="userInfo">
         <div class="prContainer">
           <h1>@<%= currentUser.name %></h1>
-          <a class="user-degree" href="#"> <%=currentUser.degree%> </a>
+          <% if (currentUser.__t && currentUser.__t === 'Educator') {%>
+          <a class="user-degree" href="#">
+            <%=currentUser.degree%> | Educador | <%=
+            currentUser.serviceInfo.office %>
+          </a>
+          <% } else {%>
+          <a class="user-degree" href="#"> <%=currentUser.degree%></a>
+          <% } %>
         </div>
         <%- body %>
       </div>
@@ -70,17 +90,23 @@
         <form action="" class="chContainer" id="postForm">
           <select name="view" id="formSel" class="viewSelect">
             <% if (viewOpt) { %>
-              <option value="<%= viewOpt %>" selected><%= viewOpt %></option>
-              <% if (viewOpt === 'Publicaciones del usuario') { %>
-                <option value="Publicaciones guardadas"><a class="" type="submit">Publicaciones guardadas</a></option>
-              <% } %>
-              <% if (viewOpt === 'Publicaciones guardadas') { %>
-                <option value="Publicaciones del usuario"><a class="" type="submit">Publicaciones del usuario</a></option>
-              <% } %>
-              <% }else{ %>
-                <option value="Publicaciones del usuario" selected><a class="" type="submit">Publicaciones del usuario</a></option>
-                <option value="Publicaciones guardadas"><a class="" type="submit">Publicaciones guardadas</a></option>
-              <% } %>
+            <option value="<%= viewOpt %>" selected><%= viewOpt %></option>
+            <% if (viewOpt === 'Publicaciones del usuario') { %>
+            <option value="Publicaciones guardadas">
+              <a class="" type="submit">Publicaciones guardadas</a>
+            </option>
+            <% } %> <% if (viewOpt === 'Publicaciones guardadas') { %>
+            <option value="Publicaciones del usuario">
+              <a class="" type="submit">Publicaciones del usuario</a>
+            </option>
+            <% } %> <% }else{ %>
+            <option value="Publicaciones del usuario" selected>
+              <a class="" type="submit">Publicaciones del usuario</a>
+            </option>
+            <option value="Publicaciones guardadas">
+              <a class="" type="submit">Publicaciones guardadas</a>
+            </option>
+            <% } %>
           </select>
         </form>
       </div>
@@ -102,13 +128,15 @@
       <div>
         <p>Grupos asociados</p>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, labore! Iste facere corporis
-          nostrum. Sint doloremque debitis est exercitationem impedit aspernatur dolorem. Reiciendis ea quasi
-          laborum officia soluta eius veniam. In adipisci totam natus nesciunt porro? Rerum incidunt tempora
-          autem, vitae quia voluptas fugiat ratione itaque suscipit temporibus consectetur ipsam iste natus,
-          voluptates pariatur necessitatibus. Dicta repudiandae molestiae libero quam. Labore blanditiis
-          beatae dolores quas. Reprehenderit possimus ipsa corrupti fuga tempora quaerat velit, unde dolorum.
-          Porro
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
+          labore! Iste facere corporis nostrum. Sint doloremque debitis est
+          exercitationem impedit aspernatur dolorem. Reiciendis ea quasi laborum
+          officia soluta eius veniam. In adipisci totam natus nesciunt porro?
+          Rerum incidunt tempora autem, vitae quia voluptas fugiat ratione
+          itaque suscipit temporibus consectetur ipsam iste natus, voluptates
+          pariatur necessitatibus. Dicta repudiandae molestiae libero quam.
+          Labore blanditiis beatae dolores quas. Reprehenderit possimus ipsa
+          corrupti fuga tempora quaerat velit, unde dolorum. Porro
         </p>
       </div>
     </section>
@@ -117,6 +145,33 @@
     document.querySelector('.file-upload').onchange = function () {
       document.querySelector('.picture-form').submit();
     };
+  </script>
+  <script>
+    $(function () {
+      $('input[name="daterange"]')
+        .daterangepicker(
+          {
+            opens: 'left',
+            timePicker: true,
+            timePicker24Hour: true,
+            timePickerIncrement: 15,
+            locale: {
+              format: 'HH:mm',
+            },
+          },
+          function (start, end, label) {
+            console.log(
+              'A new time selection was made: ' +
+                start.format('HH:mm') +
+                ' to ' +
+                end.format('HH:mm')
+            );
+          }
+        )
+        .on('show.daterangepicker', function (ev, picker) {
+          picker.container.find('.calendar-table').hide();
+        });
+    });
   </script>
 
   <script src="/scripts/personal.js"></script>

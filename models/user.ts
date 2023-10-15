@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   description: {
     type: String,
+    default: '',
   },
   profilePic: {
     type: Object

@@ -1,0 +1,68 @@
+<% layout('layout/personalPanel') %>
+<body>
+  <form
+    class="info-from"
+    action="/educators/update/<%=currentUser._id%>?_method=PUT"
+    method="post">
+    <textarea
+      name="description"
+      id=""
+      cols="70"
+      rows="4"
+      class="mt-3 commentInput"
+      required>
+        <%= currentUser.description %></textarea
+    >
+
+    <div class="schedule">
+      <label for="lunes">Lunes: </label>
+      <input
+        id="lunes"
+        type="text"
+        name="daterange"
+        value="<%= currentUser.serviceInfo.scheadule[0] %>" />
+      <label for="martes">Martes: </label>
+      <input
+        id="martes"
+        type="text"
+        name="daterange"
+        value="<%= currentUser.serviceInfo.scheadule[1] %>" />
+      <label for="miercoles">Miercoles: </label>
+      <input
+        id="miercoles"
+        type="text"
+        name="daterange"
+        value="<%= currentUser.serviceInfo.scheadule[2] %>" />
+      <label for="jueves">Jueves: </label>
+      <input
+        id="jueves"
+        type="text"
+        name="daterange"
+        value="<%= currentUser.serviceInfo.scheadule[3] %>" />
+      <label for="viernes">Viernes: </label>
+      <input
+        id="viernes"
+        type="text"
+        name="daterange"
+        value="<%= currentUser.serviceInfo.scheadule[4] %>" />
+      <label for="sabado">Sabado: </label>
+      <input
+        id="sabado"
+        type="text"
+        name="daterange"
+        value="<%= currentUser.serviceInfo.scheadule[5] %>" />
+    </div>
+
+    <div class="officeInput">
+      <label for="office">Oficina / Salón: </label>
+      <input type="text" id="office" name="office" value="" />
+    </div>
+
+    <div class="buttons-description">
+      <button type="submit" class="btn btn-primary mt-3">Actualizar</button>
+      <a href="/personal/<%=currentUser._id%>" class="btn btn-danger mt-3"
+        >Cancelar</a
+      >
+    </div>
+  </form>
+</body>

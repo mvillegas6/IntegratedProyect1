@@ -6,7 +6,7 @@ main {
 }
 .user-degree {
   margin-left: 70px;
-  width: 40%;
+  width: auto;
 }
 
 hr {
@@ -79,59 +79,8 @@ hr {
   padding: 10px;
   border-radius: 20px;
 }
-
 .info-from {
   width: 100%;
-}
-
-.schedule {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 10px;
-  align-items: center;
-  border: 1px solid #666666;
-  border-radius: 15px;
-  margin-bottom: 5px;
-}
-
-.schedule input {
-  margin: 5px;
-  width: 35%;
-  background-color: #424242;
-  color: #ffff;
-  border: none;
-  /* border-radius: 15%; */
-  /* border-bottom: 2px solid #5ac8fa; */
-}
-
-.schedule label {
-  font-weight: 700;
-  margin-right: 2px;
-}
-
-.officeInput {
-  width: 40%;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  padding: 10px;
-  align-items: center;
-  border: 1px solid #666666;
-  border-radius: 15px;
-}
-
-.officeInput label {
-  font-weight: 700;
-  margin-right: 2px;
-}
-
-.officeInput input {
-  margin: 5px;
-  background-color: #424242;
-  color: #ffff;
-  border: none;
 }
 
 .upload-icon {
@@ -158,10 +107,6 @@ hr {
   margin-bottom: 10px;
 }
 
-.btnActualizar {
-  margin-top: 10px;
-}
-
 .userInfo {
   width: 100%;
   /* height: 30%; */
@@ -180,6 +125,7 @@ hr {
   flex-direction: row;
   flex-wrap: wrap;
 }
+
 .prContainer h1 {
   flex-basis: 15%;
   display: flex;
@@ -226,6 +172,18 @@ hr {
   width: 100%;
 }
 
+.educatorsPostsTitle {
+  justify-content: center;
+  display: flex;
+  height: 4rem;
+  width: 100%;
+  font-size: 30px;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: inherit;
+}
+
 .postsContainer {
   display: flex;
   width: 100%;
@@ -233,7 +191,9 @@ hr {
   flex-wrap: wrap;
   justify-content: start;
   flex-direction: row;
+  margin-top: 20px;
 }
+
 .post {
   display: flex;
   flex-direction: column;
@@ -287,6 +247,32 @@ hr {
   border: none;
   border-radius: 10px;
   transition: background-color 0.3s;
+}
+
+.schedule {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+  align-items: center;
+  border: 1px solid #666666;
+  border-radius: 15px;
+}
+
+.schedule input {
+  margin: 5px;
+  width: 35%;
+  background-color: #424242;
+  color: #ffff;
+  border: none;
+  border-radius: 15%;
+  /* border-bottom: 2px solid #5ac8fa; */
+}
+
+.schedule label {
+  font-weight: 700;
+  margin-right: 2px;
 }
 
 .viewSelect option {

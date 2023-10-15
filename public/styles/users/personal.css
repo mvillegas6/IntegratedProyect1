@@ -40,6 +40,7 @@ hr {
 .infoContainer {
   width: 60%;
   height: 94vh;
+  min-width: 994px;
   display: flex;
   flex-direction: column;
   background-color: #333333;

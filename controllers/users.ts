@@ -4,6 +4,7 @@ import { Admin } from '../models/admin';
 import { Request, Response, NextFunction } from 'express';
 import { Faculties } from '../util/degrees';
 import { Post } from '../models/post';
+import { Group } from '../models/groups';
 import { cloudinary } from '../cloudinary/index';
 import bcrypt from 'bcrypt';
 
@@ -17,13 +18,13 @@ const renderLogin = (req: Request, res: Response) => {
 
 const loginUser = async (req: Request, res: Response) => {
   try {
-    const {username, password } = req.body;
-    const user = await User.findOne({email:username});
-    const validPassword = await bcrypt.compare(password,user.password);
+    const { username, password } = req.body;
+    const user = await User.findOne({ email: username });
+    const validPassword = await bcrypt.compare(password, user.password);
 
-    if (validPassword){
+    if (validPassword) {
       req.session['currentUser'] = user;
-      res.redirect('/posts')
+      res.redirect('/posts');
     }
   } catch (error) {
     console.log(error);
@@ -42,14 +43,12 @@ const postUser = async (req: Request, res: Response, next: NextFunction) => {
     const hash = await bcrypt.hash(password, 12);
     let user;
 
-    if(isEducator){
-      user = new Educator({ email, degree, name: email.slice(0, email.indexOf('@')), password:hash });
-    }
-    else if (isAdmin){
-      user = new Admin({ email, degree, name: email.slice(0, email.indexOf('@')), password:hash });
-    }
-    else{
-      user = new User({ email, degree, name: email.slice(0, email.indexOf('@')), password:hash });
+    if (isEducator) {
+      user = new Educator({ email, degree, name: email.slice(0, email.indexOf('@')), password: hash });
+    } else if (isAdmin) {
+      user = new Admin({ email, degree, name: email.slice(0, email.indexOf('@')), password: hash });
+    } else {
+      user = new User({ email, degree, name: email.slice(0, email.indexOf('@')), password: hash });
     }
 
     if (Faculties.ingeneers.includes(user.degree)) {
@@ -64,8 +63,8 @@ const postUser = async (req: Request, res: Response, next: NextFunction) => {
       user.faculty = 'Economía';
     }
     await user.save();
-    req.session['currentUser'] = user
-    res.redirect('/posts')
+    req.session['currentUser'] = user;
+    res.redirect('/posts');
   } catch (e) {
     console.log(e);
     req.flash('error', e.message);
@@ -88,7 +87,7 @@ const updateUserPanel = async (req: Request<{ id: string }>, res: Response, next
           mimetype,
         };
       });
-      if(userInfo.profilePic){
+      if (userInfo.profilePic) {
         await cloudinary.uploader.destroy(userInfo.profilePic[0].filename);
       }
       userInfo.profilePic = newImage;
@@ -105,15 +104,17 @@ const renderPersonalPanel = async (req: Request<{ id: string }>, res: Response, 
   try {
     const viewOpt = req.query.view;
     let posts;
-    if (viewOpt === 'Publicaciones guardadas'){
+    const myGroups = await Group.find({ members: { $in: [req.session['currentUser']] } });
+    const newGroups = await Group.find({ members: { $not: { $in: [req.session['currentUser']] } } });
+    if (viewOpt === 'Publicaciones guardadas') {
       const u = await User.findById(req.params.id).populate('likes');
       posts = u['likes'];
-    }else{
+    } else {
       posts = await Post.find({
         author: req.params.id,
       });
     }
-    res.render('users/personalPanel', { posts: posts, viewOpt});
+    res.render('users/personalPanel', { posts: posts, viewOpt, myGroups, newGroups });
   } catch (err) {
     next(err);
   }
@@ -123,7 +124,9 @@ const renderUpadtePanel = async (req: Request<{ id: string }>, res: Response, ne
     const posts = await Post.find({
       author: req.params.id,
     });
-    res.render('users/update', { posts: posts, viewOpt:'' });
+    const myGroups = await Group.find({ members: { $in: [req.session['currentUser']] } });
+    const newGroups = await Group.find({ members: { $not: { $in: [req.session['currentUser']] } } });
+    res.render('users/update', { posts: posts, viewOpt: '', myGroups, newGroups });
   } catch (err) {
     next(err);
   }

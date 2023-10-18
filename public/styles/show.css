@@ -16,6 +16,7 @@ main {
   justify-content: center;
   margin: 20px;
   overflow: hidden;
+  align-items: flex-start;
 }
 
 main .middlePart {
@@ -27,7 +28,7 @@ main .middlePart {
   border-right: 2px solid #333333;
   width: 60%;
   overflow-y: scroll;
-  margin-left: 23%;
+  margin-left: 20%;
 }
 
 main .searchBar {
@@ -41,7 +42,7 @@ main .searchBar {
 
 main .postsContainer {
   width: 88.2%;
-  height: 90vh;
+  height: 86vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -155,10 +156,16 @@ nav .searchComponents input:focus {
 
 .newGroup {
   margin: 10px;
+  margin-right: 0px;
 }
 
 .myGroups {
   color: white;
+}
+
+.newGroupBtn {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .groupLink {

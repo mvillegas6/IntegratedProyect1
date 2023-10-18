@@ -9,15 +9,15 @@ hr {
   border-radius: 10px;
 }
 
-main {
+/* main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin: 20px;
   overflow: hidden;
-}
-main .middlePart {
+} */
+/* main .middlePart {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,19 +26,19 @@ main .middlePart {
   border-right: 2px solid #333333;
   width: 60%;
   overflow-y: scroll;
-}
-main .searchBar {
+} */
+/* main .searchBar {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-bottom: 30px;
   height: 2.5em;
   width: 98%;
-}
+} */
 
 main .educatorContainer {
   width: 82.2%;
-  height: auto;
+  height: 82vh;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -46,10 +46,11 @@ main .educatorContainer {
   align-items: start;
   text-decoration: none;
   margin: 10px;
+  overflow: scroll;
 }
 .educatorContainer a {
   text-decoration: none;
-  width: 47.8%;
+  width: 47%;
   margin: 10px;
 }
 .educatorCard {
@@ -190,10 +191,15 @@ nav .searchComponents input:focus {
 }
 
 .educatorsTitle h1 {
-  flex-basis: 15%;
-  display: flex;
-  align-items: center;
+  width: 100%;
   color: #ffff;
+  text-align: center;
+}
+
+.educatorsTitle {
+  display: flex;
+  width: 100%;
+  justify-content: center;
 }
 
 .bottomEducatorCard {

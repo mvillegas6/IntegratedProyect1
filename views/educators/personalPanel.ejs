@@ -89,35 +89,21 @@
         <div class="educatorsPostsTitle">
           <h1>Publicaciones</h1>
         </div>
-        <div class="postsContainer">
+        <div class="postsContainerEducator">
           <% for(let post of posts){ %>
-          <a href="/posts/<%=post._id%>" class="post">
+          <a href="/posts/<%=post._id%>" class="postEducator">
             <h4><%= post.title %></h4>
-            <p class="body"><%= post.body %></p>
-            <p class="faculty"><%= post.faculty%> | <%= post.degree%></p>
-            <p class="attachments">Archivos: <%= post.image.length %></p>
-            <small class="votes">Votos: <%= post.votes.length %></small>
+            <p class="bodyEducator"><%= post.body %></p>
+            <p class="facultyEducator"><%= post.faculty%> | <%= post.degree%></p>
+            <p class="attachmentsEducator">Archivos: <%= post.image.length %></p>
+            <small class="votesEducator">Votos: <%= post.votes.length %></small>
           </a>
           <% } %>
         </div>
       </div>
     </section>
-    <section class="user-groups">
-      <div>
-        <p>Grupos asociados</p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
-          labore! Iste facere corporis nostrum. Sint doloremque debitis est
-          exercitationem impedit aspernatur dolorem. Reiciendis ea quasi laborum
-          officia soluta eius veniam. In adipisci totam natus nesciunt porro?
-          Rerum incidunt tempora autem, vitae quia voluptas fugiat ratione
-          itaque suscipit temporibus consectetur ipsam iste natus, voluptates
-          pariatur necessitatibus. Dicta repudiandae molestiae libero quam.
-          Labore blanditiis beatae dolores quas. Reprehenderit possimus ipsa
-          corrupti fuga tempora quaerat velit, unde dolorum. Porro
-        </p>
-      </div>
-    </section>
+    <%- include('../groups/layoutGroups') %>
+
   </main>
   <script>
     document.querySelector('.file-upload').onchange = function () {

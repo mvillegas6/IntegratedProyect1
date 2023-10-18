@@ -1,11 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
 import { User } from '../models/user';
 import { Post } from '../models/post';
+import { Group } from '../models/groups';
 
 const show = async (req: Request, res: Response, next: NextFunction) => {
   try {
     let educators: any;
     let keyword;
+    const myGroups = await Group.find({ members: { $in: [req.session['currentUser']] } });
+    const newGroups = await Group.find({ members: { $not: { $in: [req.session['currentUser']] } } });
+
     if (req.query.q) {
       keyword = `${req.query.q}`;
       educators = (
@@ -29,48 +33,40 @@ const show = async (req: Request, res: Response, next: NextFunction) => {
         })
       ).reverse();
     }
-    res.render('educators/show', { educators, keyword });
+    res.render('educators/show', { educators, keyword, myGroups, newGroups });
   } catch (err) {
     next(err);
   }
 };
 
-const renderEducatorPanel = async (
-  req: Request<{ id: string }>,
-  res: Response,
-  next: NextFunction
-) => {
+const renderEducatorPanel = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
   try {
     const educator = await User.findById(req.params.id);
     const posts = await Post.find({
       author: req.params.id,
     });
-    res.render('educators/personalPanel', { posts: posts, educator });
+    const myGroups = await Group.find({ members: { $in: [req.session['currentUser']] } });
+    const newGroups = await Group.find({ members: { $not: { $in: [req.session['currentUser']] } } });
+    res.render('educators/personalPanel', { posts: posts, educator, myGroups, newGroups });
   } catch (err) {
     next(err);
   }
 };
 
-const renderUpdateInfo = async (
-  req: Request<{ id: string }>,
-  res: Response,
-  next: NextFunction
-) => {
+const renderUpdateInfo = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
   try {
     const posts = await Post.find({
       author: req.params.id,
     });
-    res.render('educators/updateInfo', { posts: posts, viewOpt: '' });
+    const myGroups = await Group.find({ members: { $in: [req.session['currentUser']] } });
+    const newGroups = await Group.find({ members: { $not: { $in: [req.session['currentUser']] } } });
+    res.render('educators/updateInfo', { posts: posts, viewOpt: '', myGroups, newGroups });
   } catch (err) {
     next(err);
   }
 };
 
-const updateEducatorPanel = async (
-  req: Request<{ id: string }>,
-  res: Response,
-  next: NextFunction
-) => {
+const updateEducatorPanel = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
   try {
     const userInfo = await User.findById(req.params.id);
     if (req.body.description) {

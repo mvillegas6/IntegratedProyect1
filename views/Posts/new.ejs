@@ -1,15 +1,21 @@
 <% layout('layout/boilerplate') %>
-
+<script src="https://kit.fontawesome.com/d1023b5858.js" crossorigin="anonymous"></script>
 <body>
   <div class="row mt-5">
     <div class="col-6 offset-3">
       <div class="card">
-        <form action="/posts" method="post" class="card-body needs-validation" enctype="multipart/form-data" novalidate>
+        <form
+          action="/posts"
+          method="post"
+          class="card-body needs-validation"
+          enctype="multipart/form-data"
+          novalidate
+        >
           <fieldset>
             <legend class="text-center title">Realiza una publicación</legend>
             <div class="mb-3">
               <label for="Title" class="form-label">Ingrese Un Titulo!</label>
-              <input type="text" id="title" class="form-control" placeholder="Title" name="title" required/>
+              <input type="text" id="title" class="form-control" placeholder="Title" name="title" required />
               <div class="invalid-feedback">Ingrese Un Titulo!</div>
             </div>
 
@@ -31,22 +37,22 @@
             <div class="mb-3">
               <label for="deegreSelector" class="form-label">Elige tu carrera</label>
               <select name="degree" id="deegreSelector" class="form-select" required>
-                <option value='' disabled>Select your deegre</option>
+                <option value="" disabled>Select your deegre</option>
                 <!-- Administración -->
                 <option disabled>Escuela de Administración</option>
                 <option value="Administración de Negocios">Administración de Negocios</option>
                 <option value="Negocios Internacionales">Negocios Internacionales</option>
                 <option value="Contaduría Pública">Contaduría Pública</option>
                 <option value="Mercadeo">Mercadeo</option>
-                
+
                 <!-- ECONOMIA -->
-                <option disabled>Escuela de Economía y Finanzas</option> 
+                <option disabled>Escuela de Economía y Finanzas</option>
                 <option value="Ciencias Políticas">Ciencias Políticas</option>
                 <option value="Economía">Economía</option>
                 <option value="Finanzas">Finanzas</option>
-                
+
                 <!-- Artes y humanidades -->
-                <option disabled>Artes y humanidades</option> 
+                <option disabled>Artes y humanidades</option>
                 <option value="Música">Música</option>
                 <option value="Comunicación Social">Comunicación Social</option>
                 <option value="Psicología">Psicología</option>
@@ -75,8 +81,16 @@
 
             <div class="mb-3">
               <label for="formFileMultiple" class="form-label">Añade archivos</label>
-              <input class="form-control" type="file" name="image" id="formFileMultiple" multiple/>
+              <input class="form-control" type="file" name="image" id="formFileMultiple" multiple />
             </div>
+
+            <p>
+              <i class="fa-solid fa-circle-exclamation" style="color: #ff0000"></i>
+              <small style="color: red; font-size: small">
+                Tutorly no se hace responsable de posibles conflictos con los derechos de autor. Ojo con lo
+                que montas.
+              </small>
+            </p>
 
             <button type="submit" class="btn btn-primary">Publicar</button>
           </fieldset>

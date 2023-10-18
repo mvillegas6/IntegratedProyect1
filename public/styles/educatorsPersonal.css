@@ -25,12 +25,10 @@ hr {
   flex-direction: column;
   align-items: center;
 }
-.user-groups {
-  width: 20%;
+.groupContent {
   margin: 20px;
-  background-color: #333333;
-  border-radius: 20px;
   padding: 20px;
+  border-left: 2px solid #333333;
 }
 
 .user-picture {
@@ -39,6 +37,7 @@ hr {
 
 .infoContainer {
   width: 60%;
+  min-width: 994px;
   height: 94vh;
   display: flex;
   flex-direction: column;
@@ -184,7 +183,7 @@ hr {
   background-color: inherit;
 }
 
-.postsContainer {
+.postsContainerEducator {
   display: flex;
   width: 100%;
   height: fit-content;
@@ -194,7 +193,7 @@ hr {
   margin-top: 20px;
 }
 
-.post {
+.postEducator {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -210,7 +209,7 @@ hr {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.body {
+.bodyEducator {
   padding-top: 5px;
   height: 30%;
   overflow-y: hidden;
@@ -218,16 +217,16 @@ hr {
   -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
 }
 
-.faculty {
+.facultyEducator {
   height: 10%;
   font-weight: bold;
 }
 
-.attachments {
+.attachmentsEducator {
   height: 10%;
   font-weight: bold;
 }
-.post small {
+.postEducator small {
   height: 10%;
   display: flex;
   align-items: end;
@@ -283,7 +282,7 @@ hr {
 .viewSelect:hover {
   background-color: #555;
 }
-.post:hover {
+.postEducator:hover {
   transform: translateY(-0.2em);
   box-shadow: 0 0.5em 0.5em -0.4em #333333;
 }

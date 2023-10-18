@@ -13,6 +13,7 @@ import cookieParser from 'cookie-parser';
 import flash from 'connect-flash';
 import { commentRouter } from './routes/comments';
 import { analyticRouter } from './routes/analitycs';
+import { educatorRouter } from './routes/educators';
 var MongoDBStore = require('connect-mongo');
 
 const app = express();
@@ -30,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser('alo'));
 
 const store = MongoDBStore.create({
-  mongoUrl: process.env.DB_URL_ATLAS,
+  mongoUrl: process.env.DB_URL,
   touchAfter: 24 * 60 * 60,
   crypto: {
     secret: 'Dirty deeds done dirty cheap!',
@@ -66,9 +67,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.use('/posts', postRouter);
 app.use('/posts/comments', commentRouter);
 app.use('/analytics', analyticRouter);
-app.use('/groups', groupRouter);
+app.use('/educators', educatorRouter);
 app.use('', userRouter);
-
+app.use('/groups', groupRouter);
 app.get('/', (req: Request, res: Response) => {
   res.render('index');
 });

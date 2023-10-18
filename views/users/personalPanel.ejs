@@ -1,4 +1,68 @@
-
-<% layout('layout/personalPanel') %>
+<% layout('layout/personalPanel') %> <% if (currentUser.__t === 'Educator') {%>
 <p><%= currentUser.description %></p>
-<a class="btn btn-info" href="/personal/<%=currentUser._id%>/edit" class="editButton">Actualizar Descripcion</a>
+<div class="schedule">
+  <label for="lunes">Lunes: </label>
+  <input
+    id="lunes"
+    type="text"
+    name=""
+    value="<%= currentUser.serviceInfo.scheadule[0] %>"
+    readonly />
+  <label for="martes">Martes: </label>
+  <input
+    id="martes"
+    type="text"
+    name=""
+    value="<%= currentUser.serviceInfo.scheadule[1] %>"
+    readonly />
+  <label for="miercoles">Miercoles: </label>
+  <input
+    id="miercoles"
+    type="text"
+    name=""
+    value="<%= currentUser.serviceInfo.scheadule[2] %>"
+    readonly />
+  <label for="jueves">Jueves: </label>
+  <input
+    id="jueves"
+    type="text"
+    name=""
+    value="<%= currentUser.serviceInfo.scheadule[3] %>"
+    readonly />
+  <label for="viernes">Viernes: </label>
+  <input
+    id="viernes"
+    type="text"
+    name=""
+    value="<%= currentUser.serviceInfo.scheadule[4] %>"
+    readonly />
+  <label for="sabado">Sabado: </label>
+  <input
+    id="sabado"
+    type="text"
+    name=""
+    value="<%= currentUser.serviceInfo.scheadule[5] %>"
+    readonly />
+</div>
+<div class="btnActualizar">
+  <a
+    class="btn btn-info"
+    href="/educators/<%=currentUser._id%>/edit"
+    class="editButton"
+    >Actualizar Descripcion y Horarios</a
+  >
+</div>
+
+<% } else {%>
+
+<p><%= currentUser.description %></p>
+<div class="btnActualizar">
+  <a
+    class="btn btn-info"
+    href="/personal/<%=currentUser._id%>/edit"
+    class="editButton"
+    >Actualizar Descripcion</a
+  >
+</div>
+
+<% } %>

@@ -8,7 +8,10 @@ import { storage } from '../cloudinary';
 import multer from 'multer';
 const upload = multer({ storage });
 
-export const userRouter = Router.get('/register', usersController.renderRegister)
+export const userRouter = Router.get(
+  '/register',
+  usersController.renderRegister
+)
   .get('/login', usersController.renderLogin)
   .get('/logout', usersController.logOutUser)
   .post(

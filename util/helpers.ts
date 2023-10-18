@@ -2,6 +2,7 @@ import { Post } from '../models/post';
 import { Group } from '../models/groups';
 import { Request, Response } from 'express';
 import { Faculties } from '../util/degrees';
+import { User } from '../models/user';
 
 async function filterByQuery(req: Request, res: Response) {
   let posts: any;
@@ -78,7 +79,9 @@ function removeUserLike(req: Request, post: any, user: any) {
   if (post.votes.length !== 0 && req.session['currentUser']) {
     for (let index = 0; index < post.votes.length; index++) {
       const element = post.votes[index];
-      if (element['_id'].valueOf() === req.session['currentUser']['_id'].valueOf()) {
+      if (
+        element['_id'].valueOf() === req.session['currentUser']['_id'].valueOf()
+      ) {
         const oldLike = post.votes.splice(index, 1);
         flag = true;
       }

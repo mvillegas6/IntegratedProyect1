@@ -1,0 +1,162 @@
+body {
+  background-color: #232323;
+  overflow: hidden;
+}
+
+.postTitle {
+  color: #c2c2c2;
+  margin-bottom: 10px;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.groupHeader {
+  display: flex;
+  flex-direction: column;
+  color: #c2c2c2;
+}
+
+hr {
+  width: 100%;
+  border: solid 2px #333333;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.rightPart {
+  height: 90vh;
+  width: 25%;
+  overflow: scroll;
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+}
+
+.middlePart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: 2px solid #333333;
+  border-right: 2px solid #333333;
+  width: 60%;
+  overflow-y: scroll;
+  margin-left: 23%;
+}
+
+.postsContainer {
+  width: 88.2%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-decoration: none;
+  overflow: scroll;
+}
+
+.postsContainer a {
+  text-decoration: none;
+  width: 100%;
+}
+
+.post {
+  height: fit-content;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: #232323;
+  padding: 10px;
+  transition: transform 0.3s, background-color 0.3s;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  color: #c2c2c2;
+}
+
+.post #title {
+  flex-basis: 80%;
+}
+.post #author {
+  flex-basis: 20%;
+  text-align: end;
+  color: #5ac8fa;
+}
+.post #body {
+  flex-basis: 100%;
+}
+
+.post #faculty {
+  flex-basis: 50%;
+  text-align: start;
+  font-weight: bold;
+}
+.post #attachments {
+  flex-basis: 30%;
+  text-align: start;
+  font-weight: bold;
+}
+.post #votes {
+  flex-basis: 10%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.postsContainer div:hover {
+  background-color: #333333;
+}
+
+.rightContent {
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90vh;
+}
+
+.buttons {
+  display: flex;
+  align-content: flex-end;
+  justify-content: space-around;
+}
+
+.file-upload {
+  display: none;
+}
+
+.profile-pic {
+  width: 200px;
+  max-height: 200px;
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+.image {
+  border-radius: 100%;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  top: 20px;
+  left: 10%;
+  margin-bottom: 50px;
+}
+
+.upload-icon {
+  position: absolute;
+  top: 34%;
+  left: 42%;
+  color: #666666;
+  font-size: 2em;
+}
+
+.fa-solid {
+  cursor: pointer;
+}

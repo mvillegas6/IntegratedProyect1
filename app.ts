@@ -6,6 +6,7 @@ import { Request, Response } from 'express';
 import { seedData } from './seed/seed';
 import { postRouter } from './routes/posts';
 import { userRouter } from './routes/users';
+import { groupRouter } from './routes/groups';
 import methodOverride from 'method-override';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
@@ -68,7 +69,7 @@ app.use('/posts/comments', commentRouter);
 app.use('/analytics', analyticRouter);
 app.use('/educators', educatorRouter);
 app.use('', userRouter);
-
+app.use('/groups', groupRouter);
 app.get('/', (req: Request, res: Response) => {
   res.render('index');
 });

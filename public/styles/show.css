@@ -1,130 +1,135 @@
 body {
-    background-color: #232323;
+  background-color: #232323;
+  overflow: hidden;
 }
 
-hr{
-    width: 100%;
-    border: solid 2px #333333 ;
-    margin-bottom: 30px;
-    border-radius: 10px;
+hr {
+  width: 100%;
+  border: solid 2px #333333;
+  margin-bottom: 30px;
+  border-radius: 10px;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px;
+  overflow: hidden;
 }
+
 main .middlePart {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-left: 2px solid #333333;
-    border-right: 2px solid #333333;
-    width: 60%;
-    overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: 2px solid #333333;
+  border-right: 2px solid #333333;
+  width: 60%;
+  overflow-y: scroll;
+  margin-left: 23%;
 }
+
 main .searchBar {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-bottom: 30px;
-    height: 2.5em;
-    width: 98%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 30px;
+  height: 2.5em;
+  width: 98%;
 }
 
 main .postsContainer {
-    width: 88.2%;
-    height: 1200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-decoration: none;
+  width: 88.2%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  overflow: scroll;
 }
+
 .postsContainer a {
-    text-decoration: none;
-    width: 100%;
+  text-decoration: none;
+  width: 100%;
 }
 .post {
-    height: fit-content;
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    background-color: #232323;
-    padding: 10px;
-    transition: transform 0.3s, background-color 0.3s;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    color: #c2c2c2;
+  height: fit-content;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: #232323;
+  padding: 10px;
+  transition: transform 0.3s, background-color 0.3s;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  color: #c2c2c2;
 }
 
 .post #title {
-    flex-basis: 80%;
+  flex-basis: 80%;
 }
 .post #author {
-    flex-basis: 20%;
-    text-align: end;
-    color: #5ac8fa;
+  flex-basis: 20%;
+  text-align: end;
+  color: #5ac8fa;
 }
 .post #body {
-    flex-basis: 100%;
+  flex-basis: 100%;
 }
 
 .post #faculty {
-    flex-basis: 50%;
-    text-align: start;
-    font-weight: bold;
+  flex-basis: 50%;
+  text-align: start;
+  font-weight: bold;
 }
 .post #attachments {
-    flex-basis: 30%;
-    text-align: start;
-    font-weight: bold;
+  flex-basis: 30%;
+  text-align: start;
+  font-weight: bold;
 }
 .post #votes {
-    flex-basis: 10%;
-    text-align: center;
-    font-weight: bold;
+  flex-basis: 10%;
+  text-align: center;
+  font-weight: bold;
 }
 
 .postsContainer .post h1 {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 nav .searchComponents {
-    /* background-color: white; */
-    display: flex;
-    justify-content: center;
-    width: 90%;
+  /* background-color: white; */
+  display: flex;
+  justify-content: center;
+  width: 90%;
 }
 
 nav .searchComponents button {
-    background-color: #5ac8fa;
-    border-radius: 20px;
-    border: none;
-    flex-grow: 0.05;
-    width: 6em;
+  background-color: #5ac8fa;
+  border-radius: 20px;
+  border: none;
+  flex-grow: 0.05;
+  width: 6em;
 }
 
 nav .searchComponents input {
-    background-color: #333333;
-    border: none;
-    flex-grow: 1;
-    border-radius: 20px;
-    margin-right: 20px;
-    outline: none;
-    color: #c2c2c2;
+  background-color: #333333;
+  border: none;
+  flex-grow: 1;
+  border-radius: 20px;
+  margin-right: 20px;
+  outline: none;
+  color: #c2c2c2;
 }
 nav .searchComponents input:focus {
-    background-color: #333333;
-    outline: none;
-    box-shadow: none;
-    color: #c2c2c2;
+  background-color: #333333;
+  outline: none;
+  box-shadow: none;
+  color: #c2c2c2;
 }
 /* ::-webkit-scrollbar{
     width: 5px;
@@ -134,5 +139,60 @@ nav .searchComponents input:focus {
     background: #5AC8FA;
 } */
 .postsContainer div:hover {
-    background-color: #333333;
+  background-color: #333333;
+}
+
+.groupContent {
+  height: 90vh;
+  width: 25%;
+  overflow: scroll;
+  position: sticky;
+}
+
+.personalGroups {
+  margin: 10%;
+}
+
+.newGroup {
+  margin: 10px;
+}
+
+.myGroups {
+  color: white;
+}
+
+.groupLink {
+  color: #ffff;
+}
+
+.groupPost {
+  text-decoration: none;
+  max-width: auto;
+}
+
+.groupPostInfo {
+  text-decoration: none;
+  color: #ffff;
+  margin: 8px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #333333;
+  width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.groupData {
+  width: 15em;
+}
+
+.postName {
+  font-weight: bold;
+  font-size: large;
+}
+
+.groupPostInfo:hover {
+  transform: translateY(-0.1em);
+  box-shadow: 0 0.5em 0.5em -0.4em #333333;
+  background-color: #383737;
 }

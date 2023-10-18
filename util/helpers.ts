@@ -1,4 +1,5 @@
 import { Post } from '../models/post';
+import { Group } from '../models/groups';
 import { Request, Response } from 'express';
 import { Faculties } from '../util/degrees';
 import { User } from '../models/user';
@@ -6,6 +7,9 @@ import { User } from '../models/user';
 async function filterByQuery(req: Request, res: Response) {
   let posts: any;
   let keyword;
+  const myGroups = await Group.find({ members: { $in: [req.session['currentUser']] } });
+  const newGroups = await Group.find({ members: { $not: { $in: [req.session['currentUser']] } } });
+
   if (req.query.q) {
     keyword = `${req.query.q}`;
     posts = (
@@ -35,11 +39,9 @@ async function filterByQuery(req: Request, res: Response) {
     ).reverse();
   } else {
     keyword = '';
-    posts = (
-      await Post.find({}).populate('author').populate('votes')
-    ).reverse();
+    posts = (await Post.find({}).populate('author').populate('votes')).reverse();
   }
-  res.render('Posts/show', { posts, keyword, m: req.flash('success') });
+  res.render('Posts/show', { posts, keyword, m: req.flash('success'), myGroups, newGroups });
 }
 
 function findFaculty(post: any) {

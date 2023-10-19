@@ -9,7 +9,7 @@ We, as a team, intend to develop an app that will help these fellow students in 
 ## Clone the repository
 Run the next command on your terminal in a directory of your choice.
 ```bash
-$ git clone https://github.com/mvillegas6/IntegratedProyect1.git
+$ git fork https://github.com/mvillegas6/IntegratedProyect1.git
 ```
 
 ## Install NodeJS and NPM

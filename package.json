@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.ts"
+    "dev": "nodemon app.ts",
+    "clean": "rimraf dist/",
+    "copy-files-css": "copyfiles -u 1 public/styles/* public/styles/users/* dist/public",
+    "copy-files-ejs": "copyfiles -u 1 views/**/* views/* dist/views",
+    "copy-files-assets": "copyfiles -u 1 assets/* dist/assets",
+    "build": "npm run clean && tsc && npm run copy-files-css && npm run copy-files-ejs && npm run copy-files-assets"
   },
   "keywords": [],
   "author": "",
@@ -45,7 +50,9 @@
     "@types/node": "^20.4.9",
     "@types/passport": "^1.0.12",
     "@types/passport-local": "^1.0.35",
+    "copyfiles": "^2.4.1",
     "nodemon": "^3.0.1",
+    "rimraf": "^5.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   }

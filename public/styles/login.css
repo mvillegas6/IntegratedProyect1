@@ -104,3 +104,11 @@ input:-webkit-autofill {
     border-bottom: solid 2px #5ac8fa;
     color: #ffff;
 }
+
+.flash{
+    width: 60%;
+    margin-top: 10px;
+    text-align: center;
+    align-self: center;
+    color: black;
+}

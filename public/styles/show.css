@@ -150,6 +150,7 @@ nav .searchComponents input:focus {
   position: sticky;
 }
 
+
 .personalGroups {
   margin: 10%;
 }
@@ -165,8 +166,9 @@ nav .searchComponents input:focus {
 
 .newGroupBtn {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
+
 
 .groupLink {
   color: #ffff;

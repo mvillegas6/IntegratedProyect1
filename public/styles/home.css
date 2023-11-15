@@ -15,9 +15,10 @@ hr {
     display: flex;
     flex-direction: row;
     height: 60vh;
-    background-position: 20% 55%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("https://res.cloudinary.com/dzemwu9yn/image/upload/v1695916021/photo-1564910443496-5fd2d76b47fa_srcyt5.jpg");
+    background-position: 50% 50%;
+    background-size: cover;  
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),
+    /* url("https://res.cloudinary.com/dzemwu9yn/image/upload/v1695916021/photo-1564910443496-5fd2d76b47fa_srcyt5.jpg")*/url("https://www.valoraanalitik.com/wp-content/uploads/2020/06/Eafit.jpg");
 }
 
 
@@ -74,6 +75,7 @@ hr {
 .goPosts, .goTutors{
     width: 30%;
     height: 80%;
+    max-width: 520px;
     background-color: #333333;
     border-radius: 40px;
     padding: 20px;

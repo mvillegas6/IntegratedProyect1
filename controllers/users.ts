@@ -7,6 +7,7 @@ import { Post } from '../models/post';
 import { Group } from '../models/groups';
 import { cloudinary } from '../cloudinary/index';
 import bcrypt from 'bcrypt';
+import { error } from 'console';
 
 const renderRegister = (req: Request, res: Response) => {
   res.render('users/register');
@@ -25,9 +26,12 @@ const loginUser = async (req: Request, res: Response) => {
     if (validPassword) {
       req.session['currentUser'] = user;
       res.redirect('/posts');
+    }else{
+      req.flash('error', 'Usuario o contraseña incorrectos.');
+      res.redirect('/login');
     }
   } catch (error) {
-    console.log(error);
+    req.flash('error', 'Algo inesperado a pasado!');
     res.redirect('/login');
   }
 };
@@ -66,9 +70,13 @@ const postUser = async (req: Request, res: Response, next: NextFunction) => {
     req.session['currentUser'] = user;
     res.redirect('/posts');
   } catch (e) {
-    console.log(e);
-    req.flash('error', e.message);
-    res.redirect('/register');
+    if (e.code === 11000){
+      req.flash('error', 'Este correo ya esta en uso.');
+      res.redirect('/register');
+    }else{
+      req.flash('error', 'Algo paso al registrarte, intenta de nuevo.');
+      res.redirect('/register');
+    }
   }
 };
 

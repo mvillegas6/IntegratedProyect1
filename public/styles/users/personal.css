@@ -189,7 +189,6 @@ hr {
 .prContainer a {
   display: flex;
   align-items: center;
-  justify-content: end;
   /* flex-basis: 15%; */
   text-decoration: none;
   color: #5ac8fa;
